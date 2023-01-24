@@ -13,6 +13,12 @@ class User(db.Model, UserMixin):
     username = db.Column(db.String(40), nullable=False, unique=True)
     email = db.Column(db.String(255), nullable=False, unique=True)
     hashed_password = db.Column(db.String(255), nullable=False)
+    city = db.Column(db.String(40), nullable=False)
+    state = db.Column(db.String(40), nullable=False)
+    zipcode = db.Column(db.Integer, nullable=False)
+
+    products = db.relationship("Product", back_populates='user', cascade="all, delete")
+    cartitems = db.relationship("Cartitem", back_populates='user', cascade="all, delete")
 
     @property
     def password(self):
