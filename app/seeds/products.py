@@ -6,9 +6,9 @@ def seed_products():
     product1 = Product(
         creatorId=1, title='Monitor', category='computer',price=200,discount=0.9,inventory=20,style='moden',brand='Dell',color='black',dimension='19Lx18Wx20H',about='nice monitor',description='come and buy',imageUrl='http://monitor.img')
     product2 = Product(
-        creatorId=1, title='Keyborad', category='computer',price=50,discount=0.7,inventory=15,style='moden',brand='HP',color='grey',dimension='5Lx5Wx5H',about='nice keyboard',description='try typing',imageUrl='http://keyboard.img')
+        creatorId=2, title='Keyborad', category='computer',price=50,discount=0.7,inventory=15,style='moden',brand='HP',color='grey',dimension='5Lx5Wx5H',about='nice keyboard',description='try typing',imageUrl='http://keyboard.img')
     product3 = Product(
-        creatorId=1, title='Camera', category='electric',price=70,discount=0.8,inventory=40,style='moden',brand='Dell',color='black',dimension='19Lx18Wx20H',about='nice camera',description='have a look',imageUrl='http://camera.img')
+        creatorId=3, title='Camera', category='electric',price=70,discount=0.8,inventory=40,style='moden',brand='Dell',color='black',dimension='19Lx18Wx20H',about='nice camera',description='have a look',imageUrl='http://camera.img')
 
     db.session.add(product1)
     db.session.add(product2)

@@ -1,4 +1,5 @@
 from .db import db, environment, SCHEMA, add_prefix_for_prod
+from .user import User
 
 class Product(db.Model):
     __tablename__ = 'products'
@@ -22,4 +23,41 @@ class Product(db.Model):
     imageUrl = db.Column(db.String(1000), nullable=False)
 
     user = db.relationship("User", back_populates="products")
-    cartitem = db.relationship("Cartitem", back_populates="product", uselist=False, cascade="all, delete")
+    cartitems = db.relationship("Cartitem", back_populates="product", cascade="all, delete")
+
+    def to_dict(self):
+        return{
+            'id':self.id,
+            'creatorId':self.creatorId,
+            'title':self.title,
+            'category':self.category,
+            'price':str(self.price),
+            'discount':str(self.discount),
+            'inventory':str(self.inventory),
+            'style':self.style,
+            'brand':self.brand,
+            'color':self.color,
+            'dimension':self.dimension,
+            'about':self.about,
+            'description':self.description,
+            'imageUrl':self.imageUrl
+        }
+
+    def to_dict_full(self):
+        return{
+            'id':self.id,
+            'creatorId':self.creatorId,
+            'title':self.title,
+            'category':self.category,
+            'price':str(self.price),
+            'discount':str(self.discount),
+            'inventory':str(self.inventory),
+            'style':self.style,
+            'brand':self.brand,
+            'color':self.color,
+            'dimension':self.dimension,
+            'about':self.about,
+            'description':self.description,
+            'imageUrl':self.imageUrl,
+            'creator':User.query.get(self.creatorId).to_dict()        
+        }
