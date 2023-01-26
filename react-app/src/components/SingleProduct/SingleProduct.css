@@ -1,0 +1,14 @@
+.singleproject-topsec{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    justify-items: center;
+    gap:40px;
+}
+
+div.singleproject-imagesec img{
+    width: 322px;
+    height: 338px;
+    object-fit: cover;
+    border-radius: 10px;
+}

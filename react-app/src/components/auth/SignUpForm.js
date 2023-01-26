@@ -9,13 +9,18 @@ const SignUpForm = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [repeatPassword, setRepeatPassword] = useState('');
+
+  const [city, setCity] = useState('');
+  const [state, setState] = useState('');
+  const [zipcode, setZipcode] = useState('00000');
+
   const user = useSelector(state => state.session.user);
   const dispatch = useDispatch();
 
   const onSignUp = async (e) => {
     e.preventDefault();
     if (password === repeatPassword) {
-      const data = await dispatch(signUp(username, email, password));
+      const data = await dispatch(signUp(username, email, password,city,state,zipcode));
       if (data) {
         setErrors(data)
       }
@@ -37,6 +42,19 @@ const SignUpForm = () => {
   const updateRepeatPassword = (e) => {
     setRepeatPassword(e.target.value);
   };
+
+  const updateCity = (e) => {
+    setCity(e.target.value);
+  };
+
+  const updateState = (e) => {
+    setState(e.target.value);
+  };
+
+  const updateZipcode = (e) => {
+    setZipcode(e.target.value);
+  };
+
 
   if (user) {
     return <Redirect to='/' />;
@@ -84,6 +102,33 @@ const SignUpForm = () => {
           onChange={updateRepeatPassword}
           value={repeatPassword}
           required={true}
+        ></input>
+      </div>
+      <div>
+        <label>City</label>
+        <input
+          type='text'
+          name='city'
+          onChange={updateCity}
+          value={city}
+        ></input>
+      </div>
+      <div>
+        <label>State</label>
+        <input
+          type='text'
+          name='state'
+          onChange={updateState}
+          value={state}
+        ></input>
+      </div>
+      <div>
+        <label>Zipcode</label>
+        <input
+          type='text'
+          name='zipcode'
+          onChange={updateZipcode}
+          value={zipcode}
         ></input>
       </div>
       <button type='submit'>Sign Up</button>

@@ -8,6 +8,10 @@ import ProtectedRoute from './components/auth/ProtectedRoute';
 import UsersList from './components/UsersList';
 import User from './components/User';
 import { authenticate } from './store/session';
+import Navigation from './components/Navigation';
+import SignupFormModal from './components/SignupFormModal';
+import Landing from './components/LandingPage';
+import SellerCentral from './components/SellerCentral';
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -26,23 +30,33 @@ function App() {
 
   return (
     <BrowserRouter>
-      <NavBar />
+      {/* <NavBar /> */}
+      {/* <Navigation isLoaded={loaded} /> */}
       <Switch>
         <Route path='/login' exact={true}>
           <LoginForm />
         </Route>
-        <Route path='/sign-up' exact={true}>
+        <Route path="/signup" exact={true}>
           <SignUpForm />
         </Route>
-        <ProtectedRoute path='/users' exact={true} >
+        <Route path="/sellercentral" exact={true}>
+          <SellerCentral />
+        </Route>
+        <Route path="/">
+          <Landing/>
+        </Route>
+        {/* <Route path='/sign-up' exact={true}>
+          <SignUpForm />
+        </Route> */}
+        {/* <ProtectedRoute path='/users' exact={true} >
           <UsersList/>
         </ProtectedRoute>
         <ProtectedRoute path='/users/:userId' exact={true} >
           <User />
-        </ProtectedRoute>
-        <Route path='/' exact={true} >
+        </ProtectedRoute> */}
+        {/* <Route path='/' exact={true} >
           <h1>My Home Page</h1>
-        </Route>
+        </Route> */}
       </Switch>
     </BrowserRouter>
   );
