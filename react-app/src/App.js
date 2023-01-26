@@ -39,7 +39,7 @@ function App() {
         <Route path="/signup" exact={true}>
           <SignUpForm />
         </Route>
-        <Route path="/sellercentral" exact={true}>
+        <Route path={["/sellercentral",'/createproduct','/editproduct/:productId']}>
           <SellerCentral />
         </Route>
         <Route path="/">
@@ -54,9 +54,9 @@ function App() {
         <ProtectedRoute path='/users/:userId' exact={true} >
           <User />
         </ProtectedRoute> */}
-        {/* <Route path='/' exact={true} >
-          <h1>My Home Page</h1>
-        </Route> */}
+        <Route>
+          <h1>404</h1>
+        </Route>
       </Switch>
     </BrowserRouter>
   );

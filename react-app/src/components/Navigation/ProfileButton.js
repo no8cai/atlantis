@@ -42,6 +42,13 @@ function ProfileButton({ user }) {
     closeMenu();
   };
 
+  const sellcentral = (e) => {
+    e.preventDefault();
+    history.push("/sellercentral")
+    closeMenu();
+  };
+
+
   const signup = (e) => {
     e.preventDefault();
     history.push("/signup")
@@ -70,6 +77,7 @@ function ProfileButton({ user }) {
           <>
             <div>{user.username}</div>
             <div>{user.email}</div>
+            <div onClick={sellcentral}>seller central</div>
             <div>
               <button onClick={logout}>Log Out</button>
             </div>
