@@ -12,6 +12,7 @@ import Navigation from './components/Navigation';
 import SignupFormModal from './components/SignupFormModal';
 import Landing from './components/LandingPage';
 import SellerCentral from './components/SellerCentral';
+import "./index.css"
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -29,9 +30,8 @@ function App() {
   }
 
   return (
+    <div className="rootchild">
     <BrowserRouter>
-      {/* <NavBar /> */}
-      {/* <Navigation isLoaded={loaded} /> */}
       <Switch>
         <Route path='/login' exact={true}>
           <LoginForm />
@@ -59,6 +59,7 @@ function App() {
         </Route>
       </Switch>
     </BrowserRouter>
+    </div>
   );
 }
 

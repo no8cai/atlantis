@@ -35,7 +35,7 @@ function Navigation(){
   if (sessionUser) {
     addressbar = (
       <div>
-        <div>deliver to {`${sessionUser.city} ${sessionUser.zipcode}`}</div>
+        <i className="fa-solid fa-location-dot"></i><div>deliver to {`${sessionUser.city} ${sessionUser.zipcode}`}</div>
       </div>
     );
   } else {
@@ -57,16 +57,16 @@ function Navigation(){
     <div className='navigation-section'>
       <div className='navigation-leftsec'>
         <div>
-         <NavLink exact to="/">Logo</NavLink>
+         <NavLink exact to="/" className={'navigation-logo'}><img src="atlogo.png"/></NavLink>
         </div>
-        <div>
+        <div className='navigation-address'>
           {addressbar}
         </div>
       </div>
       <div className="search-container">
-      <form action="/action_page.php">
-      <input type="text" placeholder="Search.." name="search"/>
-      <button type="submit"><i className="fa fa-search"></i></button>
+      <form action="/action_page.php" className='form-input'>
+      <input type="text" placeholder="Search.." name="search" disabled="True" title="Feature coming soon!"/>
+      <button type="submit" disabled="True" title="Feature coming soon!"><i className="fa fa-search" ></i></button>
       </form>
      </div>
       <div className='navigation-rightsec'>

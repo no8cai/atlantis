@@ -1,1 +1,28 @@
 /* TODO Add site wide styles */
+.rootchild{
+    width: 100%;
+    font-family: 'Lato',system-ui, -apple-system, BlinkMacSystemFont,'Helvetica Neue', sans-serif;
+    font-size: 14px;
+    background-color: #fff;
+}
+
+body{
+    margin: 0;
+}
+
+input{
+    /* border-radius: 5px; */
+    border: none;
+    outline: none;
+}
+
+textarea{
+    /* border-radius: 5px; */
+    border: none;
+    outline: none;
+}
+
+/* button{
+    border: none;
+    outline: none;
+} */
