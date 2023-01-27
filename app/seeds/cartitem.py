@@ -4,9 +4,9 @@ from app.models import db, Cartitem, environment, SCHEMA
 # Adds a demo user, you can add other users here if you want
 def seed_cartitems():
     cartitem1 = Cartitem(
-        userId= 1,productId=1,quantity=2)
+        userId= 1,productId=2,quantity=2)
     cartitem2 = Cartitem(
-        userId= 1,productId=2,quantity=3)
+        userId= 1,productId=3,quantity=3)
     cartitem3 = Cartitem(
         userId= 2,productId=3,quantity=2)
     cartitem4 = Cartitem(
@@ -14,7 +14,7 @@ def seed_cartitems():
     cartitem5 = Cartitem(
         userId= 3,productId=2,quantity=1)
     cartitem6 = Cartitem(
-        userId= 3,productId=3,quantity=1)
+        userId= 3,productId=1,quantity=1)
    
 
     db.session.add(cartitem1)

@@ -30,11 +30,22 @@ def add_cartitem(id):
     currentId=current_user.get_id()
     
     if form.validate_on_submit():
-        new_cartitem=Cartitem(userId=currentId,productId=id)
-        form.populate_obj(new_cartitem)
-        db.session.add(new_cartitem)
-        db.session.commit()
-        return new_cartitem.to_dict_full(),201
+        tempcartitem=Cartitem.query.filter(Cartitem.userId==currentId).filter(Cartitem.productId==int(id)).first()
+        if not tempcartitem:        
+            new_cartitem=Cartitem(userId=currentId,productId=id)
+            form.populate_obj(new_cartitem)
+            db.session.add(new_cartitem)
+            db.session.commit()
+            return new_cartitem.to_dict_full(),201
+        else:
+            new_quantity=tempcartitem.quantity+int(form.data["quantity"])
+            print(new_quantity)
+            print(tempcartitem.to_dict())
+            new_cartitem1=Cartitem(userId=currentId,productId=id,quantity=new_quantity)
+            db.session.delete(tempcartitem)
+            db.session.add(new_cartitem1)
+            db.session.commit()
+            return new_cartitem1.to_dict_full(),201
     
     return {
         'message':'Validation Error',

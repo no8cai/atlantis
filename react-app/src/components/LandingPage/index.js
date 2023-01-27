@@ -5,6 +5,7 @@ import { useDispatch } from 'react-redux';
 import { authenticate } from "../../store/session";
 import Homepage from "./Homepage";
 import SingleProduct from "../SingleProduct";
+import CartItems from "../CartItem";
 
 
 function Landing() {
@@ -29,6 +30,9 @@ function Landing() {
         <Switch>
         <Route path="/products/:productId">
           <SingleProduct/>
+        </Route>
+        <Route path="/cartitems" exact={true}>
+          <CartItems/>
         </Route>
          <Route path="/" exact={true}>
           <Homepage/>

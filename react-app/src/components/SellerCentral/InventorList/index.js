@@ -12,7 +12,7 @@ function InventoryList() {
     const sessionUser = useSelector(state => state.session.user);
     const productsObj = useSelector(state => state.products)
     const userprojects=Object.values(productsObj).filter(el=>el.creatorId==sessionUser.id)
-    console.log(userprojects)
+    // console.log(userprojects)
     const history=useHistory();
     
 
@@ -24,7 +24,8 @@ function InventoryList() {
     history.push(`/editproduct/${id}`)
     }
 
-    if(!productsObj) return (<div>You don't have any inventory</div>)
+    if(!productsObj) return null
+    else if(userprojects.length==0) return (<span>You dont have any inventory</span>)
 
     return(
         <div className='inventory-list'>

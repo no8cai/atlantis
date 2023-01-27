@@ -97,6 +97,11 @@ const cartitemsReducer = (state = initialState, action) => {
 
         case CREATE_CARTITEM:
             newState = {...state}
+            for(let index in newState){
+              if(parseInt(newState[index].productId)==parseInt(action.cartitem.productId) && parseInt(newState[index].userId)==parseInt(action.cartitem.userId) ){
+                  delete newState[index]
+               }
+            }
             newState[action.cartitem.id] = action.cartitem
             return newState
 

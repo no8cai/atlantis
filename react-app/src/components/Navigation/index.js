@@ -72,7 +72,9 @@ function Navigation(){
       <div className='navigation-rightsec'>
            <div><ProfileButton user={sessionUser} /></div>
            <div>Returns&Orders</div>
-           <div>Cart</div>
+           <div>
+           <NavLink exact to="/cartitems"><i className="fa-solid fa-cart-arrow-down"></i></NavLink>
+            </div>
       </div>
       {/* <div>{isLoaded && sessionLinks}</div> */}
     </div>
