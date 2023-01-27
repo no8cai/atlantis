@@ -24,11 +24,16 @@
 
 .navigation-rightsec{
     display: flex;
-    gap:10px;
+    gap:20px;
+    justify-content: center;
+    align-items: center;
+    margin-right: 2vw;
 }
 
 .navigation-leftsec{
     display:flex;
+    justify-content: center;
+    align-items: center;
     gap:10px;
 }
 
@@ -52,6 +57,7 @@
     height: 40px;
     border-top-left-radius: 5px;
     border-bottom-left-radius: 5px;
+    background-color: #f9f9f9;
 }
 
 .form-input button{
@@ -74,7 +80,56 @@
 }
 
 .navigation-sublogo{
-    background: url('atlogo.png');
-    width: 40px;
-    height: 40px;
+    width: 150px;
+    height: 90px;
+    overflow: hidden;
+}
+
+.navigation-leftright{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap:10px;
+    font-family: 'Lato';
+    font-weight: bold;
+}
+
+.profile-dropbutton{
+    font-family: 'Lato';
+    color: #f9f9f9;
+    cursor: pointer;
+}
+
+.profile-context{
+  display: flex;
+  font-size: 12px;
+}
+
+.profile-contextb{
+    font-weight: bold;
+}
+
+.ng-secondsec{
+    color: white;
+    width: 5vw;
+}
+.ng-thirdsec{
+    color: white;
+    margin-right: 1vw;
+}
+
+.ng-thirdsec i{
+    font-size: 30px;
+}
+
+.np-seconddown{
+    font-weight: bold;
+}
+
+.topbutton{
+
+}
+
+.topbutton:hover{
+    border:1px,white,solid;
 }

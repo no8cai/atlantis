@@ -68,10 +68,9 @@ function ProfileButton({ user }) {
 
   return (
     <>
-      <button onClick={openMenu}>
-        <i className="fas fa-user-circle" />
-        Hello,{user?(<div>{user.username}</div>):(<div>sign in</div>)}, Account&List
-      </button>
+      <div onClick={openMenu} className='profile-dropbutton'>
+       <div className="profile-context"><div>Hello,</div> {user?(<div>{user.username}</div>):(<div>sign in</div>)} </div><div className="profile-contextb">Account & Lists</div>
+      </div>
       <div className={ulClassName} ref={ulRef}>
         {user ? (
           <>
