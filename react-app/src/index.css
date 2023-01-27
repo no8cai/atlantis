@@ -26,3 +26,8 @@ textarea{
     border: none;
     outline: none;
 } */
+
+#do-not-interact:hover {
+    cursor: not-allowed;
+    text-decoration: none;
+}
