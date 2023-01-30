@@ -2,3 +2,105 @@
     color: black;
     cursor: pointer;
 }
+
+.sellerc-navbar{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-left: 2vw;
+    padding-right: 2vw;
+    /* background-color: #0F1111; */
+    background-color:rgb(193, 229, 241);
+}
+
+.sellercentral-links img{
+    width: 90px;
+    height: 70px;
+    object-fit: cover;
+    
+}
+
+.sellercbar-topleft{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap:10px;
+}
+
+.sellercbar-context{
+    color: black;
+    font-size: 18px;
+}
+
+.sellercentral-links{
+    text-decoration: none;
+}
+
+.sellercentral-buttomsec{
+    display: flex;
+    justify-items: center;
+}
+
+.managebox{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 20px;
+    border-top:1px rgb(0, 0, 0,0.2) solid;
+    transition-duration: 0.4s;
+}
+
+.managebox:hover{
+    background-color: rgb(173, 216, 230,0.5);
+}
+
+.productlist-image{
+    height: 80px;
+    width: 150px;
+    object-fit: cover;
+}
+
+.productlist-links{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.productlist-boxitem{
+    width: 70vw;
+    padding-left: 1vw;
+}
+
+#NavLink{
+    text-decoration: none;
+}
+
+.sellercentral-innernav{
+    padding: 20px;
+    gap:20px;
+    color: black;
+}
+
+.productlist-buttonsec{
+    padding-right: 20px;
+}
+
+.productlist-buttons{
+    margin-right: 20px;
+    color: white;
+    background-color: rgb(32, 113, 140);
+    width:150px;
+    text-align: center;
+    height: 30px;
+    padding-top:5%;
+    border: none;
+}
+
+.productlist-links{
+   text-decoration: none;
+}
+
+.sellercbar-context i{
+    color: rgb(32, 113, 140);
+    margin-right: 10px;
+}

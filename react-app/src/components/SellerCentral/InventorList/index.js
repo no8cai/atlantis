@@ -12,7 +12,7 @@ function InventoryList() {
     const sessionUser = useSelector(state => state.session.user);
     const productsObj = useSelector(state => state.products)
     const userprojects=Object.values(productsObj).filter(el=>el.creatorId==sessionUser.id)
-    // console.log(userprojects)
+    
     const history=useHistory();
     
 
@@ -30,16 +30,22 @@ function InventoryList() {
     return(
         <div className='inventory-list'>
         
-        {userprojects.map(({ id, title,category,price,dicount,brand,imageUrl}) => (
-        <div className='item' key={id}>
-            <div>
-            <NavLink to={`/products/${id}`}>
-            <div className='itemimg'><img src={imageUrl} className="image"/></div>
+        {userprojects.map(({ id, title,category,price,discount,brand,imageUrl,color}) => (
+        <div className='managebox' key={id}>
+            <div className='productlist-boxitem'>
+            <NavLink to={`/products/${id}`} className="productlist-links">
+            <div className="productlist-item">
+                <img src={imageUrl} className="productlist-image"/>
+            </div>
             <div>{title}</div>
+            <div>{category}</div>
+            <div>{price}</div>
+            <div>{brand}</div>
+            <div>{color}</div>
             </NavLink>
             </div>
-            <div>
-            <div onClick={()=>editEvents(id)} className="productlist-buttons"><i className="fa-regular fa-pen-to-square"/>Edit this Project</div>
+            <div className="productlist-buttonsec">
+            <div onClick={()=>editEvents(id)} className="productlist-buttons">Edit this Product</div>
             </div>
         </div>
       ))}               

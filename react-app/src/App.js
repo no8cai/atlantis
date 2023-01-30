@@ -40,7 +40,7 @@ function App() {
           <SignUpForm />
         </Route>
         <Route path={["/sellercentral",'/createproduct','/editproduct/:productId']}>
-          <SellerCentral />
+          <SellerCentral/>
         </Route>
         <Route path="/">
           <Landing/>

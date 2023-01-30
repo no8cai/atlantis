@@ -6,6 +6,7 @@ import { useHistory } from "react-router-dom";
 import { fetchUserCartItems } from "../../store/cartitem";
 import { fetchUpdateCartItem } from "../../store/cartitem";
 import { fetchDeleteCartItem } from "../../store/cartitem";
+import './CartItem.css'
 
 function CartItems() {
      
@@ -21,13 +22,18 @@ function CartItems() {
   }, [dispatch]);
 
 
-    const arrGenerator=(num)=>{
-        let inputnum = 0
-        if (parseInt(num)<=10){
-            inputnum=parseInt(num)+1
-        }else{
+    const arrGenerator=(num,limit)=>{
+        let inputnum
+        if(num<=limit && num<=10){
             inputnum=11
         }
+        else if(num<=limit && num>10){
+            inputnum=parseInt(num)+1
+        }
+        else{
+            inputnum=parseInt(limit)+1
+        }
+        
         let arry=[...Array(inputnum).keys()]
         arry.shift()
         return arry
@@ -49,8 +55,9 @@ function CartItems() {
     else if(usercartitems.length==0) return (<span>You dont have any cartitem</span>)
 
     return(
-        <div>
+    <div className="cartitem-section">
         <div className='cartitem-list'>
+            <div>Shopping Cart</div>
         {usercartitems.map(({ id,quantity,user,product}) => (
         <div className='cartitem-item' key={id}><NavLink to={`/products/${product.id}`}>
             <div className='cartitem-itemimg'><img src={product.imageUrl} className="cartitem-image"/></div>
@@ -67,7 +74,7 @@ function CartItems() {
                     return e.target.value}}
                 value={quantity}
                 >
-                {arrGenerator(product.inventory).map(number => (
+                {arrGenerator(quantity,product.inventory).map(number => (
                                 <option key={number} value={number}> {number}</option>
                             ))}
              </select>
@@ -78,6 +85,10 @@ function CartItems() {
         </div>
         </div>
       ))}               
+        </div>
+        <div>
+            <div>Subtotal item:</div>
+            <div>proceed to checkout</div>
         </div>
     </div>
     )

@@ -28,19 +28,30 @@ def add_cartitem(id):
     form['csrf_token'].data = request.cookies['csrf_token']
     #get current logged in user ID
     currentId=current_user.get_id()
-    
+    tempproduct=Product.query.get(id)
+
     if form.validate_on_submit():
         tempcartitem=Cartitem.query.filter(Cartitem.userId==currentId).filter(Cartitem.productId==int(id)).first()
-        if not tempcartitem:        
+        if not tempcartitem:
             new_cartitem=Cartitem(userId=currentId,productId=id)
+            if int(form.data["quantity"])>=tempproduct.inventory:
+                return{
+                'message':'Validation Error',
+                "errors":["the quantiy can not be greater than product inventory"],
+                'statusCode': 400
+                },400
             form.populate_obj(new_cartitem)
             db.session.add(new_cartitem)
             db.session.commit()
             return new_cartitem.to_dict_full(),201
         else:
             new_quantity=tempcartitem.quantity+int(form.data["quantity"])
-            print(new_quantity)
-            print(tempcartitem.to_dict())
+            if new_quantity>=tempproduct.inventory:
+                return{
+                'message':'Validation Error',
+                "errors":["the quantiy can not be greater than product inventory"],
+                'statusCode': 400
+                },400
             new_cartitem1=Cartitem(userId=currentId,productId=id,quantity=new_quantity)
             db.session.delete(tempcartitem)
             db.session.add(new_cartitem1)

@@ -6,7 +6,7 @@ import { authenticate } from "../../store/session";
 import Homepage from "./Homepage";
 import SingleProduct from "../SingleProduct";
 import CartItems from "../CartItem";
-
+import './LandingPage.css';
 
 function Landing() {
 
