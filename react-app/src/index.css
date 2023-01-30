@@ -31,3 +31,7 @@ textarea{
     cursor: not-allowed;
     text-decoration: none;
 }
+
+#NavLink{
+   text-decoration: none;
+}

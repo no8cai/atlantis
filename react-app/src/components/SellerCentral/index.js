@@ -4,6 +4,8 @@ import { useSelector } from 'react-redux';
 import InventoryList from './InventorList';
 import CreatProduct from '../Product/CreateProduct';
 import EditProduct from '../Product/EditProduct';
+import logo from '../Navigation/atlogoseller.png'
+
 
 function SellerCentral() {
     const sessionUser = useSelector(state => state.session.user);
@@ -11,24 +13,27 @@ function SellerCentral() {
 
     return(
         <div>
-            <div>
+            <div className='sellerc-navbar'>
                 <div>
                     <NavLink to={`/sellercentral`} className="sellercentral-links">
-                    atlantis seller central
+                    <div className='sellercbar-topleft'>
+                    <img className='navigation-sublogo' src={logo}/>
+                    <div className='sellercbar-context'>Seller Central</div>
+                    </div>
                     </NavLink>
                 </div>
                 <div>
                     <NavLink to={`/`} className="sellercentral-links">
-                    <div>atlantis home</div>
+                    <div className='sellercbar-context'><i className="fa-solid fa-house"/>Atlantis Home</div>
                     </NavLink>
                 </div>
             </div>
-            <div>
-                <NavLink to={`/createproduct`} className="sellercentral-links">
-                <div>Add a Product</div>
-                </NavLink>
+            <div className='sellercentral-buttomsec'>
                 <NavLink to={`/sellercentral`} className="sellercentral-links">
-                <div>Manage Inventory Inventory</div>
+                <div className='sellercentral-innernav'>Manage Inventory Inventory</div>
+                </NavLink>
+                <NavLink to={`/createproduct`} className="sellercentral-links">
+                <div className='sellercentral-innernav'>Add a Product</div>
                 </NavLink>
             </div>
             <Switch>

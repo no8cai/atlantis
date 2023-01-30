@@ -18,3 +18,31 @@ div.itemimg img{
     align-items: center;
     gap:50px;
 }
+
+.homepage-section{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.homepage-firstsec{
+    width: 100vw;
+    height: 800px;
+    overflow: hidden;
+    position: relative;
+    /* z-index: -1; */
+}
+
+.imageslider-arrowright i{
+    color: black;
+    font-size: 35px;
+    text-shadow: white -2px 0px;
+}
+
+.imageslider-arrowleft i{
+    color: black;
+    font-size: 35px;
+    text-shadow: white 2px 0px;
+}
+

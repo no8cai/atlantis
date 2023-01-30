@@ -43,7 +43,7 @@ function Navigation(){
     addressbar = (
          <div>
            {<OpenModalButton
-          buttonText={<div>
+          buttonText={<div className='navigation-leftright'>
             <div>Hello</div>
             <div>Select your address</div>
             </div>
