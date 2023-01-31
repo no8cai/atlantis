@@ -37,11 +37,11 @@ function InventoryList() {
             <div className="productlist-item">
                 <img src={imageUrl} className="productlist-image"/>
             </div>
-            <div>{title}</div>
-            <div>{category}</div>
-            <div>{price}</div>
-            <div>{brand}</div>
-            <div>{color}</div>
+            <div className="productlist-item">{title}</div>
+            <div className="productlist-item">{category}</div>
+            <div className="productlist-item">{price}</div>
+            <div className="productlist-item">{brand}</div>
+            <div className="productlist-item">{color}</div>
             </NavLink>
             </div>
             <div className="productlist-buttonsec">

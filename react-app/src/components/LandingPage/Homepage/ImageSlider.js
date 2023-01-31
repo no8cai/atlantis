@@ -80,7 +80,7 @@ const ImageSlider=({slides,allproducts})=>{
             {allproducts.map(({ id, title,imageUrl}) => (
             <div className='is-item' key={id}><NavLink to={`/products/${id}`} className='is-link'>
                 <div className='is-itemimg'><img src={imageUrl} className="image"/></div>
-                <div>{title}</div>
+                <div>{`${(title).slice(0,11)}...`}</div>
             </NavLink></div>
             
           ))}
@@ -92,7 +92,7 @@ const ImageSlider=({slides,allproducts})=>{
            {allproducts.map(({ id, title,imageUrl}) => (
             <div className='is-item' key={id}><NavLink to={`/products/${id}`} className='is-link'>
                 <div className='is-itemimg'><img src={imageUrl} className="image"/></div>
-                <div>{title}</div>
+                <div>{`${(title).slice(0,11)}...`}</div>
             </NavLink></div>
             
             ))}

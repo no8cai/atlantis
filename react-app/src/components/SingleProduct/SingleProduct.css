@@ -4,7 +4,7 @@
     justify-content: flex-start;
     justify-items: center;
     gap:40px;
-    height: 500px;
+    /* height: 500px; */
     margin-top: 20px;
 }
 
@@ -128,6 +128,9 @@ div.singleproject-imagesec img{
 .singleproject-entire{
     padding-left: 5vw;
     padding-right: 5vw;
+    display: flex;
+    flex-direction: column;
+    gap:5px;
 }
 
 .singleproduct-stock{

@@ -9,10 +9,16 @@ def seed_users():
         username='Ericwife', email='ericwife@aa.io', password='password2',city='Katy',state='Texas',zipcode='77450')
     demo = User(
         username='demoUser', email='demo@aa.io', password='password3',city='Los Angeles',state='California',zipcode='90011')
+    seller1 = User(
+        username='sellerUser1', email='seller1@aa.io', password='password4',city='New York City',state='New York',zipcode='90012')
+    seller2 = User(
+        username='sellerUser2', email='seller2@aa.io', password='password5',city='New York City',state='New York',zipcode='90013')
 
     db.session.add(eric)
     db.session.add(ericwife)
     db.session.add(demo)
+    db.session.add(seller1)
+    db.session.add(seller2)
     db.session.commit()
 
 

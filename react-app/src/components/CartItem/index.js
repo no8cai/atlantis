@@ -146,7 +146,7 @@ function CartItems() {
 
         </div>
         </div>
-        <div className="carritem-listrightsec">{`$${product.price*product.discount*quantity}`}</div>
+        <div className="carritem-listrightsec">{`$${(product.price*product.discount*quantity).toFixed(2)}`}</div>
         </div>
       ))}
         </div>

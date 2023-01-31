@@ -75,7 +75,7 @@ div.itemimg img{
     display: flex;
     flex-direction: row;
     gap:2vw;
-    top: 45%;
+    top: 40%;
     padding-left: 30px;
     padding-right: 30px;
 }
@@ -96,6 +96,7 @@ div.itemimg img{
     display: flex;
     flex-direction: row;
     padding-bottom: 30px;
+    /* padding-top: 30px; */
 }
 .sc-first img{
     width: 47vw;

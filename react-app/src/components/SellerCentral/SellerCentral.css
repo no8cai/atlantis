@@ -67,7 +67,7 @@
 }
 
 .productlist-boxitem{
-    width: 70vw;
+    width: 100%;
     padding-left: 1vw;
 }
 
@@ -103,4 +103,9 @@
 .sellercbar-context i{
     color: rgb(32, 113, 140);
     margin-right: 10px;
+}
+
+.productlist-item{
+    width: 16%;
+    overflow-x: hidden;
 }

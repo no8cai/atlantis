@@ -80,7 +80,7 @@ function SingleProduct() {
                 <div className='singleproduct-discount'>{`-${parseFloat((1-singleproduct.discount)*100).toFixed(0)}%`}</div>
                 <div className='singleproduct-price'>
                     <div className='singleproduct-dollorsign'>$</div>
-                    <div className='singleproduct-pricecontext'>{`${singleproduct.price*singleproduct.discount}`}</div>
+                    <div className='singleproduct-pricecontext'>{`${(singleproduct.price*singleproduct.discount).toFixed(2)}`}</div>
                 </div>
                 </div>
 
@@ -122,7 +122,7 @@ function SingleProduct() {
 
                 <div className='singleproduct-price'>
                     <div className='singleproduct-dollorsign'>$</div>
-                    <div className='singleproduct-pricecontext'>{`${singleproduct.price*singleproduct.discount}`}</div>
+                    <div className='singleproduct-pricecontext'>{`${(singleproduct.price*singleproduct.discount).toFixed(2)}`}</div>
                 </div>
 
                 <div className='singleproduct-primeday'>
@@ -172,10 +172,10 @@ function SingleProduct() {
              </div>
            </div>
 
-           <div></div>
-           <div className='singleproduct-about'>production information</div>
+           <div>
+           <div className='singleproduct-about'>Production information</div>
            <div>{singleproduct.description}</div>
-           <div></div>
+           </div>
 
         </div>
     ) 
