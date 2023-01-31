@@ -152,12 +152,14 @@ function CartItems() {
         </div>
         </div>
         <div className="cartitem-checkoutsec">
-            <div>{`Subtotal (${usercartitems.length} ${usercartitems.length==1?'item':'items'}):$${usercartitems.length==1?
+       
+            {/* <div>{`Subtotal (${usercartitems.length} ${usercartitems.length==1?'item':'items'}):$${usercartitems.length==1? 
                 usercartitems[0].quantity*usercartitems[0].product.price*usercartitems[0].product.discount:
                 usercartitems.reduce((
                 ac,cur)=>ac.quantity*ac.product.price*ac.product.discount
                 +cur.quantity*cur.product.price*cur.product.discount
-                )}`}</div>
+                )}`}</div> */}
+
             <div className="cartitem-checkoutbuttom" onClick={()=>checkoutEvents()}>Proceed to checkout</div>
         </div>
     </div>

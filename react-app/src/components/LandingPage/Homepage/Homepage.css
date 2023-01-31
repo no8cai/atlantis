@@ -54,7 +54,7 @@ div.itemimg img{
 }
 
 .is-itemimg img{
-    /* height: 120px; */
+    height: 21vh;
     width: 9.75vw;
     object-fit: cover;
 }

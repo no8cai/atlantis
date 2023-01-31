@@ -152,6 +152,7 @@ div.singleproject-imagesec img{
     height: 35px;
     border-radius: 15px;
     background-color: #ffbd18;
+    cursor: pointer;
 }
 
 .singleproduct-signinsec{
