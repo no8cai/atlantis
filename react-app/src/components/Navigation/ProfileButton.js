@@ -74,29 +74,28 @@ function ProfileButton({ user }) {
       <div className={ulClassName} ref={ulRef}>
         {user ? (
           <>
+            <div className="profile-logindropdownsec">
+            <div className="pf-dptopsec">Manage</div>
+            <div className="pf-dpinfosec">
+            <div className="pf-dptitle">Your account</div>
             <div>{user.username}</div>
             <div>{user.email}</div>
-            <div onClick={sellcentral}>seller central</div>
+            <div onClick={sellcentral} className='pf-dpbuttom'>Seller Central</div>
             <div>
-              <button onClick={logout}>Log Out</button>
+              <div onClick={logout} className='pf-dpbuttom'>Sign Out</div>
+            </div>
+            </div>
             </div>
           </>
         ) : (
           <>
-            <div>
-              <button onClick={signin}>Sign in</button>
-              <button onClick={signup}>New customer start here</button>
+            <div className="profile-dropdownsec">
+              <button onClick={signin} className='form-button profile-signbuttom'>Sign in</button>
+              <div className='signup-bottomsec'> 
+                <div>New customer?</div>
+                <div className='signup-signin' onClick={signup}>Start here</div>
+              </div>
             </div>
-            {/* <OpenModalMenuItem
-              itemText="Log In"
-              onItemClick={closeMenu}
-              modalComponent={<LoginFormModal />}
-            />
-            <OpenModalMenuItem
-              itemText="Sign Up"
-              onItemClick={closeMenu}
-              modalComponent={<SignupFormModal />}
-            /> */}
           </>
         )}
       </div>

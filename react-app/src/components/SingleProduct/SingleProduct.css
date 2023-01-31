@@ -17,11 +17,6 @@ div.singleproject-imagesec img{
     top:20px;
 }
 
-.singleproject-imagesec{
-    /* margin-left: 20px; */
-    /* position: sticky; */
-}
-
 .singleproduct-title{
     font-size: 30px;
 }
@@ -157,4 +152,18 @@ div.singleproject-imagesec img{
     height: 35px;
     border-radius: 15px;
     background-color: #ffbd18;
+}
+
+.singleproduct-signinsec{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: #ffbd18;
+    margin-top: 20px;
+    width: 100%;
+    height: 35px;
+    border-radius: 15px;
+    cursor: pointer;
+
 }

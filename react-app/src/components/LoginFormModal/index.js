@@ -4,7 +4,7 @@ import {  useSelector, useDispatch } from "react-redux";
 import { useModal } from "../../context/Modal";
 import "./LoginForm.css";
 import { useHistory, Redirect } from "react-router-dom";
-
+import '../auth/auth.css'
 
 function LoginFormModal() {
     const [errors, setErrors] = useState([]);
@@ -33,19 +33,21 @@ function LoginFormModal() {
       setPassword(e.target.value);
     };  
 
-  const demoLogin = async (e) => {
-    e.preventDefault();
+    const onLoginEric = async (e) => {
+        e.preventDefault();
+        const data = await dispatch(login('eric@aa.io', 'password1'));
+        if (data) {
+          setErrors(data);
+        }
+      };
 
-    setEmail('brad@aa.io')
-    setPassword('passwordBrad')
-
-
-    const data = await dispatch(login(email, password));
-    if (data) {
-      setErrors(data);
-    }
-
-  }
+    const onLoginWife = async (e) => {
+        e.preventDefault();
+        const data = await dispatch(login('ericwife@aa.io', 'password2'));
+        if (data) {
+          setErrors(data);
+        }
+      };
 
   if (user) {
     closeModal()
@@ -58,9 +60,9 @@ function LoginFormModal() {
       <div className='login-line-holder'>
       </div>
 
-      <div className='welcome'> <h3 className='weclome-h3'>Log In</h3></div>
+      <div className='welcome'> <h3 className='weclome-h3'>Sign in for location</h3></div>
 
-    <div className='form-holder'>
+      <div className='form-holder'>
 
       <form className='login-form-css' onSubmit={onLogin}>
         <ul className='errorlist'>
@@ -69,8 +71,7 @@ function LoginFormModal() {
           ))}
         </ul>
           <div className='input-holder'>
-        <label>
-
+        <label>Email</label>
           <input
           className='input-line'
             type="text"
@@ -80,9 +81,8 @@ function LoginFormModal() {
             onChange={updateEmail}
             required
           />
-        </label>
-        <label>
-
+        
+        <label>Password</label>
           <input
             type="password"
             className='input-line2'
@@ -92,17 +92,17 @@ function LoginFormModal() {
             onChange={updatePassword}
             required
           />
-        </label>
+        
         </div>
         <button className="form-button" type="submit">Sign in to see your addresses</button>
       </form>
 
-            <div className='form-holder'>
-               <form className='login-form-css' onSubmit={demoLogin}>
-                <div className='login-break'>or</div>
-      <button className="form-button" type="submit">Sign in as a Demo User</button>
-    </form>
-            </div>
+      <div className='form-holder1'>
+
+      <div className='login-break'>or</div>
+      <button className="form-button" onClick={onLoginEric}>Sign in as a Demo User1</button>
+      <button className="form-button" onClick={onLoginWife}>Sign in as a Demo User2</button>
+      </div>
 
     </div>
     </div>

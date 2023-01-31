@@ -28,10 +28,10 @@ div.itemimg img{
 
 .homepage-firstsec{
     width: 100vw;
-    height: 800px;
+    height: 700px;
     overflow: hidden;
     position: relative;
-    /* z-index: -1; */
+    box-shadow: 0px 15px 10px white;
 }
 
 .imageslider-arrowright i{
@@ -46,3 +46,86 @@ div.itemimg img{
     text-shadow: white 2px 0px;
 }
 
+.firstsec-left{
+
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1vw;
+}
+
+.is-itemimg img{
+    /* height: 120px; */
+    width: 9.75vw;
+    object-fit: cover;
+}
+
+.top-first{
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    width: 20.5vw;
+    padding: 1vw;
+    gap:15px;
+}
+
+.top-section{
+    width: 100%;
+    position: absolute;
+    z-index: 1;
+    display: flex;
+    flex-direction: row;
+    gap:2vw;
+    top: 45%;
+    padding-left: 30px;
+    padding-right: 30px;
+}
+
+.top-sectiontitle{
+    font-weight: bold;
+    font-size: 20px;
+}
+
+.is-link{
+    text-decoration: none;
+    color: black;
+}
+
+.homepage-secondsec{
+    background-color: rgb(247, 245, 245);
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    padding-bottom: 30px;
+}
+.sc-first img{
+    width: 47vw;
+    object-fit: cover;
+}
+
+.sc-entire{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    padding-top: 10px;
+    padding-left: 22px;
+    padding-right: 22px;
+    gap:2vw;
+}
+
+.top-thirditem img{
+    width: 100%;
+}
+
+.top-discount{
+    width: 40%;
+    background-color: rgb(200, 3, 3);
+    font-size: 13px;
+    color: white;
+    padding-top: 3px;
+    padding-bottom: 3px;
+}
+
+.sc-second{
+    width: 22.5vw;
+    background-color: white;
+}

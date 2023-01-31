@@ -26,11 +26,11 @@ const ProductForm=({product,formType})=>{
     }
     else{
         initTitle='';
-        initCategory='';
+        initCategory='Clothing,Shones';
         initPrice=0;
         initDiscount=0;
         initInventory=0;
-        initStyle='';
+        initStyle='Traditional';
         initBrand='';
         initColor='';
         initDimension='';
@@ -38,6 +38,9 @@ const ProductForm=({product,formType})=>{
         initDescription='';
         initImageUrl='';
     }
+
+    const allCategories = [ 'Clothing,Shones', 'Books',  'Movies,Music&Games',  'Electronics',  'Computers',  'Home,Garden&Tools','Toys,Kids&Baby','Sports','Beauty&Health']
+    const allStyles=['Traditional', 'Modern','Classic','Combination','Future']
 
 
     const [title, setTitle] = useState(initTitle);
@@ -64,26 +67,26 @@ const ProductForm=({product,formType})=>{
 
         const errors =[];
         if(title.length<=0){errors.push("Product's title field is required");}
-        else if(title.length>=255){errors.push("Project's title must be less than 255 characters")}
-        if(category.length<=0){errors.push("Project's category field is required");}
-        else if(category.length>=255){errors.push("Project's category must be less than 255 characters")}
-        if(isNaN(price)){errors.push("Project's price must be a real number");}
-        else if(price<=0){errors.push("Project's price must be greater than 0");}
-        else if(!(/^\d+(\.\d{1,2})?$/.test(price))){errors.push("Project's price must be within 2 decimal places");}
-        if(isNaN(discount)){errors.push("Project's discount must be a real number");}
-        else if(discount<=0){errors.push("Project's discount must be greater than 0");}
-        else if(!(/^\d+(\.\d{1,2})?$/.test(discount))){errors.push("Project's discount must be within 2 decimal places");}
-        if(isNaN(inventory)){errors.push("Project's inventory must be a real number");}
-        else if(inventory<=0){errors.push("Project's inventory must be greater than 0");}
+        else if(title.length>=255){errors.push("Product's title must be less than 255 characters")}
+        if(category.length<=0){errors.push("Product's category field is required");}
+        else if(category.length>=255){errors.push("Product's category must be less than 255 characters")}
+        if(isNaN(price)){errors.push("Product's price must be a real number");}
+        else if(price<=0){errors.push("Product's price must be greater than 0");}
+        else if(!(/^\d+(\.\d{1,2})?$/.test(price))){errors.push("Product's price must be within 2 decimal places");}
+        if(isNaN(discount)){errors.push("Product's discount must be a real number");}
+        else if(discount<=0){errors.push("Product's discount must be greater than 0");}
+        else if(!(/^\d+(\.\d{1,2})?$/.test(discount))){errors.push("Product's discount must be within 2 decimal places");}
+        if(isNaN(inventory)){errors.push("Product's inventory must be a real number");}
+        else if(inventory<=0){errors.push("Product's inventory must be greater than 0");}
         if(style.length<=0){errors.push("Product's style is required");}
         if(brand.length<=0){errors.push("Product's brand is required");}
         if(color.length<=0){errors.push("Product's color is required");}
         if(dimension.length<=0){errors.push("Product's dimension is required");}
         if(about.length<=0){errors.push("Product's introduction is required");}
-        if(description.length<=0){errors.push("Project's description field is required");}
-        else if(description.length>=4000){errors.push("Project's description must be less than 4000 characters")}
-        if(imageUrl.length<=0){errors.push("Project's image link field is required");}
-        else if (!imageUrl.includes("http")){errors.push("Project's image link must be a valid website link");}        
+        if(description.length<=0){errors.push("Product's description field is required");}
+        else if(description.length>=4000){errors.push("Product's description must be less than 4000 characters")}
+        if(imageUrl.length<=0){errors.push("Product's image link field is required");}
+        else if (!imageUrl.includes("http")){errors.push("Product's image link must be a valid website link");}        
 
 
         setValidationErrors(errors);
@@ -131,16 +134,16 @@ const handleSubmit = async (e)=>{
 
     return(
         <div className='productform-section'>
-          <div className='productform-title'><h2>{formType}</h2>
+          <div className='productform-totalsec'><div className="productform-title">{formType}</div>
           <form className='productform-form' onSubmit={handleSubmit}>
             
           <div className='productform-listitem'>
           <label>
-          Choose your product's title
+          Product's title <i className="fa-regular fa-circle-question" title="Please be more specific on your product's title"/>
           </label>
           <input
           className='input'
-          placeholder='Please add your favorite name less than 50 characters'
+          placeholder="Please input your product's title"
           type="text"
           name="title"
           onChange={(e) => setTitle(e.target.value)}
@@ -148,23 +151,27 @@ const handleSubmit = async (e)=>{
 
           <div className='productform-listitem'>
           <label>
-          Choose your product's category
+          Choose your product's category <i className="fa-regular fa-circle-question" />
           </label>
-          <input
-          className='input'
-          placeholder='Please add your favorite name less than 50 characters'
-          type="text"
-          name="category"
-          onChange={(e) => setCategory(e.target.value)}
-          value={category}/></div>
+                       <select
+                        placeholder='Category'
+                        onChange={(e) => setCategory(e.target.value)}
+                        value={category}
+                        >
+                            {allCategories.map(category => (
+                                <option key={category} value={category}> {category}</option>
+                            ))}
+                        </select>
+          
+          </div>
 
           <div className='productform-listitem'>
           <label>
-          Choose your product's price
+          Product's price <i className="fa-regular fa-circle-question" />
           </label>
           <input
           className='input'
-          placeholder='Please add your favorite name less than 50 characters'
+          placeholder='Please indicate the price of the product'
           type="text"
           name="price"
           onChange={(e) => setPrice(e.target.value)}
@@ -172,11 +179,11 @@ const handleSubmit = async (e)=>{
 
           <div className='productform-listitem'>
           <label>
-          Choose your product's discount
+          Decide your product's discount <i className="fa-regular fa-circle-question" />
           </label>
           <input
           className='input'
-          placeholder='Please add your favorite name less than 50 characters'
+          placeholder='Please indicate the discount of the product'
           type="text"
           name="discount"
           onChange={(e) => setDiscount(e.target.value)}
@@ -184,11 +191,11 @@ const handleSubmit = async (e)=>{
 
           <div className='productform-listitem'>
           <label>
-          Choose your product's inventory
+          Decide your product's inventory <i className="fa-regular fa-circle-question" />
           </label>
           <input
           className='input'
-          placeholder='Please add your favorite name less than 50 characters'
+          placeholder='Please indicate the inventory of the product'
           type="text"
           name="inventory"
           onChange={(e) => setInventory(e.target.value)}
@@ -196,23 +203,28 @@ const handleSubmit = async (e)=>{
 
           <div className='productform-listitem'>
           <label>
-          Choose your product's style
+          Choose your product's style <i className="fa-regular fa-circle-question" />
           </label>
-          <input
-          className='input'
-          placeholder='Please add your favorite name less than 50 characters'
-          type="text"
-          name="style"
-          onChange={(e) => setStyle(e.target.value)}
-          value={style}/></div>
+
+
+                       <select
+                        placeholder='Please choose the style of you product'
+                        onChange={(e) => setStyle(e.target.value)}
+                        value={style}
+                        >
+                            {allStyles.map(style => (
+                                <option key={style} value={style}> {style}</option>
+                            ))}
+                        </select>      
+          </div>
 
           <div className='productform-listitem'>
           <label>
-          Choose your product's brand
+          Product's brand <i className="fa-regular fa-circle-question" />
           </label>
           <input
           className='input'
-          placeholder='Please add your favorite name less than 50 characters'
+          placeholder='Please indicate the brand of the product'
           type="text"
           name="brand"
           onChange={(e) => setBrand(e.target.value)}
@@ -220,11 +232,11 @@ const handleSubmit = async (e)=>{
 
           <div className='productform-listitem'>
           <label>
-          Choose your product's color
+           Product's color <i className="fa-regular fa-circle-question" />
           </label>
           <input
           className='input'
-          placeholder='Please add your favorite name less than 50 characters'
+          placeholder='Please indicate the color of the product'
           type="text"
           name="color"
           onChange={(e) => setColor(e.target.value)}
@@ -232,11 +244,11 @@ const handleSubmit = async (e)=>{
 
           <div className='productform-listitem'>
           <label>
-          Choose your product's dimension
+          Product's dimension <i className="fa-regular fa-circle-question" />
           </label>
           <input
           className='input'
-          placeholder='Please add your favorite name less than 50 characters'
+          placeholder='Please add the dimension of the product'
           type="text"
           name="dimension"
           onChange={(e) => setDimension(e.target.value)}
@@ -244,11 +256,11 @@ const handleSubmit = async (e)=>{
 
           <div className='productform-listitem'>
           <label>
-          Choose your product's introduction
+          Product's introduction <i className="fa-regular fa-circle-question" />
           </label>
-          <input
+          <textarea
           className='input'
-          placeholder='Please add your favorite name less than 50 characters'
+          placeholder='Please add the product introduction'
           type="text"
           name="about"
           onChange={(e) => setAbout(e.target.value)}
@@ -256,11 +268,11 @@ const handleSubmit = async (e)=>{
 
           <div className='productform-listitem'>
           <label>
-          Choose your product's description
+          Product's description <i className="fa-regular fa-circle-question" />
           </label>
-          <input
+          <textarea
           className='input'
-          placeholder='Please add your favorite name less than 50 characters'
+          placeholder='Please add the pruduct description'
           type="text"
           name="description"
           onChange={(e) => setDescription(e.target.value)}
@@ -268,34 +280,36 @@ const handleSubmit = async (e)=>{
 
           <div className='productform-listitem'>
           <label>
-          Choose your product's image url
+          Product's image url <i className="fa-regular fa-circle-question" />
           </label>
           <input
           className='input'
-          placeholder='Please add your favorite name less than 50 characters'
+          placeholder='Please add one product image url link'
           type="text"
           name="imageUrl"
           onChange={(e) => setImageUrl(e.target.value)}
           value={imageUrl}/></div>
+          <div className="productform-buttomsec">
           <input type="submit" value={formType} className="spotbutton" disabled={!!validationErrors.length}/>
+          </div>
          </form>
 
          {formType==="Edit Product" &&(
-              <div className="projectform-button">
-              <button onClick={()=>deleteEvents(product.id)} className="projectform-delebutton">Delete project</button>
+              <div className="Productform-button">
+              <button onClick={()=>deleteEvents(product.id)} className="Productform-delebutton">Delete Product</button>
               </div>
          )}
 
-         <div className='spotform-errorsec'>
+         <div className='productform-errorsec'>
          <div className='error-title'>
          <i className="fa-solid fa-circle-exclamation ertlbu" />
          <h4>Validation Checking List</h4>
          </div>
           {!!validationErrors.length && (
-          <div className='spotform-errortable'>
-          <div className='spotform-error'>
+          <div className='productform-errortable'>
+          <div className='productform-error'>
           {validationErrors.map((error) => (
-          <div key={error} className="spotform-errortext">{error}</div>
+          <div key={error} className="productform-errortext">{error}</div>
                        ))}
           </div>
           </div>

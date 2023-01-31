@@ -1,3 +1,149 @@
-.projectform-delebutton{
+.productform-delebutton{
     color: black;
+}
+
+.productform-totalsec{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-top: 1px solid rgb(0, 0, 0,0.2);
+    padding-top: 20px;
+}
+
+.productform-form{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    justify-items: center;
+    gap:20px;
+}
+
+.productform-listitem{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+}
+
+.productform-listitem input{
+    margin-left: 20px;
+    width: 40vw;
+    height: 30px;
+    border:1px solid rgb(0, 0, 0,0.2);
+    border-radius: 5px;
+    box-sizing: border-box;
+}
+
+.productform-listitem textarea{
+    margin-left: 20px;
+    width: 40vw;
+    height: 150px;
+    border:1px solid rgb(0, 0, 0,0.2);
+    border-radius: 5px;
+    box-sizing: border-box;
+}
+
+.productform-listitem select{
+    text-decoration: none;
+    outline: none;
+    margin-left: 20px;
+    width: 40vw;
+    height: 30px;
+    border:1px solid rgb(0, 0, 0,0.2);
+    border-radius: 5px;
+    padding-right: 6px;
+    box-sizing: border-box;
+}
+
+
+
+.productform-listitem label{
+    font-weight: bold;
+}
+
+.productform-title{
+    font-size: 20px;
+    padding-bottom: 25px;
+}
+
+.spotbutton{
+    width: 250px;
+    height: 35px;
+    background-color: rgb(32, 113, 140);
+    transition-duration: 0.4s;
+    color: white;
+    cursor: pointer;
+    font-size: 15px;
+}
+
+.spotbutton:hover{
+    background-color: rgb(14, 81, 104);
+}
+
+.productform-buttomsec{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+
+
+
+.productform-errorsec{
+    padding-top: 40px;
+    font-family: 'Lucida Sans Regular', sans-serif;
+    margin-bottom: 20px;
+    border: 1px solid rgb(0, 0, 0,0.2) ;
+    margin-top: 20px;
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-bottom: 20px;
+    border-radius: 5px;
+}
+
+.error-title{
+    text-align: center;
+}
+
+.productform-errortext{
+    color:rgb(79, 81, 81);
+    padding-bottom: 10px;
+}
+
+.ertlbu{
+    color: rgb(32, 113, 140);
+    font-size: 20px;
+    border:none;
+    gap:20px;
+}
+
+.error-title{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap:10px;
+}
+
+.productform-errtitletext{
+    font-size: 30;
+    color: rgb(32, 113, 140);
+}
+
+.Productform-delebutton{
+    margin-top: 1em;
+    font-family: 'Lato', 'Lucida Sans Regular', sans-serif;
+    align-items: center;
+    background-color:rgb(32, 113, 140);
+    color:white;
+    cursor: pointer;
+    border: none;
+    width: 250px;
+    height: 35px;
+    font-size: 15px;
+    transition-duration: 0.4s;
+}
+
+.Productform-delebutton:hover{
+    background-color: rgb(14, 81, 104);
 }

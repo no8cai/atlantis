@@ -58,7 +58,9 @@ function SingleProduct() {
 
     } 
 
-
+    const loginEvents=()=>{
+        history.push('/login')
+      }
 
     if(!singleproduct) return (<div className='sp-broken'>This page was not able to load</div>)
 
@@ -143,9 +145,15 @@ function SingleProduct() {
                                ))}
                         </select>
                     </div>
-                    <input type="submit" value='Add to Cart'/>
-                    <div className='singleproduct-decocontext'>Secure transaction</div>
+                {!!sessionUser &&(
+                  <input type="submit" value='Add to Cart'/>
+                     )}
+                    
                    </form>
+                {!sessionUser &&(
+                  <div className='singleproduct-signinsec' onClick={()=>loginEvents()} ><div className='singleproduct-signin'>Sign in to Buy</div></div>
+                     )}
+                 <div className='singleproduct-decocontext'>Secure transaction</div>
                  </div>
                  <div>
                       {!!validationErrors.length && (

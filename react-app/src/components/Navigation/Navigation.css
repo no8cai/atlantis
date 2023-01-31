@@ -8,11 +8,12 @@
     background-color: #f9f9f9;
     min-width: 20vw;
     box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-    right: 5%;
-    border-radius: 10px;
+    right: 1%;
+    border-radius: 3px;
     min-height: 200px;
     padding-left: 0px;
     z-index: 99;
+    padding-bottom: 20px;
 }
 
 .navigation-section{
@@ -94,9 +95,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    gap:10px;
     font-family: 'Lato';
-    font-weight: bold;
 }
 
 .profile-dropbutton{
@@ -131,10 +130,75 @@
     font-weight: bold;
 }
 
-.topbutton{
 
-}
 
 .topbutton:hover{
     border:1px,white,solid;
+}
+
+.navigaion-notloginleft{
+    appearance: none;
+    background-color: #0F1111;
+    color: white;
+    cursor: pointer;
+}
+
+.navigation-leftright{
+    display: flex;
+    flex-direction: column;
+
+}
+
+.navigation-leftcontext{
+    font-weight: bold;
+}
+
+.profile-signbuttom{
+    width: 300px;
+    height: 30px;
+}
+
+.profile-dropdownsec{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+
+.navigation-locationbar{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+    font-size: 12px;
+}
+
+.pf-dpinfosec{
+    padding-top: 20px;
+    padding-left: 40px;
+    border-top: 1px solid rgb(0, 0, 0,0.2);
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    
+}
+
+.pf-dptopsec{
+    padding-top: 20px;
+    padding-left: 40px;
+    padding-bottom: 20px;
+    color: rgb(29, 164, 248);;
+}
+
+.pf-dpbuttom:hover{
+    text-decoration: underline;
+    color: #bd720f;
+    cursor: pointer;
+}
+
+.pf-dptitle{
+    font-weight: bold;
+    color: rgb(0, 0, 0,0.7);
 }

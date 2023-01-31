@@ -36,7 +36,8 @@ function Navigation(){
   if (sessionUser) {
     addressbar = (
       <div className='navigation-leftright'>
-        <i className="fa-solid fa-location-dot"></i><div>Deliver to {`${sessionUser.username}, ${sessionUser.city} ${sessionUser.zipcode}`}</div>
+        <div className='navigation-locationbar'><i className="fa-solid fa-location-dot"></i><div>Deliver to {`${sessionUser.username},`}</div></div>
+        <div className='np-seconddown'>{`${sessionUser.city} ${sessionUser.zipcode}`}</div>
       </div>
     );
   } else {
@@ -44,10 +45,11 @@ function Navigation(){
          <div>
            {<OpenModalButton
           buttonText={<div className='navigation-leftright'>
-            <div>Hello</div>
-            <div>Select your address</div>
+            <div>Hello,</div>
+            <div className='navigation-leftcontext'>Select your address</div>
             </div>
           }
+          buttonStyle={'navigaion-notloginleft'}
           modalComponent={<LoginFormModal />}
          />}
          </div>
@@ -72,7 +74,7 @@ function Navigation(){
      </div>
       <div className='navigation-rightsec'>
            <div><ProfileButton user={sessionUser} /></div>
-           <div className='ng-secondsec' id='do-not-interact'><div className='profile-context'>Returns</div> <div className='np-seconddown'>& Orders</div></div>
+           <div className='ng-secondsec' id='do-not-interact' title="Feature coming soon!"><div className='profile-context'>Returns</div> <div className='np-seconddown'>& Orders</div></div>
            <div>
            <NavLink exact to="/cartitems" className={'ng-thirdsec'}><i className="fa-solid fa-cart-arrow-down"></i></NavLink>
             </div>

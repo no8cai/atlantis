@@ -51,22 +51,80 @@ function CartItems() {
         dispatch(fetchDeleteCartItem(id))
        }
 
+    const checkoutEvents=()=>{
+        let itemsidarr=usercartitems.map((el)=>el.id)
+        itemsidarr.forEach(itemid => {
+            dispatch(fetchDeleteCartItem(itemid))
+        });
+    }
+
+    const noitemEvents=()=>{
+        history.push('/')
+    }
+    
+    const total=0
+    const totalamount=(amount)=>{
+        total+=amount
+    }
+
     if(!cartitemsObj) return null
-    else if(usercartitems.length==0) return (<span>You dont have any cartitem</span>)
+    else if(usercartitems.length==0) return (
+        <div className="cartitem-section">
+        <div className='cartitem-list'>
+            <div>
+                <div className="cartitem-title">Shopping Cart</div>
+                <div className="cartitem-lable">
+                <div>Items</div>
+                <div>Price</div>
+                </div>
+            </div>
+
+        <div className="cartitem-listitems">
+            <div>Your Atlantis Cart is empty</div>
+        </div>
+        </div>
+        <div className="cartitem-checkoutsec">
+            <div>{`Subtotal (${usercartitems.length} item):`}</div>
+            <div className="cartitem-checkoutbuttom" onClick={()=>noitemEvents()}>Countinue shopping</div>
+        </div>
+    </div>
+    
+    )
 
     return(
     <div className="cartitem-section">
         <div className='cartitem-list'>
-            <div>Shopping Cart</div>
+            <div>
+                <div className="cartitem-title">Shopping Cart</div>
+                <div className="cartitem-lable">
+                <div>Items</div>
+                <div>Price</div>
+                </div>
+            </div>
+
+        <div className="cartitem-listitems">
         {usercartitems.map(({ id,quantity,user,product}) => (
+        <div className="carritem-listleftsec">
         <div className='cartitem-item' key={id}><NavLink to={`/products/${product.id}`}>
             <div className='cartitem-itemimg'><img src={product.imageUrl} className="cartitem-image"/></div>
-            <div>{product.title}</div>
-            <div>{product.price}</div>
-            <div>{product.color}</div>
-            <div>{quantity}</div>
+
         </NavLink>
         
+        <div>
+            <div>{product.title}</div>
+            <div className='singleproduct-stock'>In Stock</div>
+             
+
+            <div className='singleproduct-primeday'>
+                    <div className='Prime'>Prime</div> 
+                    <div className='singleproduct-decocontext'>&FREE Returns</div>
+            </div>
+            <div>FREE delivery within 1 day</div>
+                
+            <div>Color:</div>
+            <div>{product.color}</div>
+        
+        <div className="cartitem-selectionsec">
         <div>
             <select
                 onChange={(e) =>{
@@ -79,16 +137,28 @@ function CartItems() {
                             ))}
              </select>
         </div>
+        
+        <div>
+        <button onClick={()=>deleteEvents(id)} className='buttons'>Delete</button>
+        </div>
+        </div>
 
-        <div>
-        <button onClick={()=>deleteEvents(id)} className='buttons'><i className="fa-solid fa-trash-can" />Delete</button>
+
         </div>
         </div>
-      ))}               
+        <div className="carritem-listrightsec">{`$${product.price*product.discount*quantity}`}</div>
         </div>
-        <div>
-            <div>Subtotal item:</div>
-            <div>proceed to checkout</div>
+      ))}
+        </div>
+        </div>
+        <div className="cartitem-checkoutsec">
+            <div>{`Subtotal (${usercartitems.length} ${usercartitems.length==1?'item':'items'}):$${usercartitems.length==1?
+                usercartitems[0].quantity*usercartitems[0].product.price*usercartitems[0].product.discount:
+                usercartitems.reduce((
+                ac,cur)=>ac.quantity*ac.product.price*ac.product.discount
+                +cur.quantity*cur.product.price*cur.product.discount
+                )}`}</div>
+            <div className="cartitem-checkoutbuttom" onClick={()=>checkoutEvents()}>Proceed to checkout</div>
         </div>
     </div>
     )
