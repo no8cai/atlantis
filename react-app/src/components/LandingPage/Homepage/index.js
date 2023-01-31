@@ -5,6 +5,7 @@ import { fetchAllProducts } from '../../../store/product';
 import { NavLink } from 'react-router-dom';
 import "./Homepage.css";
 import ImageSlider from './ImageSlider';
+import { useState } from 'react';
 
 
 function Homepage() {
@@ -12,6 +13,13 @@ function Homepage() {
     const dispatch = useDispatch();
     const productsObj = useSelector(state => state.products)
     const allproducts=Object.values(productsObj)
+
+    const [ randId1, setRandId1 ] = useState(Math.floor(Math.random() * (allproducts.length) + 1))
+    const [ randId2, setRandId2 ] = useState(Math.floor(Math.random() * (allproducts.length) + 1))
+
+    const randProduct1 = allproducts[randId1]
+    const randProduct2 = allproducts[randId2]
+
 
     const history=useHistory();
 
@@ -37,8 +45,7 @@ const containerSytles = {
 
     
 
-    if(!productsObj) return null
-
+    if(!productsObj || !allproducts || !randProduct1 || !randProduct2) return null
 
 
     return (
@@ -55,10 +62,27 @@ const containerSytles = {
                <img src={'https://media.tenor.com/UIJ9DZX6AR4AAAAd/atlantis.gif'} className="image"/>
                </div>
                <div className="sc-second">
-               
+               <div className="sc-sectiontitle">Explore more items</div>
+               <NavLink to={`/products/${randProduct1?randProduct1.id:1}`} className='is-link'>
+                  <div className="top-thirditem">
+                  <img src={randProduct1?randProduct1.imageUrl:"http:imge.png"}/>
+                  </div>
+                   <div>
+                   <div>{randProduct1?`${randProduct1.title.slice(0,47)}...`:""}</div>
+                   </div>
+                </NavLink>
                </div>
-               <div className='sc-second'>
 
+               <div className='sc-second'>
+               <div className="sc-sectiontitle">Shopping with fun</div>
+               <NavLink to={`/products/${randProduct2?randProduct2.id:1}`} className='is-link'>
+                  <div className="top-thirditem">
+                  <img src={randProduct1?randProduct2.imageUrl:"http:imge.png"}/>
+                  </div>
+                   <div>
+                   <div>{randProduct1?`${randProduct2.title.slice(0,47)}...`:""}</div>
+                   </div>
+                </NavLink>
                </div>
                </div>
             </div>

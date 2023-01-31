@@ -6,6 +6,7 @@ import "./Homepage.css";
 const ImageSlider=({slides,allproducts})=>{
 
     const [currentIndex, setCurrentIndex]=useState(0)
+    const [ randId, setRandId ] = useState(Math.floor(Math.random() * (allproducts.length) + 1))
 
     let topdeal=allproducts[0]
     
@@ -14,7 +15,9 @@ const ImageSlider=({slides,allproducts})=>{
             topdeal=el
        }
     })
-    console.log(topdeal)
+
+
+    const randProduct = allproducts[randId]
 
     const sliderStyles = {
         height:'100%',
@@ -63,11 +66,9 @@ const ImageSlider=({slides,allproducts})=>{
         setCurrentIndex(newIndex)
     }
 
-    const selectobject=(arr)=>{
-        return arr[0-2]
-    }
 
 
+    if(!topdeal || !randProduct) return null
 
     return (
        <div style={sliderStyles}>
@@ -77,7 +78,7 @@ const ImageSlider=({slides,allproducts})=>{
         <div className="top-first">
             <div className="top-sectiontitle">Items you may like</div> 
             <div className='firstsec-left'>
-            {allproducts.map(({ id, title,imageUrl}) => (
+            {allproducts.slice(0,4).map(({ id, title,imageUrl}) => (
             <div className='is-item' key={id}><NavLink to={`/products/${id}`} className='is-link'>
                 <div className='is-itemimg'><img src={imageUrl} className="image"/></div>
                 <div>{`${(title).slice(0,11)}...`}</div>
@@ -87,9 +88,9 @@ const ImageSlider=({slides,allproducts})=>{
             </div>       
         </div>
         <div className="top-first">
-            <div className="top-sectiontitle">Hot items</div>
+            <div className="top-sectiontitle">New items</div>
             <div className='firstsec-left'>
-           {allproducts.map(({ id, title,imageUrl}) => (
+           {allproducts.slice(0).reverse().slice(0,4).map(({ id, title,imageUrl}) => (
             <div className='is-item' key={id}><NavLink to={`/products/${id}`} className='is-link'>
                 <div className='is-itemimg'><img src={imageUrl} className="image"/></div>
                 <div>{`${(title).slice(0,11)}...`}</div>
@@ -106,12 +107,20 @@ const ImageSlider=({slides,allproducts})=>{
         </div>
         
         <div className="top-discount">{topdeal?`Up to ${((1-topdeal.discount)*100).toFixed(2)}% off`:""}</div>
-        <div>{topdeal?topdeal.title:""}</div>
+        <div>{topdeal?`${topdeal.title.slice(0,47)}...`:""}</div>
         </NavLink>
         </div>
 
         <div className="top-first">
         <div className="top-sectiontitle">Reach your goal with us</div>
+        <NavLink to={`/products/${randProduct?randProduct.id:1}`} className='is-link'>
+            <div className="top-thirditem">
+            <img src={randProduct?randProduct.imageUrl:"http:imge.png"}/>
+            </div>
+            <div>
+            <div>{randProduct?`${randProduct.title.slice(0,47)}...`:""}</div>
+            </div>
+        </NavLink>
         </div>
         </div>
          <div style={slidesStyles}></div>

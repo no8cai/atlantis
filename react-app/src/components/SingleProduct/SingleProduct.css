@@ -10,7 +10,7 @@
 
 div.singleproject-imagesec img{
     width: 35vw;
-    height: 400px;
+    max-height: 90vh;
     object-fit: cover;
     overflow: hidden;
     position: sticky;

@@ -73,6 +73,7 @@
 
 #NavLink{
     text-decoration: none;
+    color: black;
 }
 
 .sellercentral-innernav{
@@ -108,4 +109,5 @@
 .productlist-item{
     width: 16%;
     overflow-x: hidden;
+    color: black;
 }
