@@ -141,6 +141,7 @@
     background-color: #0F1111;
     color: white;
     cursor: pointer;
+    z-index: 10;
 }
 
 .navigation-leftright{
@@ -201,4 +202,8 @@
 .pf-dptitle{
     font-weight: bold;
     color: rgb(0, 0, 0,0.7);
+}
+
+div#modal{
+    z-index: 999;
 }

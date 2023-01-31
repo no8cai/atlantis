@@ -152,7 +152,8 @@ function CartItems() {
         </div>
         </div>
         <div className="cartitem-checkoutsec">
-       
+         
+        <div>{`Subtotal (${usercartitems.length} ${usercartitems.length==1?'item':'items'}):`}</div>
             {/* <div>{`Subtotal (${usercartitems.length} ${usercartitems.length==1?'item':'items'}):$${usercartitems.length==1? 
                 usercartitems[0].quantity*usercartitems[0].product.price*usercartitems[0].product.discount:
                 usercartitems.reduce((

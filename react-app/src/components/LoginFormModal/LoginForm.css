@@ -1,6 +1,5 @@
-#modal-content{
+div#modal-content{
     border-radius: 5px;
-    
 }
 
 .form-holder{
@@ -9,7 +8,6 @@
     border-top:1px solid rgb(0, 0, 0,0.2);
     padding-left: 30px;
     padding-right: 30px;
-    
 }
 
 .welcome{
