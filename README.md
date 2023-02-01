@@ -36,25 +36,25 @@ The clone of the Amazon site has create, read, update, and delete features for p
 
 ## Home Page:
 Here a user can see random products to explore, and information about the user.
-![](https://github.com/no8cai/firestarter/blob/main/images/FireStarterHomePage.png)
+![](https://github.com/no8cai/atlantis/blob/main/images/homepage.png)
 
 
 ## Single Project page:
 This page shows information on a single product and shows different details based on what the user is authorized to see or do.
-![](https://github.com/no8cai/firestarter/blob/main/images/FireStarterSingleProjectPage.png)
+![](https://github.com/no8cai/atlantis/blob/main/images/singlepage.png)
 
 
 ## Cart item Page:
 Here a user can adding item to the cart.
-![](https://github.com/no8cai/firestarter/blob/main/images/FireStarterPledgePage.png)
+![](https://github.com/no8cai/atlantis/blob/main/images/cartpage.png)
 
 ## Create Product Page:
 This form is where a user can create a product or edit their product. 
-![](https://github.com/no8cai/firestarter/blob/main/images/FireStarterCreateProjectPage.png)
+![](https://github.com/no8cai/atlantis/blob/main/images/createform.png)
 
 ## Seller centeral Page:
 This is where a user can see all the products they created.
-![](https://github.com/no8cai/firestarter/blob/main/images/FireStarterProfilePage.png)
+![](https://github.com/no8cai/atlantis/blob/main/images/seller.png)
 
 
 
