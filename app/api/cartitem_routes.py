@@ -64,7 +64,7 @@ def add_cartitem(id):
         'statusCode': 400
         },400
 
-# Edit a product
+# Edit a cartitem
 @cartitem_routes.route('/cartitems/<int:id>', methods=['PUT'])
 @login_required
 def edit_cartitem(id):
