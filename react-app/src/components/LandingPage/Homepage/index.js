@@ -17,8 +17,8 @@ function Homepage() {
     const [ randId1, setRandId1 ] = useState(Math.floor(Math.random() * (allproducts.length) + 1))
     const [ randId2, setRandId2 ] = useState(Math.floor(Math.random() * (allproducts.length) + 1))
 
-    const randProduct1 = allproducts[randId1]
-    const randProduct2 = allproducts[randId2]
+    // const randProduct1 = allproducts[randId1]
+    // const randProduct2 = allproducts[randId2]
 
 
     const history=useHistory();
@@ -45,6 +45,8 @@ const containerSytles = {
 
     if(!productsObj) return null
     // if(!productsObj || !allproducts || !randProduct1 || !randProduct2) return null
+    const randProduct1 = allproducts[randId1]
+    const randProduct2 = allproducts[randId2]
 
     return (
         <div className='homepage-section'>
