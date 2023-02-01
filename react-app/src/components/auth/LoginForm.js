@@ -65,9 +65,9 @@ const LoginForm = () => {
     <div><img className='login-sublogo' src={logo} onClick={()=>logoEvents()}/></div>
     <form onSubmit={onLogin} className='login-form'>
       <div className='login-formtitle'>Sign in</div>
-      <div>
+      <div className='singin-errorsec'>
         {errors.map((error, ind) => (
-          <div key={ind}>{error}</div>
+          <div key={ind} className='signin-errors'><i className="fa-solid fa-circle-exclamation"/>{error}</div>
         ))}
       </div>
       <div className='login-formitem'>

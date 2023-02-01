@@ -15,7 +15,17 @@ function CartItems() {
     const cartitemsObj = useSelector(state => state.cartitems);
     const usercartitems=Object.values(cartitemsObj)
     const history=useHistory();
+   
+    let totalmoney=0
 
+    usercartitems.forEach(el=>{
+         if(el==null || el==0){
+           totalmoney=0 
+         }
+         else{
+            totalmoney+=el.quantity*el.product.price*el.product.discount
+         }
+    }) 
 
     useEffect(() => {
         dispatch(fetchUserCartItems());
@@ -24,7 +34,10 @@ function CartItems() {
 
     const arrGenerator=(num,limit)=>{
         let inputnum
-        if(num<=limit && num<=10){
+        if(num<=limit && num<=10 && limit<=10){
+            inputnum=parseInt(limit)+1
+        }
+        else if(num<=limit && num<=10 && limit>10){
             inputnum=11
         }
         else if(num<=limit && num>10){
@@ -62,10 +75,6 @@ function CartItems() {
         history.push('/')
     }
     
-    const total=0
-    const totalamount=(amount)=>{
-        total+=amount
-    }
 
     if(!cartitemsObj) return null
     else if(usercartitems.length==0) return (
@@ -106,26 +115,29 @@ function CartItems() {
         {usercartitems.map(({ id,quantity,user,product}) => (
         <div className="carritem-listleftsec">
         <div className='cartitem-item' key={id}><NavLink to={`/products/${product.id}`}>
-            <div className='cartitem-itemimg'><img src={product.imageUrl} className="cartitem-image"/></div>
+            <div className='cartitem-itemimg'><img src={product.imageUrl} className="cartitem-image"
+            onError={e => { e.currentTarget.src = "https://www.shutterstock.com/image-vector/coming-soon-under-construction-yellow-600w-1746344219.jpg"; }}
+            /></div>
 
         </NavLink>
         
-        <div>
-            <div>{product.title}</div>
-            <div className='singleproduct-stock'>In Stock</div>
+        <div className="ci-contextsec">
+            <div className="ci-title">{product.title}</div>
+            <div className='singleproduct-stock ci-subtext1'>In Stock</div>
              
 
             <div className='singleproduct-primeday'>
                     <div className='Prime'>Prime</div> 
                     <div className='singleproduct-decocontext'>&FREE Returns</div>
             </div>
-            <div>FREE delivery within 1 day</div>
-                
-            <div>Color:</div>
+            <div className='ci-subtext1'>FREE delivery within 1 day</div>
+
+            <div className="ci-colorsec">   
+            <div className="ci-color">Color:</div>
             <div>{product.color}</div>
-        
+            </div>
         <div className="cartitem-selectionsec">
-        <div>
+        <div className='singleproduct-selectsec'>
             <select
                 onChange={(e) =>{
                     updateQuantity(id,e.target.value)
@@ -133,12 +145,12 @@ function CartItems() {
                 value={quantity}
                 >
                 {arrGenerator(quantity,product.inventory).map(number => (
-                                <option key={number} value={number}> {number}</option>
+                                <option key={number} value={number}> {`Qty ${number}`}</option>
                             ))}
              </select>
         </div>
         
-        <div>
+        <div className="ci-delete">
         <button onClick={()=>deleteEvents(id)} className='buttons'>Delete</button>
         </div>
         </div>
@@ -146,21 +158,21 @@ function CartItems() {
 
         </div>
         </div>
-        <div className="carritem-listrightsec">{`$${(product.price*product.discount*quantity).toFixed(2)}`}</div>
+        <div className="carritem-listrightsec ci-price">{`$${(product.price*product.discount*quantity).toFixed(2)}`}</div>
         </div>
       ))}
+        </div>
+        <div className="ci-underbar">
+        <div className="ci-subtotal">{`Subtotal (${usercartitems.length} ${usercartitems.length==1?'item':'items'}): `}</div>
+        <div className="ci-price">{`$${totalmoney.toFixed(2)}`}</div>
         </div>
         </div>
         <div className="cartitem-checkoutsec">
          
-        <div>{`Subtotal (${usercartitems.length} ${usercartitems.length==1?'item':'items'}):`}</div>
-            {/* <div>{`Subtotal (${usercartitems.length} ${usercartitems.length==1?'item':'items'}):$${usercartitems.length==1? 
-                usercartitems[0].quantity*usercartitems[0].product.price*usercartitems[0].product.discount:
-                usercartitems.reduce((
-                ac,cur)=>ac.quantity*ac.product.price*ac.product.discount
-                +cur.quantity*cur.product.price*cur.product.discount
-                )}`}</div> */}
-
+        <div className="ci-sidebar">
+        <div className="ci-subtotal">{`Subtotal (${usercartitems.length} ${usercartitems.length==1?'item':'items'}): `}</div>
+        <div className="ci-price">{`$${totalmoney.toFixed(2)}`}</div>
+        </div>
             <div className="cartitem-checkoutbuttom" onClick={()=>checkoutEvents()}>Proceed to checkout</div>
         </div>
     </div>

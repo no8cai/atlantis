@@ -77,3 +77,69 @@
     padding-top: 8px;
     cursor: pointer;
 }
+
+.ci-title{
+    font-size: 17px;
+    padding-right: 20px;
+}
+
+.ci-subtext1{
+    font-size: 13px;
+}
+
+.ci-colorsec{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 5px;
+}
+
+.ci-color{
+    font-weight: bold;
+    font-size: 13px;
+}
+
+.ci-contextsec{
+    display: flex;
+    flex-direction: column;
+    gap:5px;
+}
+
+.ci-delete button{
+    border:none;
+    background-color: white;
+    color: rgb(1, 132, 132);
+    cursor: pointer;
+}
+
+.ci-delete{
+    border-left: 1px solid rgb(0, 0, 0,0.3);
+}
+
+.ci-price{
+    font-weight: bold;
+    font-size: 18px;
+}
+
+.ci-underbar{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    align-items: center;
+    margin-top: 5px;
+    padding-top: 5px;
+    border-top: 1px solid rgb(0, 0, 0,0.2);
+    padding-bottom: 20px;
+    gap:5px;
+}
+
+.ci-subtotal{
+    font-size: 18px;
+}
+
+.ci-sidebar{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}

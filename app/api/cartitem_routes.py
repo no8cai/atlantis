@@ -34,7 +34,7 @@ def add_cartitem(id):
         tempcartitem=Cartitem.query.filter(Cartitem.userId==currentId).filter(Cartitem.productId==int(id)).first()
         if not tempcartitem:
             new_cartitem=Cartitem(userId=currentId,productId=id)
-            if int(form.data["quantity"])>=tempproduct.inventory:
+            if int(form.data["quantity"])>tempproduct.inventory:
                 return{
                 'message':'Validation Error',
                 "errors":["the quantiy can not be greater than product inventory"],
@@ -46,7 +46,7 @@ def add_cartitem(id):
             return new_cartitem.to_dict_full(),201
         else:
             new_quantity=tempcartitem.quantity+int(form.data["quantity"])
-            if new_quantity>=tempproduct.inventory:
+            if new_quantity>tempproduct.inventory:
                 return{
                 'message':'Validation Error',
                 "errors":["the quantiy can not be greater than product inventory"],

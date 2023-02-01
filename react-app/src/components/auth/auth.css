@@ -127,3 +127,11 @@
     color: rgb(29, 164, 248);
     cursor: pointer;
 }
+
+.signin-errors{
+    display: flex;
+    flex-direction: row;
+    gap: 5px;
+    font-size: 13px;
+    color: #6b4708;
+}

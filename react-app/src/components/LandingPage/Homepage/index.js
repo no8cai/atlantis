@@ -32,8 +32,6 @@ const slides =[
   {url:'https://m.media-amazon.com/images/I/61rKNNX+o+L._SX3000_.jpg',title:'Beach'},
   {url:'https://m.media-amazon.com/images/I/71DjHmMj+jL._SX3000_.jpg',title:'Boat'},
   {url:'https://m.media-amazon.com/images/I/71qKCoGx16L._SX3000_.jpg',title:'Flyer'},
-  {url:'https://m.media-amazon.com/images/S/al-na-9d5791cf-3faf/c821b395-ef72-4351-911a-5c161e0ba640.jpg',title:'Go'},
-  {url:'https://images-na.ssl-images-amazon.com/images/G/01/launchpad/2023/Events/NYNY/GW/DesktopTallHero_3000x1200_NYNY_LP_12.22._CB619040395_.jpg',title:'Bloom'},
 ]
 
 const containerSytles = {
@@ -45,8 +43,8 @@ const containerSytles = {
 
     
 
-    if(!productsObj || !allproducts || !randProduct1 || !randProduct2) return null
-
+    if(!productsObj) return null
+    // if(!productsObj || !allproducts || !randProduct1 || !randProduct2) return null
 
     return (
         <div className='homepage-section'>
@@ -59,13 +57,18 @@ const containerSytles = {
             <div className='homepage-secondsec'>
                <div className='sc-entire'>
                <div className='sc-first'>
-               <img src={'https://media.tenor.com/UIJ9DZX6AR4AAAAd/atlantis.gif'} className="image"/>
+               <img 
+               src={'https://media.tenor.com/UIJ9DZX6AR4AAAAd/atlantis.gif'} className="image"
+               onError={e => { e.currentTarget.src = "https://www.shutterstock.com/image-vector/coming-soon-under-construction-yellow-600w-1746344219.jpg"; }}
+               />
                </div>
                <div className="sc-second">
                <div className="sc-sectiontitle">Explore more items</div>
                <NavLink to={`/products/${randProduct1?randProduct1.id:1}`} className='is-link'>
                   <div className="top-thirditem">
-                  <img src={randProduct1?randProduct1.imageUrl:"http:imge.png"}/>
+                  <img src={randProduct1?randProduct1.imageUrl:"https://www.shutterstock.com/image-vector/coming-soon-under-construction-yellow-600w-1746344219.jpg"}
+                  onError={e => { e.currentTarget.src = "https://www.shutterstock.com/image-vector/coming-soon-under-construction-yellow-600w-1746344219.jpg"; }}
+                  />
                   </div>
                    <div>
                    <div>{randProduct1?`${randProduct1.title.slice(0,47)}...`:""}</div>
@@ -77,10 +80,12 @@ const containerSytles = {
                <div className="sc-sectiontitle">Shopping with fun</div>
                <NavLink to={`/products/${randProduct2?randProduct2.id:1}`} className='is-link'>
                   <div className="top-thirditem">
-                  <img src={randProduct1?randProduct2.imageUrl:"http:imge.png"}/>
+                  <img src={randProduct2?randProduct2.imageUrl:"https://www.shutterstock.com/image-vector/coming-soon-under-construction-yellow-600w-1746344219.jpg"}
+                  onError={e => { e.currentTarget.src = "https://www.shutterstock.com/image-vector/coming-soon-under-construction-yellow-600w-1746344219.jpg"; }}
+                  />
                   </div>
                    <div>
-                   <div>{randProduct1?`${randProduct2.title.slice(0,47)}...`:""}</div>
+                   <div>{randProduct2?`${randProduct2.title.slice(0,47)}...`:""}</div>
                    </div>
                 </NavLink>
                </div>

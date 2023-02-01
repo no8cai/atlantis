@@ -35,9 +35,12 @@ function InventoryList() {
             <div className='productlist-boxitem'>
             <NavLink to={`/products/${id}`} className="productlist-links">
             <div className="productlist-item">
-                <img src={imageUrl} className="productlist-image"/>
+                <img 
+                src={imageUrl} className="productlist-image"
+                onError={e => { e.currentTarget.src = "https://www.shutterstock.com/image-vector/coming-soon-under-construction-yellow-600w-1746344219.jpg"; }}
+                />
             </div>
-            <div className="productlist-item">{title}</div>
+            <div className="productlist-item">{`${title.slice(0,60)}...`}</div>
             <div className="productlist-item">{category}</div>
             <div className="productlist-item">{price}</div>
             <div className="productlist-item">{brand}</div>

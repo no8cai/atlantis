@@ -67,7 +67,9 @@ function SingleProduct() {
     return (
         <div className='singleproject-entire'>
            <div className='singleproject-topsec'>
-             <div className='singleproject-imagesec'><img src={singleproduct.imageUrl} className="singleproduct-image"/></div>
+             <div className='singleproject-imagesec'><img src={singleproduct.imageUrl} className="singleproduct-image"
+             onError={e => { e.currentTarget.src = "https://www.shutterstock.com/image-vector/coming-soon-under-construction-yellow-600w-1746344219.jpg"; }}
+             /></div>
              <div className='singleproject-topmid'>
                 <div>
                 <div className='singleproduct-title'>{singleproduct.title}</div>
@@ -160,7 +162,7 @@ function SingleProduct() {
                       <div className='projectform-errortable'>
                       <div className='projectform-error'>
                        {validationErrors.map((error) => (
-                         <div key={error} className="projectform-errortext">{error}</div>
+                         <div key={error} className='signin-errors'><i className="fa-solid fa-circle-exclamation"/>{error}</div>
                        ))}
                       </div>
                       </div>

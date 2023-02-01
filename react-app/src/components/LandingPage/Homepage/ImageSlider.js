@@ -68,7 +68,7 @@ const ImageSlider=({slides,allproducts})=>{
 
 
 
-    if(!topdeal || !randProduct) return null
+    // if(!topdeal || !randProduct) return null
 
     return (
        <div style={sliderStyles}>
@@ -80,7 +80,10 @@ const ImageSlider=({slides,allproducts})=>{
             <div className='firstsec-left'>
             {allproducts.slice(0,4).map(({ id, title,imageUrl}) => (
             <div className='is-item' key={id}><NavLink to={`/products/${id}`} className='is-link'>
-                <div className='is-itemimg'><img src={imageUrl} className="image"/></div>
+                <div className='is-itemimg'><img 
+                src={imageUrl} className="image"
+                onError={e => { e.currentTarget.src = "https://www.shutterstock.com/image-vector/coming-soon-under-construction-yellow-600w-1746344219.jpg"; }}
+                /></div>
                 <div>{`${(title).slice(0,11)}...`}</div>
             </NavLink></div>
             
@@ -92,7 +95,10 @@ const ImageSlider=({slides,allproducts})=>{
             <div className='firstsec-left'>
            {allproducts.slice(0).reverse().slice(0,4).map(({ id, title,imageUrl}) => (
             <div className='is-item' key={id}><NavLink to={`/products/${id}`} className='is-link'>
-                <div className='is-itemimg'><img src={imageUrl} className="image"/></div>
+                <div className='is-itemimg'><img 
+                src={imageUrl} className="image"
+                onError={e => { e.currentTarget.src = "https://www.shutterstock.com/image-vector/coming-soon-under-construction-yellow-600w-1746344219.jpg"; }}
+                /></div>
                 <div>{`${(title).slice(0,11)}...`}</div>
             </NavLink></div>
             
@@ -103,7 +109,9 @@ const ImageSlider=({slides,allproducts})=>{
         <div className="top-sectiontitle">Best deal of the Day</div>
         <NavLink to={`/products/${topdeal?topdeal.id:1}`} className='is-link'>
         <div className="top-thirditem">
-           <img src={topdeal?topdeal.imageUrl:"http:imge.png"}/>
+           <img src={topdeal?topdeal.imageUrl:"https://www.shutterstock.com/image-vector/coming-soon-under-construction-yellow-600w-1746344219.jpg"}
+           onError={e => { e.currentTarget.src = "https://www.shutterstock.com/image-vector/coming-soon-under-construction-yellow-600w-1746344219.jpg"; }}
+           />
         </div>
         
         <div className="top-discount">{topdeal?`Up to ${((1-topdeal.discount)*100).toFixed(2)}% off`:""}</div>
@@ -115,7 +123,9 @@ const ImageSlider=({slides,allproducts})=>{
         <div className="top-sectiontitle">Reach your goal with us</div>
         <NavLink to={`/products/${randProduct?randProduct.id:1}`} className='is-link'>
             <div className="top-thirditem">
-            <img src={randProduct?randProduct.imageUrl:"http:imge.png"}/>
+            <img src={randProduct?randProduct.imageUrl:"https://www.shutterstock.com/image-vector/coming-soon-under-construction-yellow-600w-1746344219.jpg"}
+            onError={e => { e.currentTarget.src = "https://www.shutterstock.com/image-vector/coming-soon-under-construction-yellow-600w-1746344219.jpg"; }}
+            />
             </div>
             <div>
             <div>{randProduct?`${randProduct.title.slice(0,47)}...`:""}</div>

@@ -70,24 +70,35 @@ const ProductForm=({product,formType})=>{
         else if(title.length>=255){errors.push("Product's title must be less than 255 characters")}
         if(category.length<=0){errors.push("Product's category field is required");}
         else if(category.length>=255){errors.push("Product's category must be less than 255 characters")}
-        if(isNaN(price)){errors.push("Product's price must be a real number");}
+        if(price.length<=0){errors.push("Product's price field is required");}
+        else if(isNaN(price)){errors.push("Product's price must be a real number");}
         else if(price<=0){errors.push("Product's price must be greater than 0");}
         else if(!(/^\d+(\.\d{1,2})?$/.test(price))){errors.push("Product's price must be within 2 decimal places");}
-        if(isNaN(discount)){errors.push("Product's discount must be a real number");}
+        else if(price.length>=50){errors.push("Product's price must be less than 50 digits in total")}
+        if(discount.length<=0){errors.push("Product's discount field is required");}
+        else if(isNaN(discount)){errors.push("Product's discount must be a real number");}
         else if(discount<=0){errors.push("Product's discount must be greater than 0");}
         else if(!(/^\d+(\.\d{1,2})?$/.test(discount))){errors.push("Product's discount must be within 2 decimal places");}
-        if(isNaN(inventory)){errors.push("Product's inventory must be a real number");}
+        else if(discount>=1){errors.push("Product's discount must be less than 100% so the discount should be between 0 and 1");}
+        if(inventory.length<=0){errors.push("Product's inventory field is required");}
+        else if(isNaN(inventory)){errors.push("Product's inventory must be a real number");}
         else if(inventory<=0){errors.push("Product's inventory must be greater than 0");}
         if(style.length<=0){errors.push("Product's style is required");}
+        else if(style.length>=50){errors.push("Product's style must be less than 50 characters")}
         if(brand.length<=0){errors.push("Product's brand is required");}
+        else if(brand.length>=50){errors.push("Product's brand must be less than 50 characters")}
         if(color.length<=0){errors.push("Product's color is required");}
+        else if(color.length>=50){errors.push("Product's color must be less than 50 characters")}
         if(dimension.length<=0){errors.push("Product's dimension is required");}
+        else if(dimension.length>=50){errors.push("Product's dimension must be less than 50 characters")}
         if(about.length<=0){errors.push("Product's introduction is required");}
+        else if(about.length>=2000){errors.push("Product's introduction must be less than 2000 characters")}
         if(description.length<=0){errors.push("Product's description field is required");}
         else if(description.length>=4000){errors.push("Product's description must be less than 4000 characters")}
         if(imageUrl.length<=0){errors.push("Product's image link field is required");}
-        else if (!imageUrl.includes("http")){errors.push("Product's image link must be a valid website link");}        
-
+        else if (!imageUrl.startsWith("http://") && !imageUrl.startsWith("https://")){errors.push("Product's image link must be a valid website link with http:// or https://");}        
+        else if (!imageUrl.endsWith("jpg") && !imageUrl.endsWith("gif") && !imageUrl.endsWith("png") && !imageUrl.endsWith("JPG") && !imageUrl.endsWith("GIF") && !imageUrl.endsWith("PNG")){errors.push("Product's image link must have a valid type of jpg, png or gif");}
+        else if(imageUrl.length>=1000){errors.push("Product's image url must be less than 1000 characters")}
 
         setValidationErrors(errors);
 
@@ -139,7 +150,7 @@ const handleSubmit = async (e)=>{
             
           <div className='productform-listitem'>
           <label>
-          Product's title <i className="fa-regular fa-circle-question" title="Please be more specific on your product's title"/>
+          Product's title
           </label>
           <input
           className='input'
@@ -151,7 +162,7 @@ const handleSubmit = async (e)=>{
 
           <div className='productform-listitem'>
           <label>
-          Choose your product's category <i className="fa-regular fa-circle-question" />
+          Choose your product's category 
           </label>
                        <select
                         placeholder='Category'
@@ -167,7 +178,7 @@ const handleSubmit = async (e)=>{
 
           <div className='productform-listitem'>
           <label>
-          Product's price <i className="fa-regular fa-circle-question" />
+          Product's listing price
           </label>
           <input
           className='input'
@@ -179,7 +190,8 @@ const handleSubmit = async (e)=>{
 
           <div className='productform-listitem'>
           <label>
-          Decide your product's discount <i className="fa-regular fa-circle-question" />
+          Decide your product's discount
+          : Final price=List price x discount
           </label>
           <input
           className='input'
@@ -191,7 +203,7 @@ const handleSubmit = async (e)=>{
 
           <div className='productform-listitem'>
           <label>
-          Decide your product's inventory <i className="fa-regular fa-circle-question" />
+          Decide your product's inventory
           </label>
           <input
           className='input'
@@ -203,7 +215,7 @@ const handleSubmit = async (e)=>{
 
           <div className='productform-listitem'>
           <label>
-          Choose your product's style <i className="fa-regular fa-circle-question" />
+          Choose your product's style
           </label>
 
 
@@ -220,7 +232,7 @@ const handleSubmit = async (e)=>{
 
           <div className='productform-listitem'>
           <label>
-          Product's brand <i className="fa-regular fa-circle-question" />
+          Product's brand
           </label>
           <input
           className='input'
@@ -232,7 +244,7 @@ const handleSubmit = async (e)=>{
 
           <div className='productform-listitem'>
           <label>
-           Product's color <i className="fa-regular fa-circle-question" />
+           Product's color
           </label>
           <input
           className='input'
@@ -244,7 +256,7 @@ const handleSubmit = async (e)=>{
 
           <div className='productform-listitem'>
           <label>
-          Product's dimension <i className="fa-regular fa-circle-question" />
+          Product's dimension
           </label>
           <input
           className='input'
@@ -256,7 +268,7 @@ const handleSubmit = async (e)=>{
 
           <div className='productform-listitem'>
           <label>
-          Product's introduction <i className="fa-regular fa-circle-question" />
+          Product's introduction
           </label>
           <textarea
           className='input'
@@ -268,7 +280,7 @@ const handleSubmit = async (e)=>{
 
           <div className='productform-listitem'>
           <label>
-          Product's description <i className="fa-regular fa-circle-question" />
+          Product's description
           </label>
           <textarea
           className='input'
@@ -280,7 +292,7 @@ const handleSubmit = async (e)=>{
 
           <div className='productform-listitem'>
           <label>
-          Product's image url <i className="fa-regular fa-circle-question" />
+          Product's image url
           </label>
           <input
           className='input'

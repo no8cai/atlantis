@@ -65,11 +65,7 @@ function LoginFormModal() {
       <div className='form-holder'>
 
       <form className='login-form-css' onSubmit={onLogin}>
-        <ul className='errorlist'>
-          {errors.map((error, idx) => (
-            <div key={idx}>{error}</div>
-          ))}
-        </ul>
+
           <div className='input-holder'>
         <label>Email</label>
           <input
@@ -79,7 +75,7 @@ function LoginFormModal() {
             placeholder='Email'
             title='Email Address'
             onChange={updateEmail}
-            required
+            
           />
         
         <label>Password</label>
@@ -90,10 +86,15 @@ function LoginFormModal() {
             placeholder='Password'
             title='Password'
             onChange={updatePassword}
-            required
+           
           />
         
         </div>
+        <div className='singin-errorsec'>
+        {errors.map((error, ind) => (
+          <div key={ind} className='signin-errors'><i className="fa-solid fa-circle-exclamation"/>{error}</div>
+        ))}
+      </div>
         <button className="form-button" type="submit">Sign in to see your addresses</button>
       </form>
 

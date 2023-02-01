@@ -32,7 +32,27 @@ const SignUpForm = () => {
 
   const onSignUp = async (e) => {
     e.preventDefault();
-    if (password === repeatPassword) {
+    const errors=[]
+    if(username.length<=0){errors.push("username field is required");}
+    else if(username.length>=40){errors.push("username must be less than 40 characters")}
+    if(email.length<=0){errors.push("email field is required");}
+    else if (!email.includes("@")){errors.push("a valid email address is required");}
+    if(password.length<=0){errors.push("password field is required");}
+    else if(password.length<6){errors.push("password must be at least 6 characters")}
+    else if(password.length>=255){errors.push("username must be less than 255 characters")}
+    if(repeatPassword.length<=0){errors.push("repeatpassword field is required");}
+    else if(repeatPassword!=password){errors.push("repeatpassword must match the password");}
+    if(city.length<=0){errors.push("city field is required");}
+    else if(city.length>=40){errors.push("city must be less than 40 characters")}
+    if(state.length<=0){errors.push("state field is required");}
+    else if(state.length>=40){errors.push("state must be less than 40 characters")}
+    if(zipcode.length<=0){errors.push("zipcode field is required");}
+    else if (isNaN(zipcode)){errors.push("zipcode must be valide 5 digits numbers");}
+    else if(zipcode<=0){errors.push("zipcode must be valide 5 digits numbers");}
+    else if(zipcode.length!=5){errors.push("zipcode must be 5 digits numbers");}
+
+    setErrors(errors)
+    if (!errors.length) {
       const data = await dispatch(signUp(username, email, password,city,state,zipcode));
       if (data) {
         setErrors(data)
@@ -88,11 +108,7 @@ const SignUpForm = () => {
       <div className='login-form singup-outersec'>
       <div className='login-formtitle'>Create account</div>
     <form onSubmit={onSignUp} className='signupform-form'>
-      <div>
-        {errors.map((error, ind) => (
-          <div key={ind}>{error}</div>
-        ))}
-      </div>
+
       <div className='login-formitem'>
         <label>User Name</label>
         <input
@@ -130,7 +146,6 @@ const SignUpForm = () => {
           name='repeat_password'
           onChange={updateRepeatPassword}
           value={repeatPassword}
-          required={true}
         ></input>
       </div>
       <div className='login-formitem'>
@@ -164,6 +179,11 @@ const SignUpForm = () => {
           onChange={updateZipcode}
           value={zipcode}
         ></input>
+      </div>
+      <div className='singin-errorsec'>
+        {errors.map((error, ind) => (
+          <div key={ind} className='signin-errors'><i className="fa-solid fa-circle-exclamation"/>{error}</div>
+        ))}
       </div>
       <button type='submit' className='login-buttom'>Sign Up</button>
     </form>
