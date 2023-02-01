@@ -111,4 +111,10 @@
     overflow-x: hidden;
     color: black;
     font-size: 14px;
+    margin-right: 20px;
+}
+
+.sell-noitems{
+   font-size: 20px;
+   padding-left: 20px;
 }

@@ -59,10 +59,11 @@ const containerSytles = {
             <div className='homepage-secondsec'>
                <div className='sc-entire'>
                <div className='sc-first'>
+               <a href='https://firestarter.onrender.com/' className="footer-links-labels" title='explore our group project'>
                <img 
                src={'https://media.tenor.com/UIJ9DZX6AR4AAAAd/atlantis.gif'} className="image"
                onError={e => { e.currentTarget.src = "https://www.shutterstock.com/image-vector/coming-soon-under-construction-yellow-600w-1746344219.jpg"; }}
-               />
+               /></a>
                </div>
                <div className="sc-second">
                <div className="sc-sectiontitle">Explore more items</div>

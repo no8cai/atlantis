@@ -72,7 +72,7 @@ function LoginFormModal() {
           className='input-line'
             type="text"
             value={email}
-            placeholder='Email'
+            placeholder='Please input the email address'
             title='Email Address'
             onChange={updateEmail}
             
@@ -83,7 +83,7 @@ function LoginFormModal() {
             type="password"
             className='input-line2'
             value={password}
-            placeholder='Password'
+            placeholder='Please input the password'
             title='Password'
             onChange={updatePassword}
            

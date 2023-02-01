@@ -43,13 +43,15 @@ const SignUpForm = () => {
     if(repeatPassword.length<=0){errors.push("repeatpassword field is required");}
     else if(repeatPassword!=password){errors.push("repeatpassword must match the password");}
     if(city.length<=0){errors.push("city field is required");}
+    else if(!isNaN(city)){errors.push("city can not be only numbers");}
+    else if(!isNaN(city[0])){errors.push("city can not be start with numbers");}
     else if(city.length>=40){errors.push("city must be less than 40 characters")}
     if(state.length<=0){errors.push("state field is required");}
     else if(state.length>=40){errors.push("state must be less than 40 characters")}
     if(zipcode.length<=0){errors.push("zipcode field is required");}
-    else if (isNaN(zipcode)){errors.push("zipcode must be valide 5 digits numbers");}
-    else if(zipcode<=0){errors.push("zipcode must be valide 5 digits numbers");}
-    else if(zipcode.length!=5){errors.push("zipcode must be 5 digits numbers");}
+    else if (isNaN(zipcode)){errors.push("zipcode must be valide 5 digits numbers in US");}
+    else if(zipcode<=0){errors.push("zipcode must be valide 5 digits numbers in US");}
+    else if(zipcode.length!=5){errors.push("zipcode must be 5 digits numbers in US");}
 
     setErrors(errors)
     if (!errors.length) {

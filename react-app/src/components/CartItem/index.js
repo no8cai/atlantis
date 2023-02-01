@@ -89,7 +89,7 @@ function CartItems() {
             </div>
 
         <div className="cartitem-listitems">
-            <div>Your Atlantis Cart is empty</div>
+            <div className="cart-noitem">Your Atlantis Cart is empty</div>
         </div>
         </div>
         <div className="cartitem-checkoutsec">
@@ -134,7 +134,7 @@ function CartItems() {
 
             <div className="ci-colorsec">   
             <div className="ci-color">Color:</div>
-            <div>{product.color}</div>
+            <div>{product.color.slice(0,8)}</div>
             </div>
         <div className="cartitem-selectionsec">
         <div className='singleproduct-selectsec'>

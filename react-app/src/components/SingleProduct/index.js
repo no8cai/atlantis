@@ -113,7 +113,7 @@ function SingleProduct() {
 
                 <div className='singleproduct-midthird'>
                     <div className='singleproduct-about'>About this item</div>
-                    <div>{singleproduct.about}</div>
+                    <div className='singleproduct-aboutcontext'>{singleproduct.about}</div>
                 </div>
              </div>
     
@@ -176,7 +176,7 @@ function SingleProduct() {
 
            <div>
            <div className='singleproduct-about'>Production information</div>
-           <div>{singleproduct.description}</div>
+           <div className='singleproduct-aboutcontext'>{singleproduct.description}</div>
            </div>
 
         </div>

@@ -115,7 +115,7 @@ const ImageSlider=({slides,allproducts})=>{
         </div>
         
         <div className="top-discount">{topdeal?`Up to ${((1-topdeal.discount)*100).toFixed(2)}% off`:""}</div>
-        <div>{topdeal?`${topdeal.title.slice(0,47)}...`:"Dell S2421H 24-Inch 1080p Full HD 1920 x 1080 Resolution..."}</div>
+        <div className="second-context">{topdeal?`${topdeal.title.slice(0,47)}...`:"Dell S2421H 24-Inch 1080p Full HD 1920 x 1080 Resolution..."}</div>
         </NavLink>
         </div>
 
@@ -128,7 +128,7 @@ const ImageSlider=({slides,allproducts})=>{
             />
             </div>
             <div>
-            <div>{randProduct?`${randProduct.title.slice(0,47)}...`:"Dell S2421H 24-Inch 1080p Full HD 1920 x 1080 Resolution..."}</div>
+            <div className="second-context">{randProduct?`${randProduct.title.slice(0,47)}...`:"Dell S2421H 24-Inch 1080p Full HD 1920 x 1080 Resolution..."}</div>
             </div>
         </NavLink>
         </div>

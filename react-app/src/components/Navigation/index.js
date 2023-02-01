@@ -12,32 +12,14 @@ function Navigation(){
   
   const sessionUser = useSelector(state => state.session.user);
 
-  // let sessionLinks;
-  // if (sessionUser) {
-  //   sessionLinks = (
-  //     <li>
-  //       <ProfileButton user={sessionUser} />
-  //     </li>
-  //   );
-  // } else {
-  //   sessionLinks = (
-  //     <li>
-  //       {/* <OpenModalButton
-  //         buttonText="Log In"
-  //         modalComponent={<LoginFormModal />}
-  //       /> */}
-  //       <NavLink to="/login">Log in</NavLink>
-  //       <NavLink to="/signup">Sign Up</NavLink>
-  //     </li>
-  //   );
-  // }
+
 
   let addressbar;
   if (sessionUser) {
     addressbar = (
       <div className='navigation-leftright'>
         <div className='navigation-locationbar'><i className="fa-solid fa-location-dot"></i><div>Deliver to {`${sessionUser.username},`}</div></div>
-        <div className='np-seconddown'>{`${sessionUser.city} ${sessionUser.zipcode}`}</div>
+        <div className='np-seconddown'>{`${sessionUser.city.slice(0,8)} ${sessionUser.zipcode}`}</div>
       </div>
     );
   } else {

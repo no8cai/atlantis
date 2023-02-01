@@ -8,13 +8,18 @@
     margin-top: 20px;
 }
 
+.singleproject-imagesec{
+    padding: 10px;
+}
+
 div.singleproject-imagesec img{
-    width: 35vw;
+    max-width: 31vw;
     max-height: 90vh;
     object-fit: cover;
     overflow: hidden;
     position: sticky;
     top:20px;
+    padding: 10px;
 }
 
 .singleproduct-title{
@@ -101,6 +106,8 @@ div.singleproject-imagesec img{
 .singleproduct-about{
     font-size: 15px;
     font-weight: bold;
+    /* overflow-x: hidden;
+    width: 100%; */
 }
 
 .singleproduct-basicinfo{
@@ -175,4 +182,8 @@ div.singleproject-imagesec img{
 
 .singleproduct-about{
     margin-top: 50px;
+}
+
+.singleproduct-aboutcontext{
+    overflow-x: hidden;
 }

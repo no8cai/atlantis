@@ -54,7 +54,7 @@ div.itemimg img{
 }
 
 .is-itemimg img{
-    height: 21vh;
+    max-height: 21vh;
     width: 9.75vw;
     object-fit: cover;
 }
@@ -111,9 +111,9 @@ div.itemimg img{
     /* padding-top: 30px; */
 }
 .sc-first img{
-    width: 46vw;
+    width: 47vw;
     object-fit: cover;
-    margin-left: 1vw;
+
 }
 
 .sc-entire{
@@ -126,10 +126,19 @@ div.itemimg img{
     gap:2vw;
 }
 
+.top-thirditem{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
 .top-thirditem img{
     width: 80%;
-    max-height: 90%;
+    max-height: 70vh;
     object-fit: cover;
+    margin-top: 20px;
+    margin-bottom: 20px;
 }
 
 .top-discount{
@@ -157,4 +166,9 @@ div.itemimg img{
     z-index: 10;
     margin-bottom: 15px;
     margin-left: 1vw;
+}
+
+.second-context{
+    text-align: center;
+    margin-bottom: 10px;
 }
