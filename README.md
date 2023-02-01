@@ -8,7 +8,7 @@
 https://atlantis-tcam.onrender.com/
 
 ## Description:
-Our clone of the Amazon site has create, read, update, and delete features for products and cart. Users can create products to sell and main while adding items to the cart. There is also a sellcentral feature for users to see and interact with their products. Users can log in to access all these features. In the wiki is the API documentation of the backend routes that we created.
+The clone of the Amazon site has create, read, update, and delete features for products and cart. Users can create products to sell and main while adding items to the cart. There is also a sellcentral feature for users to see and interact with their products. Users can log in to access all these features. In the wiki is the API documentation of the backend routes that we created.
 
 ## The technologies invoved
 
@@ -35,33 +35,27 @@ Our clone of the Amazon site has create, read, update, and delete features for p
 ## Usage description of features.
 
 ## Home Page:
-Here a user can see one random projects extensive details, the latest 3 projects details, stats about the full site, and information about the creators of the site.
+Here a user can see random products to explore, and information about the user.
 ![](https://github.com/no8cai/firestarter/blob/main/images/FireStarterHomePage.png)
 
 
 ## Single Project page:
-This page shows information on a single project and shows different details based on what the user is authorized to see or do.
+This page shows information on a single product and shows different details based on what the user is authorized to see or do.
 ![](https://github.com/no8cai/firestarter/blob/main/images/FireStarterSingleProjectPage.png)
 
-## Search Feature Page:
-After searching or filtering results, a user can see all projects that meet their criteria.
-![](https://github.com/no8cai/firestarter/blob/main/images/FireStarterSearchPage.png)
 
-## Pledge Page:
-Here a user can "purchase" a reward, or chose to edit their pledge, and chose a different reward.
+## Cart item Page:
+Here a user can adding item to the cart.
 ![](https://github.com/no8cai/firestarter/blob/main/images/FireStarterPledgePage.png)
 
-## Create Project Page:
-This form is where a user can create a project or edit their project. Users can create and edit rewards for their projects on a similar form.
+## Create Product Page:
+This form is where a user can create a product or edit their product. 
 ![](https://github.com/no8cai/firestarter/blob/main/images/FireStarterCreateProjectPage.png)
 
-## Profile Page:
-This is where a user can see all the projects they created, or click to see all the projects they have backed my pledging to those projects rewards.
+## Seller centeral Page:
+This is where a user can see all the products they created.
 ![](https://github.com/no8cai/firestarter/blob/main/images/FireStarterProfilePage.png)
 
-## Profile Modal:
-This modal is available in the top right corner for users to navigate the site.
-![](https://github.com/no8cai/firestarter/blob/main/images/FireStarterProfileModal.png)
 
 
 ## Roadmap
@@ -130,7 +124,7 @@ pipenv run flask run
 npm start
 ```
 
-## Contact Us:
+## Contact:
 
 Eric Chai
 https://www.linkedin.com/in/eric-chai-b5b9b337/
