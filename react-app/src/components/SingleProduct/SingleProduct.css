@@ -131,6 +131,7 @@ div.singleproject-imagesec img{
     display: flex;
     flex-direction: column;
     gap:5px;
+    margin-bottom: 70px;
 }
 
 .singleproduct-stock{
@@ -170,4 +171,8 @@ div.singleproject-imagesec img{
     border-radius: 15px;
     cursor: pointer;
 
+}
+
+.singleproduct-about{
+    margin-top: 50px;
 }
