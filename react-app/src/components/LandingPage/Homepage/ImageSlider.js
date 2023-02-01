@@ -109,13 +109,13 @@ const ImageSlider=({slides,allproducts})=>{
         <div className="top-sectiontitle">Best deal of the Day</div>
         <NavLink to={`/products/${topdeal?topdeal.id:1}`} className='is-link'>
         <div className="top-thirditem">
-           <img src={topdeal?topdeal.imageUrl:"https://www.shutterstock.com/image-vector/coming-soon-under-construction-yellow-600w-1746344219.jpg"}
+           <img src={topdeal?topdeal.imageUrl:"https://m.media-amazon.com/images/I/71yI7N2eijL._AC_SX679_.jpg"}
            onError={e => { e.currentTarget.src = "https://www.shutterstock.com/image-vector/coming-soon-under-construction-yellow-600w-1746344219.jpg"; }}
            />
         </div>
         
         <div className="top-discount">{topdeal?`Up to ${((1-topdeal.discount)*100).toFixed(2)}% off`:""}</div>
-        <div>{topdeal?`${topdeal.title.slice(0,47)}...`:""}</div>
+        <div>{topdeal?`${topdeal.title.slice(0,47)}...`:"Dell S2421H 24-Inch 1080p Full HD 1920 x 1080 Resolution..."}</div>
         </NavLink>
         </div>
 
@@ -124,7 +124,7 @@ const ImageSlider=({slides,allproducts})=>{
         <NavLink to={`/products/${randProduct?randProduct.id:1}`} className='is-link'>
             <div className="top-thirditem">
             <img src={randProduct?randProduct.imageUrl:"https://m.media-amazon.com/images/I/71yI7N2eijL._AC_SX679_.jpg"}
-            // onError={e => { e.currentTarget.src = "https://www.shutterstock.com/image-vector/coming-soon-under-construction-yellow-600w-1746344219.jpg"; }}
+            onError={e => { e.currentTarget.src = "https://www.shutterstock.com/image-vector/coming-soon-under-construction-yellow-600w-1746344219.jpg"; }}
             />
             </div>
             <div>
