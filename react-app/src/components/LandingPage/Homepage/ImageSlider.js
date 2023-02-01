@@ -123,12 +123,12 @@ const ImageSlider=({slides,allproducts})=>{
         <div className="top-sectiontitle">Reach your goal with us</div>
         <NavLink to={`/products/${randProduct?randProduct.id:1}`} className='is-link'>
             <div className="top-thirditem">
-            <img src={randProduct?randProduct.imageUrl:"https://www.shutterstock.com/image-vector/coming-soon-under-construction-yellow-600w-1746344219.jpg"}
-            onError={e => { e.currentTarget.src = "https://www.shutterstock.com/image-vector/coming-soon-under-construction-yellow-600w-1746344219.jpg"; }}
+            <img src={randProduct?randProduct.imageUrl:"https://m.media-amazon.com/images/I/71yI7N2eijL._AC_SX679_.jpg"}
+            // onError={e => { e.currentTarget.src = "https://www.shutterstock.com/image-vector/coming-soon-under-construction-yellow-600w-1746344219.jpg"; }}
             />
             </div>
             <div>
-            <div>{randProduct?`${randProduct.title.slice(0,47)}...`:""}</div>
+            <div>{randProduct?`${randProduct.title.slice(0,47)}...`:"Dell S2421H 24-Inch 1080p Full HD 1920 x 1080 Resolution..."}</div>
             </div>
         </NavLink>
         </div>

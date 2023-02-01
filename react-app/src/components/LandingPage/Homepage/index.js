@@ -19,7 +19,8 @@ function Homepage() {
 
     // const randProduct1 = allproducts[randId1]
     // const randProduct2 = allproducts[randId2]
-
+    const randProduct1 = allproducts[randId1]
+    const randProduct2 = allproducts[randId2]
 
     const history=useHistory();
 
@@ -45,8 +46,7 @@ const containerSytles = {
 
     if(!productsObj) return null
     // if(!productsObj || !allproducts || !randProduct1 || !randProduct2) return null
-    const randProduct1 = allproducts[randId1]
-    const randProduct2 = allproducts[randId2]
+
 
     return (
         <div className='homepage-section'>
@@ -68,12 +68,12 @@ const containerSytles = {
                <div className="sc-sectiontitle">Explore more items</div>
                <NavLink to={`/products/${randProduct1?randProduct1.id:1}`} className='is-link'>
                   <div className="top-thirditem">
-                  <img src={randProduct1?randProduct1.imageUrl:"https://www.shutterstock.com/image-vector/coming-soon-under-construction-yellow-600w-1746344219.jpg"}
+                  <img src={randProduct1?randProduct1.imageUrl:"https://m.media-amazon.com/images/I/71yI7N2eijL._AC_SX679_.jpg"}
                   onError={e => { e.currentTarget.src = "https://www.shutterstock.com/image-vector/coming-soon-under-construction-yellow-600w-1746344219.jpg"; }}
                   />
                   </div>
                    <div>
-                   <div>{randProduct1?`${randProduct1.title.slice(0,47)}...`:""}</div>
+                   <div>{randProduct1?`${randProduct1.title.slice(0,47)}...`:"Dell S2421H 24-Inch 1080p Full HD 1920 x 1080 Resolution..."}</div>
                    </div>
                 </NavLink>
                </div>
@@ -82,25 +82,17 @@ const containerSytles = {
                <div className="sc-sectiontitle">Shopping with fun</div>
                <NavLink to={`/products/${randProduct2?randProduct2.id:1}`} className='is-link'>
                   <div className="top-thirditem">
-                  <img src={randProduct2?randProduct2.imageUrl:"https://www.shutterstock.com/image-vector/coming-soon-under-construction-yellow-600w-1746344219.jpg"}
+                  <img src={randProduct2?randProduct2.imageUrl:"https://m.media-amazon.com/images/I/71yI7N2eijL._AC_SX679_.jpg"}
                   onError={e => { e.currentTarget.src = "https://www.shutterstock.com/image-vector/coming-soon-under-construction-yellow-600w-1746344219.jpg"; }}
                   />
                   </div>
                    <div>
-                   <div>{randProduct2?`${randProduct2.title.slice(0,47)}...`:""}</div>
+                   <div>{randProduct2?`${randProduct2.title.slice(0,47)}...`:"Dell S2421H 24-Inch 1080p Full HD 1920 x 1080 Resolution..."}</div>
                    </div>
                 </NavLink>
                </div>
                </div>
             </div>
-            {/* <div className='homepage-list'>
-            {allproducts.map(({ id, title,category,price,dicount,brand,imageUrl}) => (
-            <div className='item' key={id}><NavLink to={`/products/${id}`}>
-                <div className='itemimg'><img src={imageUrl} className="image"/></div>
-                <div>{title}</div>
-            </NavLink></div>
-          ))}               
-            </div> */}
         </div>
     )
 }
