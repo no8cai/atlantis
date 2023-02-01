@@ -1,0 +1,15 @@
+.ft-section{
+    font-family: "Lato";
+    background-color: #293641;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
+    height: 200px;
+}
+
+.footer-links-labels{
+    text-decoration: none;
+    color: white;
+    font-weight: bold;
+}

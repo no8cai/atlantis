@@ -6,6 +6,7 @@ import { authenticate } from "../../store/session";
 import Homepage from "./Homepage";
 import SingleProduct from "../SingleProduct";
 import CartItems from "../CartItem";
+import Footer from "../Footer";
 import './LandingPage.css';
 
 function Landing() {
@@ -38,6 +39,7 @@ function Landing() {
           <Homepage/>
         </Route>
         </Switch>
+        <Footer/>
         {/* <Navigation isLoaded={loaded} />  */}
         </div>
     )

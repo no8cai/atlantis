@@ -1,148 +1,138 @@
-# Flask React Project
+# Atlantis
+## a Amazon Clone
+## by Eric Chai
 
-This is the starter for the Flask React project.
+>“Buy it Sell it Love it.”
 
-## Getting started
-1. Clone this repository (only this branch)
+## Link to live site:
+https://atlantis-tcam.onrender.com/
 
-2. Install dependencies
+## Description:
+Our clone of the Amazon site has create, read, update, and delete features for products and cart. Users can create products to sell and main while adding items to the cart. There is also a sellcentral feature for users to see and interact with their products. Users can log in to access all these features. In the wiki is the API documentation of the backend routes that we created.
 
-      ```bash
-      pipenv install -r requirements.txt
-      ```
+## The technologies invoved
 
-3. Create a **.env** file based on the example with proper settings for your
-   development environment
+#### General coding:
+* Python JavaScript
 
-4. Make sure the SQLite3 database connection URL is in the **.env** file
+#### Backend:
+* Flask
+* SQLAlchemy
 
-5. This starter organizes all tables inside the `flask_schema` schema, defined
-   by the `SCHEMA` environment variable.  Replace the value for
-   `SCHEMA` with a unique name, **making sure you use the snake_case
-   convention**.
+#### Frontend:
+* React
+* Redux
+* HTML
+* CSS
 
-6. Get into your pipenv, migrate your database, seed your database, and run your Flask app
+#### Database:
+* Sqlite3(Development)
+* PostgreSQL(Production)
 
-   ```bash
-   pipenv shell
-   ```
+#### Website provider:
+* Render
 
-   ```bash
-   flask db upgrade
-   ```
+## Usage description of features.
 
-   ```bash
-   flask seed all
-   ```
-
-   ```bash
-   flask run
-   ```
-
-7. To run the React App in development, checkout the [README](./react-app/README.md) inside the `react-app` directory.
+## Home Page:
+Here a user can see one random projects extensive details, the latest 3 projects details, stats about the full site, and information about the creators of the site.
+![](https://github.com/no8cai/firestarter/blob/main/images/FireStarterHomePage.png)
 
 
-## Deployment through Render.com
+## Single Project page:
+This page shows information on a single project and shows different details based on what the user is authorized to see or do.
+![](https://github.com/no8cai/firestarter/blob/main/images/FireStarterSingleProjectPage.png)
 
-First, refer to your Render.com deployment articles for more detailed
-instructions about getting started with [Render.com], creating a production
-database, and deployment debugging tips.
+## Search Feature Page:
+After searching or filtering results, a user can see all projects that meet their criteria.
+![](https://github.com/no8cai/firestarter/blob/main/images/FireStarterSearchPage.png)
 
-From the [Dashboard], click on the "New +" button in the navigation bar, and
-click on "Web Service" to create the application that will be deployed.
+## Pledge Page:
+Here a user can "purchase" a reward, or chose to edit their pledge, and chose a different reward.
+![](https://github.com/no8cai/firestarter/blob/main/images/FireStarterPledgePage.png)
 
-Look for the name of the application you want to deploy, and click the "Connect"
-button to the right of the name.
+## Create Project Page:
+This form is where a user can create a project or edit their project. Users can create and edit rewards for their projects on a similar form.
+![](https://github.com/no8cai/firestarter/blob/main/images/FireStarterCreateProjectPage.png)
 
-Now, fill out the form to configure the build and start commands, as well as add
-the environment variables to properly deploy the application.
+## Profile Page:
+This is where a user can see all the projects they created, or click to see all the projects they have backed my pledging to those projects rewards.
+![](https://github.com/no8cai/firestarter/blob/main/images/FireStarterProfilePage.png)
 
-### Part A: Configure the Start and Build Commands
+## Profile Modal:
+This modal is available in the top right corner for users to navigate the site.
+![](https://github.com/no8cai/firestarter/blob/main/images/FireStarterProfileModal.png)
 
-Start by giving your application a name.
 
-Leave the root directory field blank. By default, Render will run commands from
-the root directory.
+## Roadmap
 
-Make sure the Environment field is set set to "Python 3", the Region is set to
-the location closest to you, and the Branch is set to "main".
+### Completed Fetures
+- [x] The User Authentication
+- [x] Product view, create, edit, and delete
+- [x] Shopping cart view, create, edit and delete
 
-Next, add your Build command. This is a script that should include everything
-that needs to happen _before_ starting the server.
+### Future features
+- [ ] Reviews for items
+- [ ] Making Orders
+- [ ] Filter
+- [ ] Search
 
-For your Flask project, enter the following command into the Build field, all in
-one line:
+## Getting Started
+This is an instructions on setting up the project locally. To get a local copy up and running follow these simple example steps.
 
-```shell
-# build command - enter all in one line
-npm install --prefix react-app &&
-npm run build --prefix react-app &&
-pip install -r requirements.txt &&
-pip install psycopg2 &&
-flask db upgrade &&
-flask seed all
+### Installation
+
+1. Clone the repor
+```
+git clone https://github.com/no8cai/atlantis.git
 ```
 
-This script will install dependencies for the frontend, and run the build
-command in the __package.json__ file for the frontend, which builds the React
-application. Then, it will install the dependencies needed for the Python
-backend, and run the migration and seed files.
+2. Populate the .env file based in the root directory on the example below:
+```
+SECRET_KEY=<<<Your generated key>>>
+DATABASE_URL=sqlite:///dev.db
+SCHEMA=«custom_schema_name_here»
+```
+Please make your own schema name, then make new .flaskenv
 
-Now, add your start command in the Start field:
+```
+FLASK_APP=app
+FLASK_ENV=development
+```
+Then populate the .env in /react-app to connect frontend and backend
 
-```shell
-# start script
-gunicorn app:app
+```
+REACT_APP_BASE_URL=http://localhost:5000
 ```
 
-_If you are using websockets, use the following start command instead for increased performance:_
 
-`gunicorn --worker-class eventlet -w 1 app:app`
+3. Install Pipenv packages on /root directory and install npm packages on /react-app
+```
+pipenv install
+```
+```
+npm install
+```
+4. Migrate and Seed the data for Sqlite3
+```
+pipenv run flask migrate
+pipenv run flask upgrade
+pipenv run flask seed all
+```
 
-### Part B: Add the Environment Variables
+5. Run the flask in root for backend and run npm for frontend server in /react-app
 
-Click on the "Advanced" button at the bottom of the form to configure the
-environment variables your application needs to access to run properly. In the
-development environment, you have been securing these variables in the __.env__
-file, which has been removed from source control. In this step, you will need to
-input the keys and values for the environment variables you need for production
-into the Render GUI.
+```
+pipenv run flask run
+```
 
-Click on "Add Environment Variable" to start adding all of the variables you
-need for the production environment.
+```
+npm start
+```
 
-Add the following keys and values in the Render GUI form:
+## Contact Us:
 
-- SECRET_KEY (click "Generate" to generate a secure secret for production)
-- FLASK_ENV production
-- FLASK_APP app
-- SCHEMA (your unique schema name, in snake_case)
-- REACT_APP_BASE_URL (use render.com url, located at top of page, similar to
-  https://this-application-name.onrender.com)
+Eric Chai
+https://www.linkedin.com/in/eric-chai-b5b9b337/
+https://github.com/no8cai
 
-In a new tab, navigate to your dashboard and click on your Postgres database
-instance.
-
-Add the following keys and values:
-
-- DATABASE_URL (copy value from Internal Database URL field)
-
-_Note: Add any other keys and values that may be present in your local __.env__
-file. As you work to further develop your project, you may need to add more
-environment variables to your local __.env__ file. Make sure you add these
-environment variables to the Render GUI as well for the next deployment._
-
-Next, choose "Yes" for the Auto-Deploy field. This will re-deploy your
-application every time you push to main.
-
-Now, you are finally ready to deploy! Click "Create Web Service" to deploy your
-project. The deployment process will likely take about 10-15 minutes if
-everything works as expected. You can monitor the logs to see your build and
-start commands being executed, and see any errors in the build process.
-
-When deployment is complete, open your deployed site and check to see if you
-successfully deployed your Flask application to Render! You can find the URL for
-your site just below the name of the Web Service at the top of the page.
-
-[Render.com]: https://render.com/
-[Dashboard]: https://dashboard.render.com/

@@ -39,9 +39,9 @@ function App() {
         <Route path="/signup" exact={true}>
           <SignUpForm />
         </Route>
-        <Route path={["/sellercentral",'/createproduct','/editproduct/:productId']}>
+        <ProtectedRoute path={["/sellercentral",'/createproduct','/editproduct/:productId']}>
           <SellerCentral/>
-        </Route>
+        </ProtectedRoute>
         <Route path="/">
           <Landing/>
         </Route>
