@@ -7,6 +7,7 @@ import LoginFormModal from '../LoginFormModal';
 import SignupFormModal from '../SignupFormModal';
 import './Navigation.css';
 import { useHistory } from "react-router-dom";
+import { deleteUserItem } from "../../store/cartitem";
 
 
 function ProfileButton({ user }) {
@@ -58,6 +59,7 @@ function ProfileButton({ user }) {
   const logout = (e) => {
     e.preventDefault();
     dispatch(sessionActions.logout());
+    dispatch(deleteUserItem())
     closeMenu();
     history.push('/')
   };

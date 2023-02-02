@@ -3,6 +3,7 @@ const READ_USERCARTITEMS = 'cartitems/READ_USERCARTITEMS'
 const CREATE_CARTITEM = 'cartitems/CREATE_CARTITEM'
 const UPDATE_CARTITEM = 'cartitems/UPDATE_CARTITEM'
 const DELETE_CARTITEM = 'cartitems/DELETE_CARTITEM'
+const DELETE_USERITEM = 'cartitems/DELETE_USERITEM'
 
 
 //action creators
@@ -27,6 +28,11 @@ const removeCartItem = (id) => ({
     id
 })
 
+export const deleteUserItem = () =>{
+    return {
+    type: DELETE_USERITEM,
+    };
+};
 
 //thunks
 export const fetchUserCartItems = () => async dispatch => {
@@ -113,6 +119,11 @@ const cartitemsReducer = (state = initialState, action) => {
         case DELETE_CARTITEM:
             newState = {...state}
             delete newState[action.id]
+            return newState
+
+        case DELETE_USERITEM:
+            newState = {...state}
+            newState = {}
             return newState
 
         default:
