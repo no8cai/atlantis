@@ -30,7 +30,7 @@ function SellerCentral() {
             </div>
             <div className='sellercentral-buttomsec'>
                 <NavLink to={`/sellercentral`} className="sellercentral-links">
-                <div className='sellercentral-innernav'>Manage Inventory Inventory</div>
+                <div className='sellercentral-innernav'>Manage your Inventory</div>
                 </NavLink>
                 <NavLink to={`/createproduct`} className="sellercentral-links">
                 <div className='sellercentral-innernav'>Add a Product</div>

@@ -126,7 +126,11 @@ npm start
 
 ## Contact:
 
-Eric Chai
+### Eric Chai
+
+#### linkedin
 https://www.linkedin.com/in/eric-chai-b5b9b337/
+
+#### github
 https://github.com/no8cai
 
