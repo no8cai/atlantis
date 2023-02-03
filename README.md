@@ -128,9 +128,9 @@ npm start
 
 ### Eric Chai
 
-#### linkedin
+#### Linkedin
 https://www.linkedin.com/in/eric-chai-b5b9b337/
 
-#### github
+#### Github
 https://github.com/no8cai
 
