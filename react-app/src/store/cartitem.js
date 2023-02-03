@@ -4,6 +4,7 @@ const CREATE_CARTITEM = 'cartitems/CREATE_CARTITEM'
 const UPDATE_CARTITEM = 'cartitems/UPDATE_CARTITEM'
 const DELETE_CARTITEM = 'cartitems/DELETE_CARTITEM'
 const DELETE_USERITEM = 'cartitems/DELETE_USERITEM'
+const DELETE_PRODUCTITEM = 'cartitems/DELETE_PRODUCTITEM'
 
 
 //action creators
@@ -23,7 +24,7 @@ const editCartItem = (cartitem) => ({
     cartitem
 })
 
-const removeCartItem = (id) => ({
+export const removeCartItem = (id) => ({
     type: DELETE_CARTITEM ,
     id
 })
@@ -33,6 +34,11 @@ export const deleteUserItem = () =>{
     type: DELETE_USERITEM,
     };
 };
+
+export const removeCartItembyProductId = (id) => ({
+    type: DELETE_PRODUCTITEM,
+    id
+})
 
 //thunks
 export const fetchUserCartItems = () => async dispatch => {
@@ -124,6 +130,15 @@ const cartitemsReducer = (state = initialState, action) => {
         case DELETE_USERITEM:
             newState = {...state}
             newState = {}
+            return newState
+        
+        case DELETE_PRODUCTITEM:
+            newState = {...state}
+            for(let index in newState){
+                if(parseInt(newState[index].productId)==parseInt(action.id)){
+                    delete newState[index]
+                 }
+            }
             return newState
 
         default:

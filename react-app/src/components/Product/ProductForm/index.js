@@ -3,6 +3,7 @@ import { useHistory } from "react-router-dom";
 import { useDispatch,useSelector } from "react-redux";
 import { fetchCreateProduct,fetchUpdateProduct, fetchDeleteProduct} from "../../../store/product";
 import './ProductForm.css'
+import { removeCartItembyProductId } from "../../../store/cartitem";
 
 const ProductForm=({product,formType})=>{
     
@@ -134,6 +135,7 @@ const handleSubmit = async (e)=>{
     const deleteEvents= (id)=>{
         const errors=[]
         dispatch(fetchDeleteProduct(id))
+        .then(dispatch(removeCartItembyProductId(id)))
         .then(()=>history.push('/sellercentral'))
         .catch(async (err)=>{
           const errobj=await err.json();
