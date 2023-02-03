@@ -74,7 +74,7 @@ const containerSytles = {
                   />
                   </div>
                    <div>
-                   <div>{randProduct1?`${randProduct1.title.slice(0,47)}...`:"Dell S2421H 24-Inch 1080p Full HD 1920 x 1080 Resolution..."}</div>
+                   <div className="second-context">{randProduct1?`${randProduct1.title.slice(0,47)}...`:"Dell S2421H 24-Inch 1080p Full HD 1920 x 1080 Resolution..."}</div>
                    </div>
                 </NavLink>
                </div>
@@ -88,7 +88,7 @@ const containerSytles = {
                   />
                   </div>
                    <div>
-                   <div>{randProduct2?`${randProduct2.title.slice(0,47)}...`:"Dell S2421H 24-Inch 1080p Full HD 1920 x 1080 Resolution..."}</div>
+                   <div className="second-context">{randProduct2?`${randProduct2.title.slice(0,47)}...`:"Dell S2421H 24-Inch 1080p Full HD 1920 x 1080 Resolution..."}</div>
                    </div>
                 </NavLink>
                </div>

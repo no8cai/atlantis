@@ -84,7 +84,7 @@ const ImageSlider=({slides,allproducts})=>{
                 src={imageUrl} className="image"
                 onError={e => { e.currentTarget.src = "https://www.shutterstock.com/image-vector/coming-soon-under-construction-yellow-600w-1746344219.jpg"; }}
                 /></div>
-                <div>{`${(title).slice(0,11)}...`}</div>
+                <div className="landing-context">{`${(title).slice(0,11)}...`}</div>
             </NavLink></div>
             
           ))}
@@ -99,7 +99,7 @@ const ImageSlider=({slides,allproducts})=>{
                 src={imageUrl} className="image"
                 onError={e => { e.currentTarget.src = "https://www.shutterstock.com/image-vector/coming-soon-under-construction-yellow-600w-1746344219.jpg"; }}
                 /></div>
-                <div>{`${(title).slice(0,11)}...`}</div>
+                <div className="landing-context">{`${(title).slice(0,11)}...`}</div>
             </NavLink></div>
             
             ))}
