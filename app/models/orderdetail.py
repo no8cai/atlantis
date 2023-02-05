@@ -17,3 +17,12 @@ class Orderdetail(db.Model):
 
     user = db.relationship("User", back_populates="orderdetails")
     orderitems = db.relationship("Orderitem", back_populates='orderdetail', cascade="all, delete")
+
+    def to_dict(self):
+        return{
+         "id":self.id,
+         "userId":self.userId,
+         "totalprice":self.totalprice,
+         "createdAt":str(self.createdAt),
+         "updatedAt":str(self.updatedAt)
+        }

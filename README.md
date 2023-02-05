@@ -1,5 +1,5 @@
 # Atlantis
-## a Amazon Clone
+## an Amazon Clone
 ## by Eric Chai
 
 >“Buy it Sell it Love it.”
