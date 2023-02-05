@@ -84,7 +84,7 @@ const ProductForm=({product,formType})=>{
         if(inventory.length<=0){errors.push("Product's inventory field is required");}
         else if(isNaN(inventory)){errors.push("Product's inventory must be a real number");}
         else if(inventory<=1){errors.push("Product's inventory must be greater than 1");}
-        else if(parseInt(inventory)!=inventory){errors.push("Product's inventory must be an integer");}
+        else if(parseInt(inventory)!=inventory){errors.push("Product's inventory must be an positive integer");}
         if(style.length<=0){errors.push("Product's style is required");}
         else if(style.length>=50){errors.push("Product's style must be less than 50 characters")}
         if(brand.length<=0){errors.push("Product's brand is required");}
@@ -260,7 +260,7 @@ const handleSubmit = async (e)=>{
 
           <div className='productform-listitem'>
           <label>
-          Product's dimension
+          Product's dimension, ex.10x8x9
           </label>
           <input
           className='input'
