@@ -22,7 +22,7 @@ const EditProduct=()=>{
         style:tempproduct.style,
         brand:tempproduct.brand,
         color:tempproduct.color,
-        dimension:tempproduct.dimension,
+        dimension:tempproduct.dimension.split(" ")[0],
         about:tempproduct.about,
         description:tempproduct.description,
         imageUrl:tempproduct.imageUrl,

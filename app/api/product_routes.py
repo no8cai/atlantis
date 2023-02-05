@@ -1,6 +1,6 @@
 from flask import Blueprint, redirect, request
 from flask_login import login_required,current_user
-from ..models import db,Product
+from ..models import db,Product,Cartitem
 from app.forms import ProductForm
 from .auth_routes import validation_errors_to_error_messages
 
@@ -82,6 +82,7 @@ def edit_product(id):
         form.populate_obj(oneProduct)
         db.session.add(oneProduct)
         db.session.commit()
+        # realtecartitems=Cartitem.query.filter(Cartitem.quantity>)
         return oneProduct.to_dict_full()
 
     return {

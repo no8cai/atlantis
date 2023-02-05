@@ -102,7 +102,7 @@ function SingleProduct() {
                 </div>
                 <div className='singleproduct-basicinfo'>
                     <div className='singleproduct-infotitle'>Color</div>
-                    <div>{singleproduct.color}</div>
+                    <div className='singleproduct-subcolor'>{singleproduct.color}</div>
                 </div>
                 <div className='singleproduct-basicinfo'>
                     <div className='singleproduct-infotitle'>Dimension</div>
@@ -176,7 +176,7 @@ function SingleProduct() {
 
            <div>
            <div className='singleproduct-about'>Production information</div>
-           <div className='singleproduct-aboutcontext'>{singleproduct.description}</div>
+           <div className='singleproduct-aboutcontext desplus'>{singleproduct.description}</div>
            </div>
 
         </div>
