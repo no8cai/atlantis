@@ -25,7 +25,7 @@ class Orderitem(db.Model):
          "orderId":self.orderId,
          "productId":self.productId,
          "title":self.title,
-         "price":self.price,
+         "price":str(self.price),
          "imageUrl":self.imageUrl,
          "quantity":self.quantity
         }

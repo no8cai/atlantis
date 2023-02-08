@@ -22,7 +22,7 @@ class Orderdetail(db.Model):
         return{
          "id":self.id,
          "userId":self.userId,
-         "totalprice":self.totalprice,
+         "totalprice":str(self.totalprice),
          "createdAt":str(self.createdAt),
          "updatedAt":str(self.updatedAt)
         }

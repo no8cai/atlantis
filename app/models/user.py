@@ -21,6 +21,7 @@ class User(db.Model, UserMixin):
     cartitems = db.relationship("Cartitem", back_populates='user', cascade="all, delete")
     reviews = db.relationship("Review", back_populates='user', cascade="all, delete")
     orderdetails = db.relationship("Orderdetail", back_populates='user', cascade="all, delete")
+    images = db.relationship("Image", back_populates="user")
 
     @property
     def password(self):

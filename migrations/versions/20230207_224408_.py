@@ -1,8 +1,8 @@
 """empty message
 
-Revision ID: 0c2c313c4bf6
+Revision ID: d7d03bce1c03
 Revises: 
-Create Date: 2023-02-03 17:06:23.875057
+Create Date: 2023-02-07 22:44:08.972261
 
 """
 from alembic import op
@@ -13,7 +13,7 @@ environment = os.getenv("FLASK_ENV")
 SCHEMA = os.environ.get("SCHEMA")
 
 # revision identifiers, used by Alembic.
-revision = '0c2c313c4bf6'
+revision = 'd7d03bce1c03'
 down_revision = None
 branch_labels = None
 depends_on = None
@@ -36,7 +36,18 @@ def upgrade():
 
     if environment == "production":
         op.execute(f"ALTER TABLE users SET SCHEMA {SCHEMA};")
-    
+
+    op.create_table('images',
+    sa.Column('id', sa.Integer(), nullable=False),
+    sa.Column('user_id', sa.Integer(), nullable=False),
+    sa.Column('url', sa.String(), nullable=False),
+    sa.ForeignKeyConstraint(['user_id'], ['users.id'], ),
+    sa.PrimaryKeyConstraint('id')
+    )
+
+    if environment == "production":
+        op.execute(f"ALTER TABLE images SET SCHEMA {SCHEMA};")
+
     op.create_table('orderdetails',
     sa.Column('id', sa.Integer(), nullable=False),
     sa.Column('userId', sa.Integer(), nullable=False),
@@ -49,6 +60,7 @@ def upgrade():
 
     if environment == "production":
         op.execute(f"ALTER TABLE orderdetails SET SCHEMA {SCHEMA};")
+
 
     op.create_table('products',
     sa.Column('id', sa.Integer(), nullable=False),
@@ -125,5 +137,6 @@ def downgrade():
     op.drop_table('cartitems')
     op.drop_table('products')
     op.drop_table('orderdetails')
+    op.drop_table('images')
     op.drop_table('users')
     # ### end Alembic commands ###

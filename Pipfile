@@ -24,6 +24,10 @@ python-dateutil = "==2.8.1"
 python-editor = "==1.0.4"
 greenlet = "==1.1.0"
 Mako = "==1.1.4"
+flask-jwt-extended = "==3.24.1"
+pyjwt = "==1.7.1"
+psycopg2-binary = "==2.8.6"
+boto3 = "*"
 WTForms = {extras = ["email"], version = "*"}
 
 [dev-packages]

@@ -6,3 +6,4 @@ from .db import environment, SCHEMA
 from .review import Review
 from .orderdetail import Orderdetail
 from .orderitem import Orderitem
+from .image import Image

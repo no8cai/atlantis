@@ -12,6 +12,8 @@ from .api.cartitem_routes import cartitem_routes
 from .api.review_routes import review_routes
 from .api.orderdetail_routes import orderdetail_routes
 from .api.orderitem_routes import orderitem_routes
+from .api.image_routes import image_routes
+
 
 from .seeds import seed_commands
 from .config import Config
@@ -39,6 +41,7 @@ app.register_blueprint(cartitem_routes)
 app.register_blueprint(review_routes)
 app.register_blueprint(orderdetail_routes)
 app.register_blueprint(orderitem_routes)
+app.register_blueprint(image_routes, url_prefix='/api/images')
 
 db.init_app(app)
 Migrate(app, db)

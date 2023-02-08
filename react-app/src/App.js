@@ -12,6 +12,8 @@ import Navigation from './components/Navigation';
 import SignupFormModal from './components/SignupFormModal';
 import Landing from './components/LandingPage';
 import SellerCentral from './components/SellerCentral';
+import UploadPicture from './components/file_upload/UploadPicture';
+import ViewImages from './components/file_upload/ViewImages';
 import "./index.css"
 
 function App() {
@@ -42,6 +44,12 @@ function App() {
         <ProtectedRoute path={["/sellercentral",'/createproduct','/editproduct/:productId']}>
           <SellerCentral/>
         </ProtectedRoute>
+        <Route path="/upload">
+          <UploadPicture/>
+        </Route>
+        <Route path="/images">
+          <ViewImages/>
+        </Route>
         <Route path="/">
           <Landing/>
         </Route>
@@ -54,6 +62,7 @@ function App() {
         <ProtectedRoute path='/users/:userId' exact={true} >
           <User />
         </ProtectedRoute> */}
+
         <Route>
           <h1>404</h1>
         </Route>
