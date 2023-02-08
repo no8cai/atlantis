@@ -22,6 +22,9 @@ function CartItems() {
          if(el==null || el==0){
            totalmoney=0 
          }
+         if(el.quantity>el.product.inventory){
+            totalmoney+=el.product.inventory*el.product.price*el.product.discount
+         }
          else{
             totalmoney+=el.quantity*el.product.price*el.product.discount
          }
@@ -158,7 +161,7 @@ function CartItems() {
 
         </div>
         </div>
-        <div className="carritem-listrightsec ci-price">{`$${(product.price*product.discount*quantity).toFixed(2)}`}</div>
+        <div className="carritem-listrightsec ci-price">{(quantity<product.inventory)?`$${(product.price*product.discount*quantity).toFixed(2)}`:`$${(product.price*product.discount*product.inventory).toFixed(2)}`}</div>
         </div>
       ))}
         </div>

@@ -3,6 +3,7 @@ import { useHistory } from "react-router-dom";
 import { useDispatch,useSelector } from "react-redux";
 import { fetchCreateProduct,fetchUpdateProduct, fetchDeleteProduct} from "../../../store/product";
 import './ProductForm.css'
+import { removeCartItembyProductId } from "../../../store/cartitem";
 
 const ProductForm=({product,formType})=>{
     
@@ -82,15 +83,17 @@ const ProductForm=({product,formType})=>{
         else if(discount>=1){errors.push("Product's discount must be less than 100% so the discount should be between 0 and 1");}
         if(inventory.length<=0){errors.push("Product's inventory field is required");}
         else if(isNaN(inventory)){errors.push("Product's inventory must be a real number");}
-        else if(inventory<=0){errors.push("Product's inventory must be greater than 0");}
+        else if(inventory<=1){errors.push("Product's inventory must be greater than 1");}
+        else if(parseInt(inventory)!=inventory){errors.push("Product's inventory must be an positive integer");}
         if(style.length<=0){errors.push("Product's style is required");}
         else if(style.length>=50){errors.push("Product's style must be less than 50 characters")}
         if(brand.length<=0){errors.push("Product's brand is required");}
         else if(brand.length>=50){errors.push("Product's brand must be less than 50 characters")}
         if(color.length<=0){errors.push("Product's color is required");}
-        else if(color.length>=50){errors.push("Product's color must be less than 50 characters")}
+        else if(color.length>=50){errors.push("Product's color must be less than 35 characters")}
         if(dimension.length<=0){errors.push("Product's dimension is required");}
         else if(dimension.length>=50){errors.push("Product's dimension must be less than 50 characters")}
+        else if((!(/^\d+(\.\d+)?x\d+(\.\d+)?x\d+(\.\d+)?$/.test(dimension))) && (!(/^\d+(\.\d+)?X\d+(\.\d+)?X\d+(\.\d+)?$/.test(dimension)))){errors.push("Product's dimension must be in format of (number)x(number)x(number), with unit of inches")}
         if(about.length<=0){errors.push("Product's introduction is required");}
         else if(about.length>=2000){errors.push("Product's introduction must be less than 2000 characters")}
         if(description.length<=0){errors.push("Product's description field is required");}
@@ -107,7 +110,7 @@ const ProductForm=({product,formType})=>{
 
 const handleSubmit = async (e)=>{
         e.preventDefault();
-        const tempProduct = { ...product, title, category,price,discount,inventory,style,brand,color,dimension,about,description,imageUrl};
+        const tempProduct = { ...product, title, category,price,discount,inventory,style,brand,color,dimension:dimension+" inches",about,description,imageUrl};
         const errors=[]
 
         if(formType==="Create Product"){
@@ -134,6 +137,7 @@ const handleSubmit = async (e)=>{
     const deleteEvents= (id)=>{
         const errors=[]
         dispatch(fetchDeleteProduct(id))
+        .then(dispatch(removeCartItembyProductId(id)))
         .then(()=>history.push('/sellercentral'))
         .catch(async (err)=>{
           const errobj=await err.json();
@@ -256,7 +260,7 @@ const handleSubmit = async (e)=>{
 
           <div className='productform-listitem'>
           <label>
-          Product's dimension
+          Product's dimension, ex.10x8x9
           </label>
           <input
           className='input'

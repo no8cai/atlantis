@@ -24,6 +24,7 @@ div.singleproject-imagesec img{
 
 .singleproduct-title{
     font-size: 30px;
+    overflow-wrap: break-word;
 }
 
 .singleproduct-decocontext{
@@ -47,6 +48,7 @@ div.singleproject-imagesec img{
     display: flex;
     flex-direction: column;
     gap: 20px;
+    /* overflow-x: hidden; */
 }
 
 .singleproduct-choice{
@@ -118,6 +120,7 @@ div.singleproject-imagesec img{
     font-size: 15px;
     font-weight: bold;
     width: 40%;
+    margin-right: 10px;
 }
 
 .singleproduct-rightsec{
@@ -185,5 +188,14 @@ div.singleproject-imagesec img{
 }
 
 .singleproduct-aboutcontext{
+    /* overflow-x: hidden; */
+    overflow-wrap: break-word;
+}
+
+.singleproduct-subcolor{
     overflow-x: hidden;
+}
+
+.desplus{
+    padding-top: 15px;
 }
