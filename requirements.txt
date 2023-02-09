@@ -32,3 +32,4 @@ flask-jwt-extended==3.24.1
 pyjwt==1.7.1
 psycopg2-binary==2.8.6
 boto3
+openai

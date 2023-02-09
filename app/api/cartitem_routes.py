@@ -11,7 +11,7 @@ cartitem_routes = Blueprint('cartitmes', __name__,url_prefix="/api")
 def all_cartitems():
     return {"Cartitems":[cartitem.to_dict_full() for cartitem in Cartitem.query.all()]}
 
-# Get all product data by the current user
+# Get all cartitems by the current user
 @cartitem_routes.route('/cartitems/current')
 @login_required
 def all_current_cartitems():

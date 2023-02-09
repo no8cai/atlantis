@@ -29,6 +29,7 @@ pyjwt = "==1.7.1"
 psycopg2-binary = "==2.8.6"
 boto3 = "*"
 WTForms = {extras = ["email"], version = "*"}
+openai = "*"
 
 [dev-packages]
 

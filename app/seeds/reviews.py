@@ -8,7 +8,7 @@ def seed_reviews():
     review2 = Review(
         userId=1, productId=2, stars=3,comments='very very nice product')
     review3 = Review(
-        userId=1, productId=3, stars=4,comments='very very very nice product')       
+        userId=2, productId=3, stars=4,comments='very very very nice product')       
 
     db.session.add(review1)
     db.session.add(review2)
