@@ -115,3 +115,14 @@
 .rf-button:hover{
     background-color: #e4a70f;
 }
+
+.rf-errorms i{
+    color: rgb(14, 170, 170);
+}
+
+.rf-errorms{
+    display: flex;
+    gap: 10px;
+    font-size: 15px;
+    margin-bottom: 5px;
+}

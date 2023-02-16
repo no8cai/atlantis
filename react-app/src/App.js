@@ -9,7 +9,10 @@ import Landing from './components/LandingPage';
 import SellerCentral from './components/SellerCentral';
 import UploadPicture from './components/file_upload/UploadPicture';
 import ViewImages from './components/file_upload/ViewImages';
+import Error404page from './components/Error/Error404';
+
 import "./index.css"
+
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -39,12 +42,12 @@ function App() {
         <ProtectedRoute path={["/sellercentral",'/createproduct','/editproduct/:productId']}>
           <SellerCentral/>
         </ProtectedRoute>
-        <Route path="/upload">
+        {/* <Route path="/upload">
           <UploadPicture/>
         </Route>
         <Route path="/images">
           <ViewImages/>
-        </Route>
+        </Route> */}
         <Route path="/">
           <Landing/>
         </Route>
@@ -59,7 +62,7 @@ function App() {
         </ProtectedRoute> */}
 
         <Route>
-          <h1>404</h1>
+          <Error404page/>
         </Route>
       </Switch>
     </BrowserRouter>

@@ -22,16 +22,17 @@ const ReviewForm=({theReview,formType,theProduct})=>{
     const [comments, setComments] = useState(initComments);
     const [stars, setStars] = useState(initStars);
     
-    const [validationErrors, setValidationErrors] = useState([]);
+    const [validationErrors, setValidationErrors] = useState({});
 
     useEffect(() => {
         if (!comments&&!stars) {
-          setValidationErrors([]);
+          setValidationErrors({});
           return;
         }
-        const errors =[];
-        if(comments.length<=0){errors.push("Listing's review field is required");}
-        if(isNaN(stars)){errors.push("Listing's stars must be a number");}
+        const errors ={};
+        if(comments.length<=0){errors["commenterror"]="Listing's review field is required!";}
+        if(isNaN(stars)){errors["starerror"]="Listing's stars must be a number!";}
+        else if(stars<1){errors["starerror"]="Listing's star rating is required!";}
 
         setValidationErrors(errors);
   
@@ -39,17 +40,17 @@ const ReviewForm=({theReview,formType,theProduct})=>{
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        if (validationErrors.length) return;
+        if (Object.keys(validationErrors).length) return;
 
         const tempReview = { ...theReview, comments,stars };
-        const errors =[];
+        const errors ={};
 
         if(formType==="Create Review"){
           dispatch(fetchCreateReview(tempReview,theProduct.id))
           .then(()=>history.push(`/orderdetails`))
           .catch(async (err)=>{
               const errobj=await err.json();
-              errors.push(errobj.message)
+              errors["servererror"]=errobj.message
               setValidationErrors(errors)
           });
           }
@@ -57,8 +58,8 @@ const ReviewForm=({theReview,formType,theProduct})=>{
           dispatch(fetchUpdateReview(tempReview))
           .then(()=>history.push(`/orderdetails`))
           .catch(async (err)=>{
-             const  errobject=await err.json();
-            errors.push(errobject.message)
+             const  errobj=await err.json();
+            errors["servererror"]=errobj.message
             setValidationErrors(errors)
           });
         }
@@ -85,7 +86,7 @@ const ReviewForm=({theReview,formType,theProduct})=>{
         
         <form className='reviewform-form' onSubmit={handleSubmit}>
 
-        {!!validationErrors.length && 
+        {/* {!!validationErrors.length && 
         <div className="reviewform-errorload">
         <div className="reviewform-erroricon"><i className="fa-solid fa-circle-exclamation" /></div>
         <div className="reviewform-errorinfo">
@@ -97,10 +98,13 @@ const ReviewForm=({theReview,formType,theProduct})=>{
         </div>
         </div>
         </div>
-        }
+        } */}
           <div className="reviewform-infomation">
           
           <div className='rf-ratesec'>
+          {!!validationErrors["starerror"] && (
+           <div className='rf-errorms'><i className="fa-solid fa-circle-exclamation"/>{validationErrors["starerror"]}</div>
+          )}
           <div className='rf-ratetitle'>Overall rating</div>
           <div className="rate">
           <input type="radio" id="star5" name="rate" value="5" 
@@ -135,15 +139,20 @@ const ReviewForm=({theReview,formType,theProduct})=>{
          <div className="rf-review">
           <label className="rf-text">
           Add a written review</label>
+          {!!validationErrors["commenterror"] && (
+           <div className='rf-errorms'><i className="fa-solid fa-circle-exclamation"/>{validationErrors["commenterror"]}</div>
+         )}
           <textarea
           placeholder='What did you like or dislike? What did you use this product for?'
           type="text"
           name="comments"
           onChange={(e) => setComments(e.target.value)}
-          value={comments}/></div>
-
+          value={comments}
+          /></div>
          </div>
-
+         {!!validationErrors["servererror"] && (
+           <div className='rf-errorms'><i className="fa-solid fa-circle-exclamation"/>{validationErrors["servererror"]}</div>
+         )}
          <input type="submit" value={`Submit`} className='rf-button'/>
         </form>
         </div>

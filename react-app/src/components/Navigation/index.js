@@ -1,7 +1,7 @@
 // frontend/src/components/Navigation/index.js
 import React from 'react';
 import { NavLink } from 'react-router-dom';
-import { useSelector } from 'react-redux';
+import { useDispatch,useSelector } from 'react-redux';
 import ProfileButton from './ProfileButton';
 import OpenModalButton from '../OpenModalButton';
 import LoginFormModal from '../LoginFormModal';
@@ -9,16 +9,22 @@ import './Navigation.css';
 import logo from './atlogo.png'
 import { useHistory } from 'react-router-dom';
 import { useState } from 'react';
+import { fetchUserCartItems } from "../../store/cartitem";
+import { useEffect } from 'react';
+
 
 function Navigation(){
   
+  const dispatch = useDispatch();
   const sessionUser = useSelector(state => state.session.user);
+  const cartitemsObj = useSelector(state => state.cartitems);
+  const usercartitems=Object.values(cartitemsObj)
   const [searchitem, setSearchitem] = useState("");
   const history=useHistory()
 
-  // useEffect(() => {
-  
-  // }, [searchitem]);
+  useEffect(() => {
+    dispatch(fetchUserCartItems());
+}, [dispatch]);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -50,6 +56,7 @@ function Navigation(){
     );
   }
 
+  if(!cartitemsObj) return null
   return (
     <div className='navigation-section'>
       <div className='navigation-leftsec'>
@@ -73,10 +80,14 @@ function Navigation(){
      </div>
       <div className='navigation-rightsec'>
            <div><ProfileButton user={sessionUser} /></div>
-           <NavLink exact to="/orderdetails" className='ng-secondsec'><div className='profile-context'>Returns</div> <div className='np-seconddown'>& Orders</div></NavLink>
-           <div>
-           <NavLink exact to="/cartitems" className={'ng-thirdsec'}><i className="fa-sharp fa-solid fa-cart-plus"></i></NavLink>
+           {!!sessionUser &&(<NavLink exact to="/orderdetails" className='ng-secondsec'><div className='profile-context'>Returns</div> <div className='np-seconddown'>& Orders</div></NavLink>)}
+           {!sessionUser &&(<NavLink exact to="/login" className='ng-secondsec'><div className='profile-context'>Returns</div> <div className='np-seconddown'>& Orders</div></NavLink>)}
+           <div className='nv-cartsec'>
+           <NavLink exact to="/cartitems" className={'ng-thirdsec'}><i className="fa-sharp fa-solid fa-cart-plus"/>
+           </NavLink>
+           <div className='nv-cartnumber'>{usercartitems.length}</div>
             </div>
+            
       </div>
       {/* <div>{isLoaded && sessionLinks}</div> */}
     </div>

@@ -226,3 +226,27 @@
 div#modal{
     z-index: 999;
 }
+
+.nv-cartnumber{
+    color:rgb(0, 0, 0,0.6) ;
+    font-weight: bold;
+    font-size: 15px;
+    background-color: #ffbd18;
+    border-radius: 30px;
+    width: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.nv-cartsec{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+   
+}
+
+.ng-thirdsec{
+
+}

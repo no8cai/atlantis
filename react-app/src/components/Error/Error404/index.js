@@ -14,7 +14,7 @@ const Error404page = () => {
             </a>
             </span>
            </div>
-           <img src='https://images-na.ssl-images-amazon.com/images/G/01/error/94._TTD_.jpg' className="error-dog"/>
+           <img src='https://app-bucket-eric001.s3.us-west-2.amazonaws.com/a9556ff6f65342e9982d2df5a390fc14.jpg' className="error-dog"/>
 
         </div>
     )

@@ -236,6 +236,7 @@ div.singleproject-imagesec img{
     color: #ffa100;
   }
   
+  .rating-content[data-rating="0"] span:nth-child(n),
   .rating-content[data-rating="0.5"] span:nth-child(n+2),
   .rating-content[data-rating="1"] span:nth-child(n+2),
   .rating-content[data-rating="1.5"] span:nth-child(n+3),
@@ -251,15 +252,18 @@ div.singleproject-imagesec img{
 .ratesec{
     display: flex;
     align-items: center;
-    gap: 5px;
+    gap: 20px;
+    padding-bottom: 5px;
 }
 
 .sp-rev{
-    padding-left: 40%;
+    padding-left: 10%;
     padding-right: 40%;
     padding-top: 30px;
     border-top:1px rgb(0, 0, 0,0.2) solid;
     margin-top: 30px;
+    display: flex;
+    flex-direction: row;
 }
 
 .sp-rvtitle{
@@ -294,4 +298,68 @@ div.singleproject-imagesec img{
     margin-bottom: 5px;
     border-left: 1px solid rgb(0, 0, 0,0.2);
     padding-left: 10px;
+}
+
+.sp-rateleftsec{
+    padding-right: 200px;
+    width: 30vw;
+}
+
+.sp-rateitem{
+    display: flex;
+    gap: 10px;
+}
+
+.sp-ratingmap{
+    display: flex;
+    flex-direction: column;
+    gap:10px
+}
+
+.middle {
+    /* float: left; */
+    width: 70%;
+    /* margin-top: 10px; */
+  }
+
+.bar-container {
+    width: 100%;
+    background-color: #f1f1f1c4;
+    text-align: center;
+    color: white;
+    border-radius: 5px;
+    border: 1px solid rgb(0, 0, 0,0.3);
+  }
+
+.bar-5 { width: 0%; height: 18px; background-color: #ff9800;
+    border-bottom-left-radius: 5px;
+    border-top-left-radius: 5px; 
+    /* max-width: 100%; */
+}
+.bar-4 {width: 0%; height: 18px; background-color: #ff9800;
+    border-bottom-left-radius: 5px;
+    border-top-left-radius: 5px;   
+}
+.bar-3 {width: 0%; height: 18px; background-color: #ff9800;
+    border-bottom-left-radius: 5px;
+    border-top-left-radius: 5px;   
+}
+.bar-2 {width: 0%; height: 18px; background-color: #ff9800;
+    border-bottom-left-radius: 5px;
+    border-top-left-radius: 5px;   
+}
+.bar-1 {width: 0%; height: 18px; background-color: #ff9800;
+    border-bottom-left-radius: 5px;
+    border-top-left-radius: 5px;   
+}
+
+.sp-decotext{
+    font-size: 14px;
+    color: rgb(0, 0, 0,0.6);
+    margin-bottom: 5px;
+}
+
+.sp-about{
+   font-weight: bold;
+   font-size: 15px;
 }

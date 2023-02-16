@@ -58,8 +58,23 @@ const Orderpage=()=>{
         dispatch(fetchDeleteOrder(orderId))
         }
     }
+   
+    
 
     if((!ordersObj)||(!orderitemsObj)||(!reviewsObj)) return null
+    else if(orderdetails.length==0) return (
+        <div className="Od-secion">
+            <div className="od-fristsec"> 
+            <div className="od-fristtitle">Your Orders</div>    
+            </div>
+            <div className="od-secondsec">
+            <div className="od-secondtitle">Orders</div>
+            </div>
+             <div className="od-nooders">
+             <div className="od-nocontext">Your don't have any orders</div>
+            </div>
+        </div>
+    )
 
     return(
         <div className="Od-secion">

@@ -74,15 +74,31 @@ function SingleProduct() {
     if((!singleproduct)||(!reviewsObj)) return (<div className='sp-broken'>This page was not able to load</div>)
 
     let totalstars=0
-
+    let starrateobj={1:0,2:0,3:0,4:0,5:0}
+    
     reviews.forEach((el)=>{
         if(el==null){
             totalstars=0 
           }
+        
          totalstars+=el.stars
+         if(el.stars==1){
+            starrateobj[1]+=1
+         }else if(el.stars==2){
+            starrateobj[2]+=1
+         }else if(el.stars==3){
+            starrateobj[3]+=1
+         }else if(el.stars==4){
+            starrateobj[4]+=1
+         }else if(el.stars==5){
+            starrateobj[5]+=1
+         }
     })
 
     const rateround=(num)=>{
+        if(num.toString=="NaN"){
+            return 0
+        }
         let temp=parseInt(num/0.5)
         return temp*0.5
     }
@@ -219,7 +235,99 @@ function SingleProduct() {
            </div>
 
            <div className="sp-rev">
+            <div className='sp-rateleftsec'>
+             <div className='sp-rvtitle'>Customer reviews</div>
+             <div className='ratesec'>
+                  <div class="rating-content" data-rating={rateround(totalstars?totalstars/reviews.length:0)}>
+                  <span>★</span>
+                  <span>★</span>
+                  <span>★</span>
+                  <span>★</span>
+                  <span>★</span>
+                  </div>   
+                  <div className='sp-about'>{`${totalstars?totalstars/reviews.length.toFixed(1):0} out of 5`}</div>
+            </div>
+            <div className='sp-decotext'>{`${reviews.length} global ${reviews.length==1?"rating":"ratings"}`}</div>
+
+            <div className='sp-ratingmap'>
+                <div className='sp-rateitem'>
+                   <div class="side">
+                   <div className='singleproduct-decocontext'>5 star</div>
+                   </div>
+                   <div class="middle">
+                   <div class="bar-container">
+                   <div class="bar-5" style={{width:`${(starrateobj[5]?starrateobj[5]/reviews.length:0).toFixed(2)*100}%`}}></div>
+                   </div>
+                   </div>
+                   <div class="side right">
+                   <div className='singleproduct-decocontext'>{`${(starrateobj[5]?starrateobj[5]/reviews.length:0).toFixed(2)*100}%`}</div>
+                   </div>
+                </div>
+
+                 <div className='sp-rateitem'>
+                    <div class="side">
+                    <div className='singleproduct-decocontext'>4 star</div>
+                    </div>
+                    <div class="middle">
+                    <div class="bar-container">
+                    <div class="bar-4" style={{width:`${(starrateobj[4]?starrateobj[4]/reviews.length:0).toFixed(2)*100}%`}}></div>
+                   </div>
+                   </div>
+                   <div class="side right">
+                   <div className='singleproduct-decocontext'>{`${(starrateobj[4]?starrateobj[4]/reviews.length:0).toFixed(2)*100}%`}</div>
+                   </div>
+                </div>
+
+                <div className='sp-rateitem'>
+                    <div class="side">
+                    <div className='singleproduct-decocontext'>3 star</div>
+                    </div>
+                    <div class="middle">
+                    <div class="bar-container">
+                    <div class="bar-3" style={{width:`${(starrateobj[3]?starrateobj[3]/reviews.length:0).toFixed(2)*100}%`}}></div>
+                    </div>
+                    </div>
+                    <div class="side right">
+                    <div className='singleproduct-decocontext'>{`${(starrateobj[3]?starrateobj[3]/reviews.length:0).toFixed(2)*100}%`}</div>
+                    </div>
+                </div>
+
+                <div className='sp-rateitem'>
+                    <div class="side">
+                    <div className='singleproduct-decocontext' >2 star</div>
+                    </div>
+                    <div class="middle">
+                    <div class="bar-container">
+                    <div class="bar-2" style={{width:`${(starrateobj[2]?starrateobj[2]/reviews.length:0).toFixed(2)*100}%`}}></div>
+                    </div>
+                    </div>
+                    <div class="side right">
+                    <div className='singleproduct-decocontext'>{`${(starrateobj[2]?starrateobj[2]/reviews.length:0).toFixed(2)*100}%`}</div>
+                    </div>
+                </div>
+
+                <div className='sp-rateitem'>
+                    <div class="side">
+                    <div className='singleproduct-decocontext'>1 star</div>
+                    </div>
+                    <div class="middle">
+                    <div class="bar-container">
+                    <div class="bar-1" style={{width:`${(starrateobj[1]?starrateobj[1]/reviews.length:0).toFixed(2)*100}%`}}></div>
+                    </div>
+                    </div>
+                    <div class="side right">
+                    <div className='singleproduct-decocontext'>{`${(starrateobj[1]?starrateobj[1]/reviews.length:0).toFixed(2)*100}%`}</div>
+                    </div>
+                </div>
+            </div>
+
+
+            </div>
+            <div>
             <div className='sp-rvtitle'>Top reviews from the United States</div>
+            {reviews.length==0&&(
+             <div>No review for this product yet</div>
+            )}
             {reviews.map(({id,user,comments,stars})=>(
             <div key={id} className="sp-review">
                 <div className="userinfo">
@@ -239,9 +347,10 @@ function SingleProduct() {
                <div className='sp-rvcontext'>Verified Purchase</div>
                <div className="review">{comments}</div>
             </div>
+            
              ))}
            </div>
-
+           </div>
 
 
 
