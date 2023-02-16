@@ -5,7 +5,7 @@ import InventoryList from './InventorList';
 import CreatProduct from '../Product/CreateProduct';
 import EditProduct from '../Product/EditProduct';
 import logo from '../Navigation/atlogoseller.png'
-
+import Footerseller from '../Footer/SellFooter';
 
 function SellerCentral() {
     const sessionUser = useSelector(state => state.session.user);
@@ -47,6 +47,7 @@ function SellerCentral() {
               <InventoryList/>
               </Route>
             </Switch>
+            <Footerseller/>
         </div>
     )
 }

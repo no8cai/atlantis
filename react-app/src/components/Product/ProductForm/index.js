@@ -186,22 +186,26 @@ const ProductForm=({product,formType})=>{
           <div className='productform-totalsec'><div className="productform-title">{formType}</div>
           
           <div className="pf-awssec">
-          <form onSubmit={handleawsSubmit} className="pf-picupload">
+           <form onSubmit={handleawsSubmit} className="pf-picupload">
+            <div className="pf-awstitle">Please upload your product image</div>
+            <div className="pf-container">
             <input
               type="file"
               accept="image/*"
               onChange={updateImage}
-              
+              className="custom-file-input"
             />
+            </div>
             <button type="submit" className="pf-imagebtn">Upload Image</button>
             {(imageLoading)&& <p>Loading image...</p>}
           </form>
 
           <img 
-            src={imageUrl} className="productlist-image"
-            onError={e => { e.currentTarget.src = "https://www.shutterstock.com/image-vector/coming-soon-under-construction-yellow-600w-1746344219.jpg"; }}
+            src={imageUrl} className="productlist-image pf-image"
+            onError={e => { e.currentTarget.src = "https://flxtable.com/wp-content/plugins/pl-platform/engine/ui/images/image-preview.jpg"; }}
             />
           </div>
+
           <form className='productform-form' onSubmit={handleSubmit}>
             
           <div className='productform-listitem'>

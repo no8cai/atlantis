@@ -90,7 +90,7 @@
     margin-right: 20px;
     color: white;
     background-color: rgb(32, 113, 140);
-    width:150px;
+    width:200px;
     text-align: center;
     height: 30px;
     padding-top:5%;
@@ -112,9 +112,30 @@
     color: black;
     font-size: 14px;
     margin-right: 20px;
+    text-align: center;
 }
 
 .sell-noitems{
    font-size: 20px;
    padding-left: 20px;
+}
+
+.projectlist-titles{
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    padding-left: 30px;
+    padding-right: 30px;
+}
+
+.projectlist-titletext{
+    font-family: 'Lucida Sans Regular', sans-serif;
+    font-size: 15px;
+    color: rgb(0, 0, 0,0.7);
+    width: 16%;
+    text-align:center;
+}
+
+.inventory-list{
+    min-height: 65vh;
 }

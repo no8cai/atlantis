@@ -30,6 +30,15 @@ function InventoryList() {
     return(
         <div className='inventory-list'>
         
+        <div className="projectlist-titles">
+                    <div className="projectlist-titletext">Product Image</div>
+                    <div className="projectlist-titletext">Product Title</div>
+                    <div className="projectlist-titletext">Category</div>
+                    <div className="projectlist-titletext">Listing Price</div>
+                    <div className="projectlist-titletext">Product Brand</div>
+                    <div className="projectlist-titletext">Product Color</div>
+                    <div className="projectlist-titletext">More</div>
+                </div>
         {userprojects.map(({ id, title,category,price,discount,brand,imageUrl,color}) => (
         <div className='managebox' key={id}>
             <div className='productlist-boxitem'>
@@ -42,7 +51,7 @@ function InventoryList() {
             </div>
             <div className="productlist-item">{`${title.slice(0,60)}...`}</div>
             <div className="productlist-item">{category}</div>
-            <div className="productlist-item">{price}</div>
+            <div className="productlist-item">{`$${price}`}</div>
             <div className="productlist-item">{brand.slice(0,15)}</div>
             <div className="productlist-item">{color.slice(0,10)}</div>
             </NavLink>
