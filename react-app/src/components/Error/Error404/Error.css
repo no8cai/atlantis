@@ -1,0 +1,25 @@
+.error-404sec{
+   padding-left: 30%;
+   padding-right: 30%;
+   margin-top: 20px;
+   margin-bottom: 40px;
+}
+
+.error-frist{
+   font-size: 180px;
+   color: rgb(0, 0, 0,0.5);
+}
+
+.error-info{
+    font-size: 50px;
+    color: rgb(0, 0, 0,0.5);
+}
+.error-redirect>span{
+    font-size: 20px;
+    color: rgb(0, 0, 0,0.5);
+}
+
+.error-homepage{
+    text-decoration: none;
+    color: rgb(0, 140, 255);
+}

@@ -6,6 +6,8 @@ import { useHistory } from "react-router-dom";
 import { fetchUserCartItems } from "../../store/cartitem";
 import { fetchUpdateCartItem } from "../../store/cartitem";
 import { fetchDeleteCartItem } from "../../store/cartitem";
+import { fetchCreateOrder } from "../../store/orderdetail";
+import { fetchCreateOrderitem } from "../../store/orderitem";
 import './CartItem.css'
 
 function CartItems() {
@@ -68,10 +70,34 @@ function CartItems() {
        }
 
     const checkoutEvents=()=>{
+        const temporder={totalprice:totalmoney.toFixed(2)}
         let itemsidarr=usercartitems.map((el)=>el.id)
-        itemsidarr.forEach(itemid => {
-            dispatch(fetchDeleteCartItem(itemid))
-        });
+
+        dispatch(fetchCreateOrder(temporder))
+        .then(result=>{
+            
+            usercartitems.forEach(item=>{
+               const tempoderitem={
+                productId:item.product.id,
+                quantity:item.quantity,
+                title:item.product.title,
+                price:item.product.price*item.product.discount,
+                imageUrl:item.product.imageUrl
+               }
+            dispatch(fetchCreateOrderitem(tempoderitem,result.id))
+            })
+       
+        })
+        .then(
+            itemsidarr.forEach(itemid =>{
+                dispatch(fetchDeleteCartItem(itemid))
+            })
+        )
+        .catch(async (err)=>{
+            const errobj=await err.json();
+            // errors.push(errobj.message)
+            // setValidationErrors(errors)
+          });
     }
 
     const noitemEvents=()=>{

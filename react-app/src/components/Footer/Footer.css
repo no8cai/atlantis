@@ -13,3 +13,22 @@
     color: white;
     font-weight: bold;
 }
+
+.ft-context{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    gap: 10px;
+    height: 60%;
+}
+
+.footer-links-subcontext{
+    text-decoration: none;
+    color: rgba(255, 255, 255, 0.49);
+    font-size: 12px;
+}
+
+.footer-links-subcontext:hover{
+    color: white;
+    text-decoration: underline;
+}

@@ -30,6 +30,7 @@ function Homepage() {
 
 
 const slides =[
+  {url:'https://m.media-amazon.com/images/I/61cHDB0YpbL._SX3000_.jpg',title:'Dress'},
   {url:'https://m.media-amazon.com/images/I/61rKNNX+o+L._SX3000_.jpg',title:'Beach'},
   {url:'https://m.media-amazon.com/images/I/71DjHmMj+jL._SX3000_.jpg',title:'Boat'},
   {url:'https://m.media-amazon.com/images/I/71qKCoGx16L._SX3000_.jpg',title:'Flyer'},
@@ -42,7 +43,6 @@ const containerSytles = {
 };
 
 
-    
 
     if(!productsObj) return null
     // if(!productsObj || !allproducts || !randProduct1 || !randProduct2) return null
@@ -59,7 +59,7 @@ const containerSytles = {
             <div className='homepage-secondsec'>
                <div className='sc-entire'>
                <div className='sc-first'>
-               <a href='https://firestarter.onrender.com/' className="footer-links-labels" title='explore our group project'>
+               <a href='https://firestarter.onrender.com/' className="footer-links-labels" title='explore our group project' target="_blank">
                <img 
                src={'https://media.tenor.com/UIJ9DZX6AR4AAAAd/atlantis.gif'} className="image"
                onError={e => { e.currentTarget.src = "https://www.shutterstock.com/image-vector/coming-soon-under-construction-yellow-600w-1746344219.jpg"; }}

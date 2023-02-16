@@ -13,6 +13,7 @@ from .api.review_routes import review_routes
 from .api.orderdetail_routes import orderdetail_routes
 from .api.orderitem_routes import orderitem_routes
 from .api.image_routes import image_routes
+from .api.openai_routes import aichat_routes
 
 
 from .seeds import seed_commands
@@ -42,6 +43,7 @@ app.register_blueprint(review_routes)
 app.register_blueprint(orderdetail_routes)
 app.register_blueprint(orderitem_routes)
 app.register_blueprint(image_routes, url_prefix='/api/images')
+app.register_blueprint(aichat_routes, url_prefix='/api/aichats')
 
 db.init_app(app)
 Migrate(app, db)

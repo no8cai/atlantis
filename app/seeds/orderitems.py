@@ -9,10 +9,13 @@ def seed_orderitems():
         orderId=1, productId=2, title='sample goods2',price=60,imageUrl='http://image1.gpg',quantity=1) 
     orderitem3 = Orderitem(
         orderId=2, productId=3, title='sample goods3',price=70,imageUrl='http://image1.gpg',quantity=1) 
+    orderitem4 = Orderitem(
+        orderId=3, productId=5, title='sample goods3',price=80,imageUrl='http://image1.gpg',quantity=1) 
     
     db.session.add(orderitem1)
     db.session.add(orderitem2)
     db.session.add(orderitem3)
+    db.session.add(orderitem4)
 
     db.session.commit()
 

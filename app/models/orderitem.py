@@ -1,6 +1,7 @@
 from .db import db, environment, SCHEMA, add_prefix_for_prod
 from .user import User
 from .product import Product
+from .orderdetail import Orderdetail
 
 class Orderitem(db.Model):
     __tablename__ = 'orderitems'
@@ -24,6 +25,19 @@ class Orderitem(db.Model):
          "id":self.id,
          "orderId":self.orderId,
          "productId":self.productId,
+         "title":self.title,
+         "price":str(self.price),
+         "imageUrl":self.imageUrl,
+         "quantity":self.quantity
+        }
+
+    def to_dict_full(self):
+        return{
+         "id":self.id,
+         "orderId":self.orderId,
+         "order":Orderdetail.query.get(self.orderId).to_dict(), 
+         "productId":self.productId,
+         "product":Product.query.get(self.productId).to_dict(), 
          "title":self.title,
          "price":str(self.price),
          "imageUrl":self.imageUrl,

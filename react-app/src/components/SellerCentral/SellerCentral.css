@@ -55,8 +55,8 @@
 }
 
 .productlist-image{
-    height: 80px;
-    width: 150px;
+    max-height: 80px;
+    max-width: 150px;
     object-fit: cover;
 }
 

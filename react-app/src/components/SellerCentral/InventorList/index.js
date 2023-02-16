@@ -25,7 +25,7 @@ function InventoryList() {
     }
 
     if(!productsObj) return null
-    else if(userprojects.length==0) return (<span className="sell-noitems">You dont have any inventory</span>)
+    else if(userprojects.length==0) return (<span className="sell-noitems">You don't have any inventory</span>)
 
     return(
         <div className='inventory-list'>

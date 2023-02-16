@@ -25,3 +25,13 @@ class Review(db.Model):
          "stars":self.stars,
          "comments":self.comments
         }
+
+    def to_dict_full(self):
+        return{
+         "id":self.id,
+         "userId":self.userId,
+         "user": User.query.get(self.userId).to_dict(),   
+         "productId":self.productId,
+         "stars":self.stars,
+         "comments":self.comments
+        }

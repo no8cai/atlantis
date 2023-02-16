@@ -9,12 +9,12 @@ review_routes = Blueprint('reviews', __name__,url_prefix="/api")
 #Get all reviews
 @review_routes.route('/reviews')
 def all_reviews():
-    return {"Reviews":[review.to_dict() for review in Review.query.all()]}
+    return {"Reviews":[review.to_dict_full() for review in Review.query.all()]}
 
 #Get all reviews by productId
 @review_routes.route('/products/<int:id>/reviews')
 def all_product_reviews(id):
-    return {"Reviews":[review.to_dict() for review in Review.query.all() if int(review.productId) == int(id)]}
+    return {"Reviews":[review.to_dict_full() for review in Review.query.all() if int(review.productId) == int(id)]}
 
 # Create a review based on productId
 @review_routes.route('/products/<int:id>/reviews', methods=['POST'])
@@ -33,7 +33,7 @@ def add_review(id):
         form.populate_obj(new_review)
         db.session.add(new_review)
         db.session.commit()
-        return new_review.to_dict(),201
+        return new_review.to_dict_full(),201
     
     return {
         'message':'Validation Error',
@@ -69,7 +69,7 @@ def edit_product(id):
         db.session.add(oneReview)
         db.session.commit()
         # realtecartitems=Cartitem.query.filter(Cartitem.quantity>)
-        return oneReview.to_dict()
+        return oneReview.to_dict_full()
 
     return {
         'message':'Validation Error',

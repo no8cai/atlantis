@@ -49,6 +49,11 @@ function ProfileButton({ user }) {
     closeMenu();
   };
 
+  const docalphabot = (e) => {
+    e.preventDefault();
+    history.push("/docalpha")
+    closeMenu();
+  };
 
   const signup = (e) => {
     e.preventDefault();
@@ -80,8 +85,9 @@ function ProfileButton({ user }) {
             <div className="pf-dptopsec">Manage</div>
             <div className="pf-dpinfosec">
             <div className="pf-dptitle">Your account</div>
-            <div>{user.username}</div>
+            <div>Hello {user.username}!</div>
             <div>{user.email}</div>
+            <div onClick={docalphabot} className='pf-dpbuttom'>Chat with Doc Alpha</div>
             <div onClick={sellcentral} className='pf-dpbuttom'>Seller Central</div>
             <div>
               <div onClick={logout} className='pf-dpbuttom'>Sign Out</div>

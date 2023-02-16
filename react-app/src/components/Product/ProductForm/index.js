@@ -56,6 +56,8 @@ const ProductForm=({product,formType})=>{
     const [about, setAbout] = useState(initAbout);
     const [description, setDescription] = useState(initDescription);
     const [imageUrl, setImageUrl] = useState(initImageUrl);
+    const [image, setImage] = useState(null);
+    const [imageLoading, setImageLoading] = useState(false);
 
     const [validationErrors, setValidationErrors] = useState([]);
 
@@ -98,7 +100,7 @@ const ProductForm=({product,formType})=>{
         else if(about.length>=2000){errors.push("Product's introduction must be less than 2000 characters")}
         if(description.length<=0){errors.push("Product's description field is required");}
         else if(description.length>=4000){errors.push("Product's description must be less than 4000 characters")}
-        if(imageUrl.length<=0){errors.push("Product's image link field is required");}
+        if(imageUrl.length<=0){errors.push("Product's image is required");}
         else if (!imageUrl.startsWith("http://") && !imageUrl.startsWith("https://")){errors.push("Product's image link must be a valid website link with http:// or https://");}        
         else if (!imageUrl.endsWith("jpg") && !imageUrl.endsWith("gif") && !imageUrl.endsWith("png") && !imageUrl.endsWith("JPG") && !imageUrl.endsWith("GIF") && !imageUrl.endsWith("PNG")){errors.push("Product's image link must have a valid type of jpg, png or gif");}
         else if(imageUrl.length>=1000){errors.push("Product's image url must be less than 1000 characters")}
@@ -108,7 +110,7 @@ const ProductForm=({product,formType})=>{
       }, [title,category,price,discount,inventory,style,brand,color,dimension,about,description,imageUrl]);    
 
 
-const handleSubmit = async (e)=>{
+    const handleSubmit = async (e)=>{
         e.preventDefault();
         const tempProduct = { ...product, title, category,price,discount,inventory,style,brand,color,dimension:dimension+" inches",about,description,imageUrl};
         const errors=[]
@@ -146,10 +148,60 @@ const handleSubmit = async (e)=>{
         });
         }
 
+    const handleawsSubmit = async (e) => {
+            e.preventDefault();
+            const formData = new FormData();
+            formData.append("image", image);
+            const errors=[]
+            
+            // aws uploads can be a bit slow—displaying
+            // some sort of loading message is a good idea
+            
+            setImageLoading(true); 
+            const res = await fetch('/api/images', {
+                method: "POST",
+                body: formData,
+            });
+            if (res.ok) {
+                const fbobj=await res.json();
+                console.log(fbobj)
+                setImageLoading(false);
+                setImageUrl(fbobj.url)
+                // history.push("/images");
+            }
+            else {
+                setImageLoading(false);
+                errors.push("image loading error")
+                setValidationErrors(errors)
+            }
+        }
+
+    const updateImage = (e) => {
+            const file = e.target.files[0];
+            setImage(file);
+        }    
 
     return(
         <div className='productform-section'>
           <div className='productform-totalsec'><div className="productform-title">{formType}</div>
+          
+          <div className="pf-awssec">
+          <form onSubmit={handleawsSubmit} className="pf-picupload">
+            <input
+              type="file"
+              accept="image/*"
+              onChange={updateImage}
+              
+            />
+            <button type="submit" className="pf-imagebtn">Upload Image</button>
+            {(imageLoading)&& <p>Loading image...</p>}
+          </form>
+
+          <img 
+            src={imageUrl} className="productlist-image"
+            onError={e => { e.currentTarget.src = "https://www.shutterstock.com/image-vector/coming-soon-under-construction-yellow-600w-1746344219.jpg"; }}
+            />
+          </div>
           <form className='productform-form' onSubmit={handleSubmit}>
             
           <div className='productform-listitem'>
@@ -294,7 +346,7 @@ const handleSubmit = async (e)=>{
           onChange={(e) => setDescription(e.target.value)}
           value={description}/></div>
 
-          <div className='productform-listitem'>
+          {/* <div className='productform-listitem'>
           <label>
           Product's image url
           </label>
@@ -304,7 +356,9 @@ const handleSubmit = async (e)=>{
           type="text"
           name="imageUrl"
           onChange={(e) => setImageUrl(e.target.value)}
-          value={imageUrl}/></div>
+          value={imageUrl}/></div> */}
+
+
           <div className="productform-buttomsec">
           <input type="submit" value={formType} className="spotbutton" disabled={!!validationErrors.length}/>
           </div>

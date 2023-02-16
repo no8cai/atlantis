@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useParams, useHistory} from 'react-router-dom';
 import { fetchAllProducts } from '../../store/product';
 import { fetchCreateCartItem } from '../../store/cartitem';
+import { fetchAllReviews } from '../../store/review';
 import "./SingleProduct.css"
 
 function SingleProduct() {
@@ -12,6 +13,11 @@ function SingleProduct() {
     const dispatch = useDispatch();
     const singleproduct = useSelector(state => state.products[productId])
     const sessionUser = useSelector(state => state.session.user);
+    const reviewsObj = useSelector(state=>state.reviews)
+    const reviews=Object.values(reviewsObj).filter(el=>el.productId==productId)
+
+
+
     const [quantity, setQuantity] = useState(1);
     const [validationErrors, setValidationErrors] = useState([]);
 
@@ -22,6 +28,7 @@ function SingleProduct() {
 
     useEffect(() => {
         dispatch(fetchAllProducts());
+        dispatch(fetchAllReviews());
     }, [dispatch]);
     
 
@@ -62,7 +69,23 @@ function SingleProduct() {
         history.push('/login')
       }
 
-    if(!singleproduct) return (<div className='sp-broken'>This page was not able to load</div>)
+
+
+    if((!singleproduct)||(!reviewsObj)) return (<div className='sp-broken'>This page was not able to load</div>)
+
+    let totalstars=0
+
+    reviews.forEach((el)=>{
+        if(el==null){
+            totalstars=0 
+          }
+         totalstars+=el.stars
+    })
+
+    const rateround=(num)=>{
+        let temp=parseInt(num/0.5)
+        return temp*0.5
+    }
 
     return (
         <div className='singleproject-entire'>
@@ -74,6 +97,22 @@ function SingleProduct() {
                 <div>
                 <div className='singleproduct-title'>{singleproduct.title}</div>
                 <div className='singleproduct-decocontext'>Visite the Store</div>
+
+                <div>
+                {(reviews.length>0)&&(
+                 <div className='ratesec'>
+                  <div class="rating-content" data-rating={rateround(totalstars/reviews.length)}>
+                  <span>★</span>
+                  <span>★</span>
+                  <span>★</span>
+                  <span>★</span>
+                  <span>★</span>
+                  </div>   
+                 <div className='singleproduct-decocontext'>{`${reviews.length} ${reviews.length==1?"rating":"ratings"}`}</div>
+                 </div>
+                )}
+                </div>
+
                 <div className='singleproduct-primedeco'><div>Atlantis's</div><div className='singleproduct-choice'>Choice</div></div>
                 </div>
 
@@ -178,6 +217,34 @@ function SingleProduct() {
            <div className='singleproduct-about'>Production information</div>
            <div className='singleproduct-aboutcontext desplus'>{singleproduct.description}</div>
            </div>
+
+           <div className="sp-rev">
+            <div className='sp-rvtitle'>Top reviews from the United States</div>
+            {reviews.map(({id,user,comments,stars})=>(
+            <div key={id} className="sp-review">
+                <div className="userinfo">
+                <i className="fa-regular fa-circle-user" />
+                <div className="username">
+                <div className="name">{user.username}</div>
+               </div>
+               </div>
+
+               <div class="rating-content" data-rating={rateround(stars)}>
+                  <span>★</span>
+                  <span>★</span>
+                  <span>★</span>
+                  <span>★</span>
+                  <span>★</span>
+                  </div>  
+               <div className='sp-rvcontext'>Verified Purchase</div>
+               <div className="review">{comments}</div>
+            </div>
+             ))}
+           </div>
+
+
+
+
 
         </div>
     ) 

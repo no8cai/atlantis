@@ -1,0 +1,79 @@
+.ftr-itemsec{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 1%;
+}
+
+.ftr-entiresec{
+    padding-left: 20%;
+    padding-right: 20%;
+    margin-bottom: 30px;
+    margin-top: 30px;
+}
+
+.fp-links{
+    text-decoration: none;
+}
+
+.ftr-image{
+    height: 150px;
+    max-width: 100%;
+    object-fit: cover;
+}
+
+.fp-itemsec{
+    border: 1px rgb(0, 0, 0,0.2) solid;
+    width: 46%;
+    padding: 15px;
+    margin-top: 10px;
+    border-radius: 5px;
+}
+
+.fp-imageitem{
+    height: 150px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.fp-item{
+    padding-left: 15%;
+    padding-right: 15%;
+    font-size: 14px;
+    color: black;
+    padding-top: 3px;
+}
+
+.ftr-title{
+    font-size: 30px;
+    margin-bottom: 20px;
+}
+
+.ftr-banner{
+    width: 100%;
+    object-fit: cover;
+}
+
+.fp-prime{
+    padding-left: 15%;
+    padding-right: 15%;
+}
+
+.fp-listprice{
+    text-decoration: line-through;
+}
+
+.fp-price{
+    font-size: 20px;
+}
+
+.fp-category{
+    font-size: 11px;
+    font-weight: bold;
+}
+
+.ftr-notfind{
+    font-size: 20px;
+}

@@ -7,11 +7,23 @@ import OpenModalButton from '../OpenModalButton';
 import LoginFormModal from '../LoginFormModal';
 import './Navigation.css';
 import logo from './atlogo.png'
+import { useHistory } from 'react-router-dom';
+import { useState } from 'react';
 
 function Navigation(){
   
   const sessionUser = useSelector(state => state.session.user);
+  const [searchitem, setSearchitem] = useState("");
+  const history=useHistory()
 
+  // useEffect(() => {
+  
+  // }, [searchitem]);
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    history.push(`/search/${searchitem}`)
+  }
 
 
   let addressbar;
@@ -49,16 +61,21 @@ function Navigation(){
         </div>
       </div>
       <div className="search-container">
-      <form action="/action_page.php" className='form-input'>
-      <input type="text" placeholder="Search Atlentis" name="search" disabled="True" title="Feature coming soon!" id='do-not-interact'/>
-      <button type="submit" disabled="True" title="Feature coming soon!"><i className="fa fa-search" id='do-not-interact'></i></button>
+      <form className='form-input' onSubmit={handleSubmit}>
+      <input 
+           type="text" 
+           placeholder="Search Atlentis" 
+           onChange={(e) => setSearchitem(e.target.value)}
+           value={searchitem}
+           name="search"/>
+      <button type="submit"><i className="fa fa-search"></i></button>
       </form>
      </div>
       <div className='navigation-rightsec'>
            <div><ProfileButton user={sessionUser} /></div>
-           <div className='ng-secondsec' id='do-not-interact' title="Feature coming soon!"><div className='profile-context'>Returns</div> <div className='np-seconddown'>& Orders</div></div>
+           <NavLink exact to="/orderdetails" className='ng-secondsec'><div className='profile-context'>Returns</div> <div className='np-seconddown'>& Orders</div></NavLink>
            <div>
-           <NavLink exact to="/cartitems" className={'ng-thirdsec'}><i className="fa-solid fa-cart-arrow-down"></i></NavLink>
+           <NavLink exact to="/cartitems" className={'ng-thirdsec'}><i className="fa-sharp fa-solid fa-cart-plus"></i></NavLink>
             </div>
       </div>
       {/* <div>{isLoaded && sessionLinks}</div> */}

@@ -1,0 +1,28 @@
+.categories-bar{
+    display: flex;
+    justify-content: space-evenly;
+    height: 40px;
+    align-items: center;
+    background-color: rgb(49, 49, 49);
+}
+
+.categories-bar> span {
+    border: 1px solid transparent;
+    padding: 5px;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+.categories-bar> span:hover{
+    border: 1px solid white;
+}
+
+.categories-bar> span::after{
+    border: 1px solid white;
+}
+
+.Ft-navitem{
+    text-decoration: none;
+    color: white;
+    font-size: 14px;
+}
