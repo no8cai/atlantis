@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom"
 import { fetchAllProducts } from "../../../store/product";
 import { NavLink } from "react-router-dom";
+import Error404page from "../../Error/Error404";
 import "./Filterpage.css"
 
 const FilterSearchPage=()=>{
@@ -30,8 +31,8 @@ const FilterSearchPage=()=>{
     
     
     
-
     if(!productsObj) return null
+    // else if(!filteredproducts.length) return (<div className='sp-broken'><Error404page/></div>)
     
     return (
         <div className="ftr-entiresec">

@@ -17,6 +17,7 @@ function CartItems() {
     const cartitemsObj = useSelector(state => state.cartitems);
     const usercartitems=Object.values(cartitemsObj)
     const history=useHistory();
+    const [validationErrors, setValidationErrors] = useState([]);
    
     let totalmoney=0
 
@@ -69,9 +70,10 @@ function CartItems() {
         dispatch(fetchDeleteCartItem(id))
        }
 
-    const checkoutEvents=()=>{
+    const checkoutEvents=async ()=>{
         const temporder={totalprice:totalmoney.toFixed(2)}
         let itemsidarr=usercartitems.map((el)=>el.id)
+        let errors=[]
 
         dispatch(fetchCreateOrder(temporder))
         .then(result=>{
@@ -95,8 +97,8 @@ function CartItems() {
         )
         .catch(async (err)=>{
             const errobj=await err.json();
-            // errors.push(errobj.message)
-            // setValidationErrors(errors)
+            errors.push([...errobj.errors])
+            setValidationErrors(errors)
           });
     }
 
@@ -203,6 +205,17 @@ function CartItems() {
         <div className="ci-price">{`$${totalmoney.toFixed(2)}`}</div>
         </div>
             <div className="cartitem-checkoutbuttom" onClick={()=>checkoutEvents()}>Proceed to checkout</div>
+        </div>
+        <div>
+                      {!!validationErrors.length && (
+                      <div className='projectform-errortable'>
+                      <div className='projectform-error'>
+                       {validationErrors.map((error) => (
+                         <div key={error} className='signin-errors'><i className="fa-solid fa-circle-exclamation"/>{error}</div>
+                       ))}
+                      </div>
+                      </div>
+                      )}
         </div>
     </div>
     )

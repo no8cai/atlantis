@@ -8,7 +8,8 @@ import SignupFormModal from '../SignupFormModal';
 import './Navigation.css';
 import { useHistory } from "react-router-dom";
 import { deleteUserItem } from "../../store/cartitem";
-
+import { deleteUserOrder } from "../../store/orderdetail";
+import { deleteUserOrderitems } from "../../store/orderitem";
 
 function ProfileButton({ user }) {
   const dispatch = useDispatch();
@@ -65,6 +66,8 @@ function ProfileButton({ user }) {
     e.preventDefault();
     dispatch(sessionActions.logout());
     dispatch(deleteUserItem())
+    dispatch(deleteUserOrder())
+    dispatch(deleteUserOrderitems())
     closeMenu();
     history.push('/')
   };

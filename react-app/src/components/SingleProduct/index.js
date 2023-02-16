@@ -4,6 +4,7 @@ import { useParams, useHistory} from 'react-router-dom';
 import { fetchAllProducts } from '../../store/product';
 import { fetchCreateCartItem } from '../../store/cartitem';
 import { fetchAllReviews } from '../../store/review';
+import Error404page from '../Error/Error404';
 import "./SingleProduct.css"
 
 function SingleProduct() {
@@ -71,7 +72,7 @@ function SingleProduct() {
 
 
 
-    if((!singleproduct)||(!reviewsObj)) return (<div className='sp-broken'>This page was not able to load</div>)
+    if((!singleproduct)||(!reviewsObj)) return (<div className='sp-broken'><Error404page/></div>)
 
     let totalstars=0
     let starrateobj={1:0,2:0,3:0,4:0,5:0}

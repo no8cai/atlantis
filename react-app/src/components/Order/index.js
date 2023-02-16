@@ -45,6 +45,10 @@ const Orderpage=()=>{
     }
 
     const deleteorderEvents=(id)=>{
+        let itemlistId=orderitems.filter(orderitem=>orderitem.orderId==id).map(el=>el.id)
+        itemlistId.forEach(itemId=>{
+            dispatch(fetchDeleteOrderitem(itemId))
+        })
         dispatch(fetchDeleteOrder(id))
         dispatch(removeItemsbyOrder(id))
     }
@@ -52,10 +56,12 @@ const Orderpage=()=>{
     const deleteorderitemEvents=(id,orderId,price)=>{
         let temporder=ordersObj[orderId]
         temporder.totalprice-=price
-        dispatch(fetchUpdateOrder(temporder))
         dispatch(fetchDeleteOrderitem(id))
+        
         if(temporder.totalprice==0){
-        dispatch(fetchDeleteOrder(orderId))
+            dispatch(fetchDeleteOrder(orderId))
+        }else{
+            dispatch(fetchUpdateOrder(temporder))
         }
     }
    

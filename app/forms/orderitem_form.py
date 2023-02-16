@@ -6,7 +6,7 @@ from datetime import datetime
 
 
 class OrderitemForm(FlaskForm):
-    productId = IntegerField('quantity', validators=[DataRequired()])
+    productId = IntegerField('productId', validators=[DataRequired()])
     quantity = IntegerField('quantity', validators=[DataRequired(),NumberRange(min=1)])
     title = StringField('title', validators=[DataRequired()])
     price = DecimalField("price", validators=[DataRequired()])

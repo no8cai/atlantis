@@ -29,6 +29,8 @@ def add_orderitem(id):
     form['csrf_token'].data = request.cookies['csrf_token']
     
     oneOrder = Orderdetail.query.get(id)
+    
+
     if not oneOrder:
         return {
             'message':'HTTP Error',
@@ -45,12 +47,26 @@ def add_orderitem(id):
           },403
 
     if form.validate_on_submit():
+        oneProduct = Product.query.get(int(form.data["productId"]))
+        if not oneProduct:
+            return {
+            'message':'HTTP Error',
+            'errors':["Product couldn't be found"],
+            'statusCode': 404
+            },404
         new_orderitem=Orderitem(orderId=id)
         form.populate_obj(new_orderitem)
+        if oneProduct.inventory<int(form.data["quantity"]):
+            return{
+                'message':'Validation Error',
+                "errors":["the quantiy can not be greater than product inventory"],
+                'statusCode': 400
+                },400
+        oneProduct.inventory-=int(form.data["quantity"])
         db.session.add(new_orderitem)
+        db.session.add(oneProduct)
         db.session.commit()
         return new_orderitem.to_dict(),201
- 
     
     return {
         'message':'Validation Error',
@@ -99,6 +115,7 @@ def edit_orderitem(id):
 @login_required
 def delete_orderitem(id):
     oneOrderitem = Orderitem.query.get(id)
+    
     if not oneOrderitem:
         return {
             'message':'HTTP Error',
@@ -114,8 +131,16 @@ def delete_orderitem(id):
           'errors': ['The order is not belongs to the current user'],
           'statusCode': 403
           },403
-    
+    oneProduct = Product.query.get(oneOrderitem.productId)
+    if not oneProduct:
+        return {
+            'message':'HTTP Error',
+            'errors':["Product couldn't be found"],
+            'statusCode': 404
+            },404
+    oneProduct.inventory+=oneOrderitem.quantity
     db.session.delete(oneOrderitem)
+    db.session.add(oneProduct)
     db.session.commit()
     return {
         "message": "Orderitem successfully deleted",
