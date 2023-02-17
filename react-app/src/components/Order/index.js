@@ -57,7 +57,6 @@ const Orderpage=()=>{
         let temporder=ordersObj[orderId]
         temporder.totalprice-=price
         dispatch(fetchDeleteOrderitem(id))
-        
         if(temporder.totalprice==0){
             dispatch(fetchDeleteOrder(orderId))
         }else{

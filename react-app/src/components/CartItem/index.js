@@ -83,7 +83,7 @@ function CartItems() {
                 productId:item.product.id,
                 quantity:item.quantity,
                 title:item.product.title,
-                price:item.product.price*item.product.discount,
+                price:item.product.price*item.product.discount*item.quantity,
                 imageUrl:item.product.imageUrl
                }
             dispatch(fetchCreateOrderitem(tempoderitem,result.id))
