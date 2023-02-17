@@ -49,7 +49,7 @@ function Navigation(){
             <div className='navigation-leftcontext'>Select your address</div>
             </div>
           }
-          buttonStyle={'navigaion-notloginleft'}
+          buttonClass={'navigaion-notloginleft'}
           modalComponent={<LoginFormModal />}
          />}
          </div>
