@@ -1,18 +1,51 @@
 from app.models import db, Review, environment, SCHEMA
+import random
+
+goodreview=[
+    "very nice product",
+    "I like it",
+    "I recently tried this and I highly recommend it!",
+    "I absolutely love this!  I couldn't put it down!",
+    "I recently purchased this product and was pleasantly surprised by how well it works. It's easy to use and has made a noticeable difference in my daily routine.",
+    "I highly recommend this! It's a must-see!",
+    "I recently purchased this and I'm in love with it!",
+    "This product is really an Eye catcher",
+    "I think this is the best product on the market",
+    "I just can not put it down",
+    "The product is really a good deal",
+]
+
+badreview=[
+    "I hate this product",
+    "This product is not as good as I thought",
+    "Poor quality product",
+    "I return it right away",
+    "The product has a lot of room to improve",
+    "I don't like this product at all",
+    "My family hate this product",
+    "I will not suggest this product to anyone",
+    "This is the worst product I have ever seen",
+    "I would rather save the money",
+    "This product is really bad, I mean it"
+]
+
 
 
 # Adds a demo user, you can add other users here if you want
 def seed_reviews():
-    review1 = Review(
-        userId=1, productId=1, stars=2,comments='very nice product')
-    review2 = Review(
-        userId=1, productId=2, stars=3,comments='very very nice product')
-    review3 = Review(
-        userId=2, productId=3, stars=4,comments='very very very nice product')       
+          
+    review=""
+    for product in range(1,25):
+        for user in range(1,6):
+            starsnum=random.randint(1,5)
+            if starsnum>2:
+                review=goodreview[random.randint(0,len(goodreview)-1)]
+            else:
+                review=badreview[random.randint(0,len(badreview)-1)]
+            
+            db.session.add(Review(userId=user,productId=product,stars=starsnum,comments=review))
 
-    db.session.add(review1)
-    db.session.add(review2)
-    db.session.add(review3)
+
 
     db.session.commit()
 

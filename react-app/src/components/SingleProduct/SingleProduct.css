@@ -313,7 +313,8 @@ div.singleproject-imagesec img{
 .sp-ratingmap{
     display: flex;
     flex-direction: column;
-    gap:10px
+    gap:10px;
+    min-width: 300px;
 }
 
 .middle {

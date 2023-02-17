@@ -246,7 +246,7 @@ function SingleProduct() {
                   <span>★</span>
                   <span>★</span>
                   </div>   
-                  <div className='sp-about'>{`${totalstars?totalstars/reviews.length.toFixed(1):0} out of 5`}</div>
+                  <div className='sp-about'>{`${totalstars?(totalstars/reviews.length).toFixed(1):0} out of 5`}</div>
             </div>
             <div className='sp-decotext'>{`${reviews.length} global ${reviews.length==1?"rating":"ratings"}`}</div>
 

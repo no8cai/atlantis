@@ -3,9 +3,9 @@ from app.models import db, Orderdetail, environment, SCHEMA
 
 # Adds a demo user, you can add other users here if you want
 def seed_orderdetails():
-    orderdetail1 = Orderdetail(userId=1, totalprice=100)
-    orderdetail2 = Orderdetail(userId=1, totalprice=200)
-    orderdetail3 = Orderdetail(userId=2, totalprice=300)
+    orderdetail1 = Orderdetail(userId=1, totalprice=139.55)
+    orderdetail2 = Orderdetail(userId=1, totalprice=70)
+    orderdetail3 = Orderdetail(userId=2, totalprice=80)
     
     db.session.add(orderdetail1)
     db.session.add(orderdetail2)

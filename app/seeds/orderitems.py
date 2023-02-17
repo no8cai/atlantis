@@ -4,13 +4,13 @@ from app.models import db, Orderitem, environment, SCHEMA
 # Adds a demo user, you can add other users here if you want
 def seed_orderitems():
     orderitem1 = Orderitem(
-        orderId=1, productId=1, title='sample goods1',price=50,imageUrl='http://image1.gpg',quantity=2)    
+        orderId=1, productId=1, title='Dell S2421H 24-Inch 1080p Full HD 1920 x 1080 Resolution 75Hz USB-C Monitor, Built-in Dual Speakers, 4ms Response Time, Dual HDMI Ports, AMD FreeSync Technology, IPS, Silver',price=119.25,imageUrl='https://m.media-amazon.com/images/I/71yI7N2eijL._AC_SX679_.jpg',quantity=1)    
     orderitem2 = Orderitem(
-        orderId=1, productId=2, title='sample goods2',price=60,imageUrl='http://image1.gpg',quantity=1) 
+        orderId=1, productId=2, title='Dacoity Gaming Keyboard, 104 Keys All-Metal Panel, Rainbow LED Backlit Quiet Computer Keyboard, Wrist Rest, Multimedia Keys, Anti-ghosting Keys, Waterproof Light Up USB Wired Keyboard for PC Mac Xbox',price=20.30,imageUrl='https://m.media-amazon.com/images/I/715XLKbQnFL._AC_SX679_.jpg',quantity=1) 
     orderitem3 = Orderitem(
-        orderId=2, productId=3, title='sample goods3',price=70,imageUrl='http://image1.gpg',quantity=1) 
+        orderId=2, productId=3, title='Digital Camera for Photography VJIANGER 4K 48MP Vlogging Camera for YouTube with WiFi, 16X Digital Zoom, 52mm Wide Angle & Macro Lens, 2 Batteries, 32GB TF Card',price=70,imageUrl='https://m.media-amazon.com/images/I/81xi5JoLNmL._AC_SX679_.jpg',quantity=1) 
     orderitem4 = Orderitem(
-        orderId=3, productId=5, title='sample goods3',price=80,imageUrl='http://image1.gpg',quantity=1) 
+        orderId=3, productId=5, title="Under Armour Men's Charged Assert 9 Running Shoe",price=80,imageUrl='https://m.media-amazon.com/images/I/410-L0vF3+L._AC_UY695_.jpg',quantity=1) 
     
     db.session.add(orderitem1)
     db.session.add(orderitem2)
