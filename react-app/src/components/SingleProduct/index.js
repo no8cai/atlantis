@@ -190,20 +190,22 @@ function SingleProduct() {
 
                 <div className='singleproduct-decocontext'>FREE Returns</div>
                 <div>FREE delivery within 1 day</div>
-                <div className='singleproduct-stock'>In Stock</div>
+                {singleproduct.inventory>0 &&(<div className='singleproduct-stock'>In Stock</div>)}
+                {singleproduct.inventory==0 &&(<div className='singleproduct-stock'>Out of Stock</div>)}
                  <div>
                     <form className='singleproduct-productform' onSubmit={handleSubmit}>
                     <div className='singleproduct-selectsec'>
-                        <select
+                    {singleproduct.inventory>0 && ( <select
                         onChange={(e) => setQuantity(e.target.value)}
                         value={quantity}
                         >
-                                {arrGenerator(singleproduct.inventory).map(number => (
+                            {arrGenerator(singleproduct.inventory).map(number => (
                                   <option key={number} value={number} className={'singleproduct-option'}> {`Qty ${number}`}</option>
                                ))}
-                        </select>
+                        </select>)}
+                        {singleproduct.inventory==0 && (<div>This item is unavliable</div>)}
                     </div>
-                {!!sessionUser &&(
+                {!!sessionUser && singleproduct.inventory>0 && (
                   <input type="submit" value='Add to Cart'/>
                      )}
                     
