@@ -82,9 +82,9 @@ div.itemimg img{
     display: flex;
     flex-direction: row;
     gap:2vw;
-    top: 37%;
-    padding-left: 30px;
-    padding-right: 30px;
+    top: 42%;
+    padding-left: 22px;
+    padding-right: 22px;
 }
 
 .top-sectiontitle{
