@@ -76,7 +76,7 @@ const FilterSearchPage=()=>{
             </div>
 
             <div className="fp-item fp-price">{`$${formatPriceWithCommas((price*discount).toFixed(2))}`}</div>
-            <div className="fp-item fp-listprice">${price}</div>
+            <div className="fp-item fp-listprice">${formatPriceWithCommas(price)}</div>
             <div className="Prime fp-prime">Prime</div>
             <div className="fp-item">{`${title.slice(0,40)}...`}</div>
             <div className="fp-item fp-category">{category}</div>

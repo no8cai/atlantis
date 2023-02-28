@@ -26,6 +26,8 @@
 .fp-itemsec{
     border: 1px rgb(0, 0, 0,0.2) solid;
     width: 49%;
+    padding-top: 20px;
+    padding-bottom: 20px;
     /* padding: 15px; */
     margin-top: 10px;
     border-radius: 5px;
