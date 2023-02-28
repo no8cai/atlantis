@@ -18,7 +18,7 @@ const FilterSearchPage=()=>{
       }, [dispatch]);
 
     let imagelist={
-        'Clothing,Shones':'https://images-na.ssl-images-amazon.com/images/G/01/AMAZON_FASHION/2023/SITE_FLIPS/WIN23/BROWSE/L1M/DT/L1M_DT_VTO._CB1198675309_.jpg',
+        'Clothing,Shoes':'https://images-na.ssl-images-amazon.com/images/G/01/AMAZON_FASHION/2023/SITE_FLIPS/WIN23/BROWSE/L1M/DT/L1M_DT_VTO._CB1198675309_.jpg',
         'Books':'https://images-na.ssl-images-amazon.com/images/G/01/US-hq/2023/img/Books/XCM_Manual_1534551_2866151_5311197_1500x300_en_US.jpg',
         'Movies,Music&Games':'https://m.media-amazon.com/images/S/sonata-images-prod/US_TVOD_MultiPMD_021023_V1_SH/e3135562-7c9c-469b-b2a9-7cad3f934788._UR3000,600_SX1500_FMwebp_.jpeg',
         'Electronics':'https://images-na.ssl-images-amazon.com/images/G/01/US-hq/2022/img/Consumer_Electronics/XCM_Manual_1462004_2540535_4936990_3000x600_en_US.jpg',
@@ -29,7 +29,27 @@ const FilterSearchPage=()=>{
         'Beauty&Health':'https://images-na.ssl-images-amazon.com/images/G/01/consumables/nicoherm/MonthlyEndcap/AMZ_FEB23_Beauty-CategoryBanner-D-1500x300-EN.jpg',
     }
     
-    
+    function formatPriceWithCommas(price) {
+        const priceStr = price.toString();
+        let [wholeNum, decimal] = priceStr.split('.');
+        if (!decimal) {
+          decimal = '00';
+        } else if (decimal.length === 1) {
+          decimal += '0';
+        }
+
+        let numstr=wholeNum.toString().split("").reverse()
+        let newstr=[]
+        for(let i=0;i<numstr.length;i++){
+           newstr.push(numstr[i])
+           if((i+1)%3==0&&i!==numstr.length-1){
+             newstr.push(",")
+           }
+        }
+        let newresult= newstr.reverse().join("")
+        return newresult + '.' + decimal;
+      }
+
     
     if(!productsObj) return null
     // else if(!filteredproducts.length) return (<div className='sp-broken'><Error404page/></div>)
@@ -55,7 +75,7 @@ const FilterSearchPage=()=>{
                 />
             </div>
 
-            <div className="fp-item fp-price">{`$${(price*discount).toFixed(2)}`}</div>
+            <div className="fp-item fp-price">{`$${formatPriceWithCommas((price*discount).toFixed(2))}`}</div>
             <div className="fp-item fp-listprice">${price}</div>
             <div className="Prime fp-prime">Prime</div>
             <div className="fp-item">{`${title.slice(0,40)}...`}</div>

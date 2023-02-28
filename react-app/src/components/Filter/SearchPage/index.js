@@ -44,7 +44,27 @@ const Searchpage=()=>{
         dispatch(fetchAllProducts());
       }, [dispatch]);
 
-    
+    function formatPriceWithCommas(price) {
+        const priceStr = price.toString();
+        let [wholeNum, decimal] = priceStr.split('.');
+        if (!decimal) {
+          decimal = '00';
+        } else if (decimal.length === 1) {
+          decimal += '0';
+        }
+
+        let numstr=wholeNum.toString().split("").reverse()
+        let newstr=[]
+        for(let i=0;i<numstr.length;i++){
+           newstr.push(numstr[i])
+           if((i+1)%3==0&&i!==numstr.length-1){
+             newstr.push(",")
+           }
+        }
+        let newresult= newstr.reverse().join("")
+        return newresult + '.' + decimal;
+      }
+
 
     if(!productsObj) return (<div className='sp-broken'><Error404page/></div>)
     else if(searchproducts.length==0) return (
@@ -71,7 +91,7 @@ const Searchpage=()=>{
                 />
             </div>
 
-            <div className="fp-item fp-price">{`$${(price*discount).toFixed(2)}`}</div>
+            <div className="fp-item fp-price">{`$${formatPriceWithCommas((price*discount).toFixed(2))}`}</div>
             <div className="fp-item fp-listprice">${price}</div>
             <div className="Prime fp-prime">Prime</div>
             <div className="fp-item">{`${title.slice(0,40)}...`}</div>

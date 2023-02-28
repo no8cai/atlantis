@@ -16,6 +16,7 @@ import FilterNavBar from "../Filter/FilterNav";
 import FilterSearchPage from "../Filter/FilterPage";
 import Searchpage from "../Filter/SearchPage";
 import Error404page from "../Error/Error404";
+import Ordercomplete from "../OrderComplete";
 import './LandingPage.css';
 
 
@@ -40,6 +41,9 @@ function Landing() {
         <Navigation/>
         <FilterNavBar/>
         <Switch>
+        <Route path='/ordercomplete' exact={true}>
+          <Ordercomplete/>
+        </Route>
         <Route path='/discover/:filterItem' >
           <FilterSearchPage />
         </Route>

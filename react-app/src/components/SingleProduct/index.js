@@ -104,6 +104,28 @@ function SingleProduct() {
         return temp*0.5
     }
 
+    function formatPriceWithCommas(price) {
+        const priceStr = price.toString();
+        let [wholeNum, decimal] = priceStr.split('.');
+        if (!decimal) {
+          decimal = '00';
+        } else if (decimal.length === 1) {
+          decimal += '0';
+        }
+
+        let numstr=wholeNum.toString().split("").reverse()
+        let newstr=[]
+        for(let i=0;i<numstr.length;i++){
+           newstr.push(numstr[i])
+           if((i+1)%3==0&&i!==numstr.length-1){
+             newstr.push(",")
+           }
+        }
+        let newresult= newstr.reverse().join("")
+        return newresult + '.' + decimal;
+      }
+
+
     return (
         <div className='singleproject-entire'>
            <div className='singleproject-topsec'>
@@ -119,11 +141,11 @@ function SingleProduct() {
                 {(reviews.length>0)&&(
                  <div className='ratesec'>
                   <div class="rating-content" data-rating={rateround(totalstars/reviews.length)}>
-                  <span>★</span>
-                  <span>★</span>
-                  <span>★</span>
-                  <span>★</span>
-                  <span>★</span>
+                  <span className='star'>★</span>
+                  <span className='star'>★</span>
+                  <span className='star'>★</span>
+                  <span className='star'>★</span>
+                  <span className='star'>★</span>
                   </div>   
                  <div className='singleproduct-decocontext'>{`${reviews.length} ${reviews.length==1?"rating":"ratings"}`}</div>
                  </div>
@@ -138,11 +160,11 @@ function SingleProduct() {
                 <div className='singleproduct-discount'>{`-${parseFloat((1-singleproduct.discount)*100).toFixed(0)}%`}</div>
                 <div className='singleproduct-price'>
                     <div className='singleproduct-dollorsign'>$</div>
-                    <div className='singleproduct-pricecontext'>{`${(singleproduct.price*singleproduct.discount).toFixed(2)}`}</div>
+                    <div className='singleproduct-pricecontext'>{`${formatPriceWithCommas((singleproduct.price*singleproduct.discount).toFixed(2))}`}</div>
                 </div>
                 </div>
 
-                <div className='singleprodcut-listprice'>{`List price: $${singleproduct.price}`}</div>
+                <div className='singleprodcut-listprice'>{`List price: $${formatPriceWithCommas(singleproduct.price)}`}</div>
                 <div className='singleproduct-primeday'>
                     <div className='Prime'>Prime</div> 
                     <div>One-Day</div>
@@ -180,7 +202,7 @@ function SingleProduct() {
 
                 <div className='singleproduct-price'>
                     <div className='singleproduct-dollorsign'>$</div>
-                    <div className='singleproduct-pricecontext'>{`${(singleproduct.price*singleproduct.discount).toFixed(2)}`}</div>
+                    <div className='singleproduct-pricecontext'>{`${formatPriceWithCommas((singleproduct.price*singleproduct.discount).toFixed(2))}`}</div>
                 </div>
 
                 <div className='singleproduct-primeday'>
@@ -242,11 +264,11 @@ function SingleProduct() {
              <div className='sp-rvtitle'>Customer reviews</div>
              <div className='ratesec'>
                   <div class="rating-content" data-rating={rateround(totalstars?totalstars/reviews.length:0)}>
-                  <span>★</span>
-                  <span>★</span>
-                  <span>★</span>
-                  <span>★</span>
-                  <span>★</span>
+                  <span className='star'>★</span>
+                  <span className='star'>★</span>
+                  <span className='star'>★</span>
+                  <span className='star'>★</span>
+                  <span className='star'>★</span>
                   </div>   
                   <div className='sp-about'>{`${totalstars?(totalstars/reviews.length).toFixed(1):0} out of 5`}</div>
             </div>
@@ -326,7 +348,7 @@ function SingleProduct() {
 
 
             </div>
-            <div>
+            <div className='sp-reviewsection'>
             <div className='sp-rvtitle'>Top reviews from the United States</div>
             {reviews.length==0&&(
              <div>No review for this product yet</div>
@@ -341,11 +363,11 @@ function SingleProduct() {
                </div>
 
                <div class="rating-content" data-rating={rateround(stars)}>
-                  <span>★</span>
-                  <span>★</span>
-                  <span>★</span>
-                  <span>★</span>
-                  <span>★</span>
+                  <span className='star'>★</span>
+                  <span className='star'>★</span>
+                  <span className='star'>★</span>
+                  <span className='star'>★</span>
+                  <span className='star'>★</span>
                   </div>  
                <div className='sp-rvcontext'>Verified Purchase</div>
                <div className="review">{comments}</div>

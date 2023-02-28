@@ -88,12 +88,14 @@ function CartItems() {
                }
             dispatch(fetchCreateOrderitem(tempoderitem,result.id))
             })
-       
         })
         .then(
             itemsidarr.forEach(itemid =>{
                 dispatch(fetchDeleteCartItem(itemid))
             })
+        )
+        .then(
+            history.push("/ordercomplete")
         )
         .catch(async (err)=>{
             const errobj=await err.json();
@@ -106,6 +108,28 @@ function CartItems() {
         history.push('/')
     }
     
+    function formatPriceWithCommas(price) {
+        const priceStr = price.toString();
+        let [wholeNum, decimal] = priceStr.split('.');
+        if (!decimal) {
+          decimal = '00';
+        } else if (decimal.length === 1) {
+          decimal += '0';
+        }
+
+        let numstr=wholeNum.toString().split("").reverse()
+        let newstr=[]
+        for(let i=0;i<numstr.length;i++){
+           newstr.push(numstr[i])
+           if((i+1)%3==0&&i!==numstr.length-1){
+             newstr.push(",")
+           }
+        }
+        let newresult= newstr.reverse().join("")
+        return newresult + '.' + decimal;
+      }
+
+
 
     if(!cartitemsObj) return null
     else if(usercartitems.length==0) return (
@@ -189,20 +213,20 @@ function CartItems() {
 
         </div>
         </div>
-        <div className="carritem-listrightsec ci-price">{(quantity<product.inventory)?`$${(product.price*product.discount*quantity).toFixed(2)}`:`$${(product.price*product.discount*product.inventory).toFixed(2)}`}</div>
+        <div className="carritem-listrightsec ci-price">{(quantity<product.inventory)?`$${formatPriceWithCommas((product.price*product.discount*quantity).toFixed(2))}`:`$${(product.price*product.discount*product.inventory).toFixed(2)}`}</div>
         </div>
       ))}
         </div>
         <div className="ci-underbar">
-        <div className="ci-subtotal">{`Subtotal (${usercartitems.length} ${usercartitems.length==1?'item':'items'}): `}</div>
-        <div className="ci-price">{`$${totalmoney.toFixed(2)}`}</div>
+        <div className="ci-subtotal">{`Subtotal (${usercartitems.length} ${usercartitems.length==1?'item':'items'}): `}&nbsp;</div>
+        <div className="ci-price">{`$${formatPriceWithCommas(totalmoney.toFixed(2))}`}</div>
         </div>
         </div>
         <div className="cartitem-checkoutsec">
          
         <div className="ci-sidebar">
-        <div className="ci-subtotal">{`Subtotal (${usercartitems.length} ${usercartitems.length==1?'item':'items'}): `}</div>
-        <div className="ci-price">{`$${totalmoney.toFixed(2)}`}</div>
+        <div className="ci-subtotal">{`Subtotal (${usercartitems.length} ${usercartitems.length==1?'item':'items'}): `}&nbsp;</div>
+        <div className="ci-price">{`$${formatPriceWithCommas(totalmoney.toFixed(2))}`}</div>
         </div>
             <div className="cartitem-checkoutbuttom" onClick={()=>checkoutEvents()}>Proceed to checkout</div>
         </div>

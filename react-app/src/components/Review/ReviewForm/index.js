@@ -2,6 +2,7 @@ import { useState,useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchCreateReview,fetchUpdateReview } from '../../../store/review';
+import { fetchDeleteReview } from '../../../store/review';
 import "./ReviewForm.css"
 
 const ReviewForm=({theReview,formType,theProduct})=>{
@@ -66,6 +67,17 @@ const ReviewForm=({theReview,formType,theProduct})=>{
       };      
 
 
+    const deleteEvents= (id)=>{
+        const errors=[]
+        dispatch(fetchDeleteReview(id))
+        .then(()=>history.push('/orderdetails'))
+        .catch(async (err)=>{
+          const errobj=await err.json();
+          errors["servererror"]=errobj.message
+          setValidationErrors(errors)
+        });
+        }
+
     return(
         <div className='reviewform-section'>
         <h3 className="reviewform-title">{formType}</h3>
@@ -86,19 +98,6 @@ const ReviewForm=({theReview,formType,theProduct})=>{
         
         <form className='reviewform-form' onSubmit={handleSubmit}>
 
-        {/* {!!validationErrors.length && 
-        <div className="reviewform-errorload">
-        <div className="reviewform-erroricon"><i className="fa-solid fa-circle-exclamation" /></div>
-        <div className="reviewform-errorinfo">
-        <div className="reviewform-errortile">Input validation</div>
-        <div>
-          {validationErrors.map((error, idx) => (
-            <div key={idx} className="reviewform-errortext">{error}</div>
-          ))}
-        </div>
-        </div>
-        </div>
-        } */}
           <div className="reviewform-infomation">
           
           <div className='rf-ratesec'>
@@ -154,7 +153,8 @@ const ReviewForm=({theReview,formType,theProduct})=>{
            <div className='rf-errorms'><i className="fa-solid fa-circle-exclamation"/>{validationErrors["servererror"]}</div>
          )}
          <input type="submit" value={`Submit`} className='rf-button'/>
-        </form>
+         </form>
+         {formType=="Edit Review" &&(<div className='rv-deletelink' onClick={()=>{deleteEvents(theReview.id)}}>Delete Review</div>)}
         </div>
      )
 

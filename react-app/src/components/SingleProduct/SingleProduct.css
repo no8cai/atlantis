@@ -245,7 +245,7 @@ div.singleproject-imagesec img{
   .rating-content[data-rating="3"] span:nth-child(n+4),
   .rating-content[data-rating="3.5"] span:nth-child(n+5),
   .rating-content[data-rating="4"] span:nth-child(n+5){
-    display: none;
+     display: none;
   }
 
 
@@ -258,7 +258,7 @@ div.singleproject-imagesec img{
 
 .sp-rev{
     padding-left: 10%;
-    padding-right: 40%;
+    padding-right: 20%;
     padding-top: 30px;
     border-top:1px rgb(0, 0, 0,0.2) solid;
     margin-top: 30px;
@@ -301,7 +301,7 @@ div.singleproject-imagesec img{
 }
 
 .sp-rateleftsec{
-    padding-right: 200px;
+    padding-right: 150px;
     width: 30vw;
 }
 
@@ -367,4 +367,13 @@ div.singleproject-imagesec img{
 
 .sp-broken{
     font-size: 20px;
+}
+
+.sp-reviewsection{
+    width: 50%;
+}
+
+.star{
+    -webkit-text-stroke-width: 1px;
+    -webkit-text-stroke-color:  #ff9800;;
 }

@@ -27,7 +27,7 @@ const ProductForm=({product,formType})=>{
     }
     else{
         initTitle='';
-        initCategory='Clothing,Shones';
+        initCategory='Clothing,Shoes';
         initPrice=0;
         initDiscount=0;
         initInventory=0;
@@ -40,7 +40,7 @@ const ProductForm=({product,formType})=>{
         initImageUrl='';
     }
 
-    const allCategories = [ 'Clothing,Shones', 'Books',  'Movies,Music&Games',  'Electronics',  'Computers',  'Home,Garden&Tools','Toys,Kids&Baby','Sports','Beauty&Health']
+    const allCategories = [ 'Clothing,Shoes', 'Books',  'Movies,Music&Games',  'Electronics',  'Computers',  'Home,Garden&Tools','Toys,Kids&Baby','Sports','Beauty&Health']
     const allStyles=['Traditional', 'Modern','Classic','Combination','Future']
 
 

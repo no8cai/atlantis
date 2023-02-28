@@ -79,7 +79,7 @@ function ProfileButton({ user }) {
   return (
     <>
       <div onClick={openMenu} className='profile-dropbutton'>
-       <div className="profile-context"><div>Hello,</div> {user?(<div>{user.username}</div>):(<div>sign in</div>)} </div><div className="profile-contextb">Account & Lists</div>
+       <div className="profile-context"><div>Hello, &nbsp;</div> {user?(<div>{user.username}</div>):(<div>sign in</div>)} </div><div className="profile-contextb">Account & Lists</div>
       </div>
       <div className={ulClassName} ref={ulRef}>
         {user ? (

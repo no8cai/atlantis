@@ -5,13 +5,13 @@ const FilterNavBar=()=>{
     return (
         <div className="categories-bar">
         <span>
-          <Link to="/discover/Clothing,Shones" className="Ft-navitem">Clothing, Shones</Link>
+          <Link to="/discover/Clothing,Shoes" className="Ft-navitem">Clothing, Shoes</Link>
         </span>
         <span>
           <Link to="/discover/Books" className="Ft-navitem">Books</Link>
         </span>
         <span>
-          <Link to="/discover/Movies,Music&Games" className="Ft-navitem">Movies, Music&Games</Link>
+          <Link to="/discover/Movies,Music&Games" className="Ft-navitem">Movies, Music & Games</Link>
         </span>
         <span>
           <Link to="/discover/Electronics" className="Ft-navitem">Electronics</Link>

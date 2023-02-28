@@ -64,7 +64,28 @@ const Orderpage=()=>{
         }
     }
    
-    
+    function formatPriceWithCommas(price) {
+        const priceStr = price.toString();
+        let [wholeNum, decimal] = priceStr.split('.');
+        if (!decimal) {
+          decimal = '00';
+        } else if (decimal.length === 1) {
+          decimal += '0';
+        }
+
+        let numstr=wholeNum.toString().split("").reverse()
+        let newstr=[]
+        for(let i=0;i<numstr.length;i++){
+           newstr.push(numstr[i])
+           if((i+1)%3==0&&i!==numstr.length-1){
+             newstr.push(",")
+           }
+        }
+        let newresult= newstr.reverse().join("")
+        return newresult + '.' + decimal;
+      }
+
+
 
     if((!ordersObj)||(!orderitemsObj)||(!reviewsObj)) return null
     else if(orderdetails.length==0) return (
@@ -100,7 +121,7 @@ const Orderpage=()=>{
              </div>
              <div>
              <div className="od-upcontext">TOTAL</div>
-             <div>{`$${totalprice}`}</div>
+             <div>{`$${formatPriceWithCommas(parseInt(totalprice).toFixed(2))}`}</div>
             </div>
              <div>
              <div className="od-upcontext">SHIP TO</div>
@@ -138,7 +159,7 @@ const Orderpage=()=>{
                         <div onClick={()=>createEvents(productId)} className="od-clicksec"><div className="od-clickbutton">Write a product review</div></div>
                         )}
                         {!userreviews.every(el=>el.productId!==productId)&&( 
-                        <div onClick={()=>editEvents(userreviews.filter(el=>el.productId==productId)[0].id)} className="od-clicksec"><div className="od-clickbutton">Edit a product review</div></div>
+                        <div onClick={()=>editEvents(userreviews.filter(el=>el.productId==productId)[0].id)} className="od-clicksec"><div className="od-clickbutton" title="You can edit this review since you have a review on this item">Edit a product review</div></div>
                         )}
                         </div>
                     </div>

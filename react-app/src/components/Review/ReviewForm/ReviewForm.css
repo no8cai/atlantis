@@ -126,3 +126,13 @@
     font-size: 15px;
     margin-bottom: 5px;
 }
+
+.rv-deletelink{
+    margin-top: 20px;
+    cursor: pointer;
+    color: rgb(1, 132, 132);
+}
+
+.rv-deletelink:hover{
+    text-decoration: underline;
+}
